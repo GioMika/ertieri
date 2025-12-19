@@ -268,7 +268,7 @@
     .section { padding: 80px 24px; }
     .container { padding: 32px 24px; border-radius: 26px; }
     .text { max-width: 100%; }
-    .scrollIndicator { bottom: 134px; }
+    .scrollIndicator { bottom: 100px; }
     .mouse { width: 24px; height: 36px; }
 }
 
