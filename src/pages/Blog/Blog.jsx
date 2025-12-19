@@ -1,8 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import classes from "./Blog.module.css";
 
-// Import images
 import img1 from "../../shared/images/imagesPages/img1.jpg";
 import img2 from "../../shared/images/imagesPages/img2.jpg";
 import img3 from "../../shared/images/imagesPages/img3.jpg";
@@ -26,7 +25,7 @@ const Blog = () => {
           readTime: "5 мин",
           content: [
             "Тбилиси — город контрастов: старые дворики и современный ритм, уютные улицы и большие панорамы.",
-            "Начните с старого города и Абанотубани, затем — крепость Нарикала и виды на город. Вечером — винный бар или ужин с видом.",
+            "Начните со старого города и Абанотубани, затем — крепость Нарикала и виды на город. Вечером — винный бар или ужин с видом.",
             "Чтобы сделать поездку объемной: добавьте утренний рынок, дегустацию в марани и пару современных районов."
           ]
         },
@@ -98,25 +97,49 @@ const Blog = () => {
       []
   );
 
-  const containerVariants = {
+  const openArticle = (article) => setSelected(article);
+  const closeArticle = () => setSelected(null);
+
+  // ✅ LOCK BODY SCROLL + ESC close (чтобы не дёргалось и не "уносило")
+  useEffect(() => {
+    if (!selected) return;
+
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+
+    // компенсация скроллбара (на десктопе)
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollBarWidth > 0) document.body.style.paddingRight = `${scrollBarWidth}px`;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeArticle();
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selected]);
+
+  const listVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.10 } }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 18 },
+    hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] } }
   };
-
-  const openArticle = (article) => setSelected(article);
-  const closeArticle = () => setSelected(null);
 
   return (
       <div className={classes.blog}>
         <div className={classes.header}>
           <motion.h1
               className={classes.pageTitle}
-              initial={{ opacity: 0, y: -16 }}
+              initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
           >
@@ -124,42 +147,44 @@ const Blog = () => {
           </motion.h1>
           <motion.p
               className={classes.pageSubtitle}
-              initial={{ opacity: 0, y: -16 }}
+              initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
           >
-            Истории, советы и вдохновение — лаконично, красиво, по-премиуму.
+            Истории, советы и вдохновение — аккуратно, современно, без лишнего шума.
           </motion.p>
         </div>
 
-        <motion.div className={classes.container} variants={containerVariants} initial="hidden" animate="visible">
-          {articles.map((article) => (
+        <motion.div className={classes.grid} variants={listVariants} initial="hidden" animate="visible">
+          {articles.map((a) => (
               <motion.article
-                  key={article.id}
+                  key={a.id}
                   className={classes.card}
                   variants={cardVariants}
                   whileHover={{ y: -10 }}
                   whileTap={{ scale: 0.99 }}
-                  onClick={() => openArticle(article)}
+                  onClick={() => openArticle(a)}
+                  role="button"
+                  tabIndex={0}
               >
                 <div className={classes.media}>
-                  <img src={article.image} alt={article.title} className={classes.image} loading="lazy" />
+                  <img src={a.image} alt={a.title} className={classes.image} loading="lazy" />
                   <div className={classes.mediaShade} />
-                  <div className={classes.pillRow}>
-                    <span className={classes.pill}>{article.category}</span>
-                    <span className={classes.pillMuted}>
-                  {article.date} · {article.readTime}
+                  <div className={classes.metaTop}>
+                    <span className={classes.badge}>{a.category}</span>
+                    <span className={classes.metaText}>
+                  {a.date} · {a.readTime}
                 </span>
                   </div>
                 </div>
 
-                <div className={classes.content}>
-                  <h2 className={classes.title}>{article.title}</h2>
-                  <p className={classes.excerpt}>{article.excerpt}</p>
+                <div className={classes.body}>
+                  <h2 className={classes.title}>{a.title}</h2>
+                  <p className={classes.excerpt}>{a.excerpt}</p>
 
-                  <div className={classes.bottomRow}>
-                    <span className={classes.author}>{article.author}</span>
-                    <span className={classes.arrow}>Читать →</span>
+                  <div className={classes.footer}>
+                    <span className={classes.author}>{a.author}</span>
+                    <span className={classes.read}>Читать →</span>
                   </div>
                 </div>
               </motion.article>
@@ -168,62 +193,54 @@ const Blog = () => {
 
         <AnimatePresence>
           {selected && (
-              <>
-                <motion.div
-                    className={classes.modalBackdrop}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeArticle}
-                />
+              <motion.div
+                  className={classes.modalLayer}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  aria-hidden={false}
+              >
+                <div className={classes.backdrop} onClick={closeArticle} />
 
                 <motion.div
-                    className={classes.modalWrapper}
+                    className={classes.modal}
                     initial={{ opacity: 0, y: 18, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 18, scale: 0.98 }}
-                    transition={{ type: "spring", damping: 26, stiffness: 320 }}
+                    transition={{ type: "spring", damping: 28, stiffness: 320 }}
                     role="dialog"
                     aria-modal="true"
                 >
-                  <div className={classes.modal}>
-                    <button
-                        className={classes.closeButton}
-                        onClick={closeArticle}
-                        aria-label="Закрыть"
-                        type="button"
-                    >
-                      ✕
-                    </button>
+                  <button className={classes.close} onClick={closeArticle} aria-label="Закрыть" type="button">
+                    ✕
+                  </button>
 
-                    <div className={classes.modalHero}>
-                      <img src={selected.image} alt={selected.title} className={classes.modalHeroImg} />
-                      <div className={classes.modalHeroShade} />
-                      <div className={classes.modalHeroText}>
-                        <div className={classes.modalPills}>
-                          <span className={classes.modalPill}>{selected.category}</span>
-                          <span className={classes.modalPillMuted}>
-                        {selected.date} · {selected.readTime}
-                      </span>
-                        </div>
+                  <div className={classes.hero}>
+                    <img src={selected.image} alt={selected.title} className={classes.heroImg} />
+                    <div className={classes.heroShade} />
 
-                        <h2 className={classes.modalTitle}>{selected.title}</h2>
-                        <p className={classes.modalAuthor}>{selected.author}</p>
+                    <div className={classes.heroContent}>
+                      <div className={classes.heroMeta}>
+                        <span className={classes.badge}>{selected.category}</span>
+                        <span className={classes.metaText}>
+                      {selected.date} · {selected.readTime}
+                    </span>
                       </div>
-                    </div>
-
-                    <div className={classes.modalBody}>
-                      <p className={classes.modalLead}>{selected.excerpt}</p>
-
-                      {selected.content?.map((p, idx) => (
-                          <p key={idx} className={classes.modalParagraph}>
-                            {p}
-                          </p>
-                      ))}
+                      <h2 className={classes.heroTitle}>{selected.title}</h2>
+                      <p className={classes.heroAuthor}>{selected.author}</p>
                     </div>
                   </div>
+
+                  <div className={classes.content}>
+                    <p className={classes.lead}>{selected.excerpt}</p>
+                    {selected.content?.map((p, idx) => (
+                        <p key={idx} className={classes.paragraph}>
+                          {p}
+                        </p>
+                    ))}
+                  </div>
                 </motion.div>
-              </>
+              </motion.div>
           )}
         </AnimatePresence>
       </div>

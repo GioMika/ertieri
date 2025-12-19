@@ -290,7 +290,7 @@
 /* ========= Scroll indicator (thin + premium) ========= */
 .scrollIndicator{
     position: absolute;
-    bottom: 26px;
+    bottom: 116px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
@@ -363,7 +363,7 @@
     .subtitle{ letter-spacing: 0.16em; margin-bottom: 16px; }
     .text{ font-size: 15px; line-height: 1.75; margin-bottom: 24px; }
 
-    .scrollIndicator{ bottom: 22px; }
+    .scrollIndicator{ bottom: 122px; }
 }
 
 @media (max-width: 480px){
