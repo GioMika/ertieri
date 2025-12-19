@@ -363,7 +363,7 @@
     .subtitle{ letter-spacing: 0.16em; margin-bottom: 16px; }
     .text{ font-size: 15px; line-height: 1.75; margin-bottom: 24px; }
 
-    .scrollIndicator{ bottom: 122px; }
+    .scrollIndicator{ bottom: 110px; }
 }
 
 @media (max-width: 480px){
