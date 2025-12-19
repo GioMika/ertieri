@@ -182,17 +182,17 @@
     top: 0;
     right: 0;
     height: 100vh;
-    width: min(420px, 92vw);
+    width: 100%;
 
     transform: translateX(110%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-    background: rgba(10, 14, 20, 0.75);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    background: rgb(10, 14, 20);
+    backdrop-filter: blur(122px);
+    -webkit-backdrop-filter: blur(122px);
 
     border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.35);
+    box-shadow: 20px 0 60px rgba(0, 0, 0, 0.35);
 
     z-index: 1200;
 
@@ -292,7 +292,7 @@
 }
 
 .drawerFooter {
-    margin-top: auto;
+    /*margin-top: auto;*/
     padding: 16px 18px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -303,6 +303,7 @@
 .drawerQuick {
     display: flex;
     gap: 10px;
+    justify-content: flex-end;
 }
 
 .drawerIcon {
