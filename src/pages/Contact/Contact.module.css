@@ -1,0 +1,436 @@
+.contact {
+    min-height: 100vh;
+    position: relative;
+    padding: 120px 24px 80px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    background: #070a12;
+}
+
+/* softer, premium background */
+.bg {
+    position: absolute;
+    inset: -200px;
+    background:
+            radial-gradient(900px 600px at 20% 20%, rgba(120, 150, 255, 0.18), transparent 60%),
+            radial-gradient(900px 600px at 80% 35%, rgba(120, 255, 235, 0.10), transparent 55%),
+            radial-gradient(700px 600px at 55% 90%, rgba(167, 139, 250, 0.12), transparent 60%),
+            linear-gradient(135deg, #060814 0%, #0a0f22 45%, #070a12 100%);
+    filter: saturate(1.05);
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* header */
+.header {
+    max-width: 760px;
+    margin: 0 auto 44px;
+    text-align: center;
+}
+
+.kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+}
+
+.title {
+    font-size: clamp(34px, 4.5vw, 56px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    font-weight: 800;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.72);
+}
+
+/* layout grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* glass base */
+.cards,
+.mapCard,
+.formCard {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 24px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* LEFT */
+.left {
+    display: grid;
+    gap: 18px;
+}
+
+.cards {
+    padding: 12px;
+    display: grid;
+    gap: 10px;
+}
+
+/* modern contact card (fixes "слиплось") */
+.card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+}
+
+.cardBody {
+    min-width: 0;
+}
+
+.cardTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.cardLabel {
+    font-size: 13px;
+    color: rgba(255,255,255,0.58);
+    letter-spacing: 0.04em;
+}
+
+.cardHint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.40);
+    white-space: nowrap;
+}
+
+/* IMPORTANT: value row prevents merging */
+.cardValueRow {
+    display: grid;
+    grid-template-columns: 1fr 28px;
+    gap: 12px;
+    align-items: center;
+}
+
+.cardValue {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardAction,
+.cardActionLink {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.9);
+}
+
+.cardActionLink {
+    text-decoration: none;
+}
+
+.cardActionMuted {
+    width: 28px;
+    height: 28px;
+}
+
+/* map */
+.mapCard {
+    padding: 16px;
+}
+
+.mapHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 6px 14px;
+}
+
+.mapTitle {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.mapSubtitle {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.58);
+}
+
+.mapBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #0b1020;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.7);
+    font-weight: 700;
+    font-size: 13px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+.mapBtn:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+.mapWrap {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.10);
+    height: 260px;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* RIGHT: form */
+.right {
+    position: sticky;
+    top: 92px;
+}
+
+.formCard {
+    padding: 22px;
+}
+
+.formHeader {
+    margin-bottom: 18px;
+}
+
+.formTitle {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.formSubtitle {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.64);
+    line-height: 1.7;
+}
+
+.form {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+}
+
+.label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 14px 14px;
+    color: rgba(255,255,255,0.92);
+    font-size: 14px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.24);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    color: #0b1020;
+    border: 1px solid rgba(255,255,255,0.7);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.submit:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.note {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+}
+
+/* =========================
+   RESPONSIVE (экраны)
+   ========================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .contact {
+        padding: 110px 20px 70px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right {
+        position: static;
+    }
+
+    .mapWrap {
+        height: 240px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .header {
+        margin-bottom: 26px;
+        text-align: left;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        padding: 10px;
+    }
+
+    .card {
+        grid-template-columns: 40px 1fr;
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    .cardValue {
+        font-size: 15px;
+    }
+
+    .mapHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mapBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .mapWrap {
+        height: 220px;
+    }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}
