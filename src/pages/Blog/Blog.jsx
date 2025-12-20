@@ -163,14 +163,7 @@ const Blog = () => {
           >
             Блог
           </motion.h1>
-          <motion.p
-              className={classes.pageSubtitle}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-          >
-            Истории и идеи — минимально, красиво, по делу.
-          </motion.p>
+
         </div>
 
         <motion.div className={classes.grid} variants={listVariants} initial="hidden" animate="visible">
