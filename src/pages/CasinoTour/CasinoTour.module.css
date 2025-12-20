@@ -1,106 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
-    --glass-bg: rgba(255, 255, 255, 0.09);
-    --glass-bg-strong: rgba(255, 255, 255, 0.13);
-    --glass-border: rgba(255, 255, 255, 0.16);
-    --glass-border-strong: rgba(255, 255, 255, 0.22);
+:root{
+    --text: rgba(255,255,255,0.92);
+    --muted: rgba(255,255,255,0.72);
 
-    /* “gold”, но без яркости */
-    --champagne: rgba(255, 235, 190, 0.82);
-    --champagne-soft: rgba(255, 235, 190, 0.62);
+    --glass: rgba(255,255,255,0.08);
+    --glass2: rgba(255,255,255,0.11);
+    --border: rgba(255,255,255,0.18);
+    --border2: rgba(255,255,255,0.26);
 
-    --text: rgba(255, 255, 255, 0.90);
+    --shadow-md: 0 20px 70px rgba(0,0,0,0.38);
+    --shadow-lg: 0 34px 120px rgba(0,0,0,0.55);
+    --shadow-xl: 0 44px 160px rgba(0,0,0,0.62);
 
-    --shadow-xl: 0 32px 110px rgba(0, 0, 0, 0.52);
-    --shadow-lg: 0 22px 70px rgba(0, 0, 0, 0.38);
-    --shadow-md: 0 14px 44px rgba(0, 0, 0, 0.28);
-
-    --radius-xl: 34px;
-    --radius-lg: 26px;
+    --r-xl: 34px;
+    --r-lg: 26px;
 
     --blur: 26px;
     --blur-strong: 34px;
-
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* casino accents (тонко) */
+    --champagne: rgba(255, 235, 190, 0.78);
+    --champagne-soft: rgba(255, 235, 190, 0.58);
+
+    /* ====== 5 ABOUT GRADIENTS ====== */
+    --g1:
+            radial-gradient(900px 700px at 18% 12%, rgba(96,165,250,.22), transparent 60%),
+            radial-gradient(850px 650px at 82% 18%, rgba(34,211,238,.14), transparent 58%),
+            linear-gradient(135deg, #061726 0%, #081a2b 45%, #06121f 100%);
+
+    --g2:
+            radial-gradient(900px 700px at 20% 20%, rgba(167,139,250,.18), transparent 60%),
+            radial-gradient(900px 650px at 82% 22%, rgba(96,165,250,.14), transparent 58%),
+            linear-gradient(135deg, #070a1a 0%, #0a1030 55%, #06081a 100%);
+
+    --g3:
+            radial-gradient(900px 700px at 22% 18%, rgba(34,211,238,.16), transparent 60%),
+            radial-gradient(900px 650px at 78% 24%, rgba(16,185,129,.12), transparent 58%),
+            linear-gradient(135deg, #06141f 0%, #081f2b 55%, #050f18 100%);
+
+    --g4:
+            radial-gradient(900px 700px at 20% 16%, rgba(96,165,250,.18), transparent 60%),
+            radial-gradient(900px 650px at 78% 26%, rgba(244,114,182,.10), transparent 58%),
+            linear-gradient(135deg, #071022 0%, #0a1530 55%, #060b18 100%);
+
+    --g5:
+            radial-gradient(900px 700px at 18% 14%, rgba(167,139,250,.16), transparent 60%),
+            radial-gradient(900px 650px at 80% 24%, rgba(34,211,238,.12), transparent 58%),
+            linear-gradient(135deg, #06111e 0%, #0a1a2b 55%, #050a14 100%);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-.casinoTour {
+/* =========================
+   Page
+   ========================= */
+.casinoTour{
     min-height: 100vh;
     padding: 110px 40px 80px;
     overflow-x: hidden;
+    color: var(--text);
 
-    /* deep wine / velvet / warm accents — но без “неона” */
-    background:
-            radial-gradient(1100px 720px at 18% 20%, rgba(255, 215, 160, 0.12), transparent 62%),
-            radial-gradient(980px 740px at 82% 18%, rgba(160, 40, 60, 0.18), transparent 62%),
-            radial-gradient(900px 760px at 50% 88%, rgba(0, 0, 0, 0.44), transparent 62%),
-            linear-gradient(180deg, #12070b 0%, #070407 100%);
+    /* ✅ Фон страницы: выбираем 1 из About (для казино логично №4 — чуть “неон/ночь”) */
+    background: var(--g4);
 }
 
-/* subtle premium grain */
-.casinoTour::before {
-    content: "";
+/* subtle grain */
+.casinoTour::before{
+    content:"";
     position: fixed;
     inset: 0;
-    pointer-events: none;
+    pointer-events:none;
     z-index: 0;
     opacity: 0.10;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
     mix-blend-mode: overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
-.container {
+/* =========================
+   Grid
+   ========================= */
+.container{
     position: relative;
     z-index: 1;
     max-width: 1400px;
     margin: 0 auto;
+
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 22px;
 }
 
-/* Card base */
-.block {
-    padding: 34px;
-    border-radius: var(--radius-xl);
-    cursor: pointer;
+/* =========================
+   Cards (About style)
+   ========================= */
+.block{
     position: relative;
     overflow: hidden;
+    border-radius: var(--r-xl);
+    padding: 30px 30px 26px;
+
+    cursor: pointer;
     display: flex;
     flex-direction: column;
 
-    background: var(--glass-bg);
-    border: 1px solid rgba(255, 235, 190, 0.16);
+    border: 1px solid rgba(255,255,255,0.18);
+
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 
-    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.12);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.14);
+    transition:
+            transform .35s var(--ease),
+            box-shadow .35s var(--ease),
+            border-color .35s var(--ease);
+    transform: translateZ(0);
 }
 
-/* мягкий свет (не яркий) */
-.block::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+/* блик + лёгкий “gold dust”, но очень тонко */
+.block::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
     background:
-            radial-gradient(760px 380px at 35% 10%, rgba(255, 235, 190, 0.10), transparent 58%),
-            radial-gradient(520px 280px at 82% 28%, rgba(255, 255, 255, 0.06), transparent 60%);
-    opacity: 0.85;
+            radial-gradient(760px 340px at 35% 0%, rgba(255,255,255,0.14), transparent 58%),
+            radial-gradient(620px 320px at 88% 22%, rgba(255,235,190,0.08), transparent 62%);
+    opacity: 0.90;
 }
 
-.block:hover {
-    background: var(--glass-bg-strong);
-    border-color: rgba(255, 235, 190, 0.22);
-    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.16);
+.block::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+    rgba(255,255,255,0.20),
+    rgba(255,255,255,0.06) 35%,
+    rgba(255,255,255,0.00) 60%);
+    opacity: 0.55;
 }
+
+.block:hover{
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.26);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+/* ✅ Разноцветные карточки (как About Us) */
+.block1{ background: var(--g1); }
+.block2{ background: var(--g2); }
+.block3{ background: var(--g3); }
+.block4{ background: var(--g4); }
+.block5{ background: var(--g5); padding: 34px 30px 30px; }
 
 /* Image */
-.imageWrapper {
+.imageWrapper{
     width: 100%;
     height: 190px;
     border-radius: 22px;
@@ -108,38 +165,33 @@
     margin-bottom: 18px;
     position: relative;
 
-    border: 1px solid rgba(255,255,255,0.10);
-    box-shadow: 0 18px 60px rgba(0,0,0,0.34);
+    border: 1px solid rgba(255,255,255,0.12);
     background: rgba(0,0,0,0.18);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.34);
 }
 
-.blockImage {
+.blockImage{
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     transform: scale(1.02);
-    transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
+    transition: transform .7s var(--ease), filter .7s var(--ease);
     will-change: transform;
-    filter: saturate(1.02) contrast(1.02);
+
+    filter: saturate(1.03) contrast(1.02);
 }
+.block:hover .blockImage{ transform: scale(1.08); }
 
-.block:hover .blockImage { transform: scale(1.08); }
-
-/* Layout */
+/* Layout (оставил твою схему) */
 .block1 { grid-column: 1 / 13; grid-row: 1; }
-.block2 { grid-column: 1 / 5; grid-row: 2; }
-.block3 { grid-column: 5 / 9; grid-row: 2; }
+.block2 { grid-column: 1 / 5;  grid-row: 2; }
+.block3 { grid-column: 5 / 9;  grid-row: 2; }
 .block4 { grid-column: 9 / 13; grid-row: 2; }
-.block5 {
-    grid-column: 1 / 13;
-    grid-row: 3;
-    padding: 40px 34px;
-    background: rgba(255, 255, 255, 0.11);
-    border-color: rgba(255, 235, 190, 0.18);
-}
+.block5 { grid-column: 1 / 13; grid-row: 3; }
 
 /* Typography */
-.title {
+.title{
     font-family: 'Playfair Display', serif;
     font-size: clamp(26px, 2.4vw, 38px);
     font-weight: 900;
@@ -150,119 +202,152 @@
     text-shadow: 0 18px 70px rgba(0,0,0,0.38);
 }
 
-.subtitle {
+.subtitle{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
-    color: rgba(255, 235, 190, 0.72);
-    margin: 0 0 14px 0;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--champagne-soft);
+    margin: 0 0 14px 0;
 }
 
-.description {
+.description{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(255,255,255,0.86);
-    line-height: 1.72;
+    color: rgba(255,255,255,0.84);
+    line-height: 1.80;
     margin: 0;
 }
 
 /* CTA */
-.ctaLink { text-decoration: none; display: inline-block; margin-top: 22px; }
+.ctaLink{ text-decoration:none; display:inline-block; margin-top: 22px; }
 
-.ctaButton {
+.ctaButton{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
     padding: 14px 22px;
+
     background: rgba(255,255,255,0.08);
     color: rgba(255,255,255,0.92);
-    border: 1px solid rgba(255, 235, 190, 0.22);
+
+    border: 1px solid rgba(255,235,190,0.22);
     border-radius: 999px;
+
     cursor: pointer;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
-    box-shadow: 0 14px 40px rgba(0,0,0,0.26);
-}
 
-.ctaButton:hover {
+    transition:
+            transform .18s var(--ease),
+            background .18s var(--ease),
+            border-color .18s var(--ease);
+
+    box-shadow: 0 14px 40px rgba(0,0,0,0.26),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.ctaButton:hover{
     background: rgba(255,255,255,0.12);
-    border-color: rgba(255, 235, 190, 0.30);
+    border-color: rgba(255,235,190,0.30);
     transform: translateY(-1px);
 }
 
-/* ===== Modal ===== */
-.modalBackdrop {
+/* =========================
+   Modal (no mobile shift)
+   ========================= */
+.modalBackdrop{
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.72);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(0,0,0,0.72);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     z-index: 9998;
+    overflow: hidden;
 }
 
-.modalWrapper {
+.modalWrapper{
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
     z-index: 9999;
+
     display: grid;
     place-items: center;
-    padding: 24px;
+
+    padding:
+            calc(16px + env(safe-area-inset-top))
+            calc(16px + env(safe-area-inset-right))
+            calc(16px + env(safe-area-inset-bottom))
+            calc(16px + env(safe-area-inset-left));
+
+    overscroll-behavior: contain;
 }
 
-.modal {
-    width: min(980px, 92vw);
-    max-height: min(86vh, 920px);
-    background: rgba(255, 255, 255, 0.10);
+.modal{
+    width: 100%;
+    max-width: 980px;
+    max-height: min(86dvh, 920px);
+
+    background: rgba(255,255,255,0.10);
     backdrop-filter: blur(var(--blur-strong));
     -webkit-backdrop-filter: blur(var(--blur-strong));
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 235, 190, 0.16);
+
+    border-radius: var(--r-xl);
+    border: 1px solid rgba(255,235,190,0.16);
     box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255,255,255,0.16);
     overflow: hidden;
+
     position: relative;
     display: grid;
     grid-template-rows: auto 1fr;
+
+    transform: translateZ(0);
 }
 
-.modal::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+.modal::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
     background:
-            radial-gradient(920px 440px at 35% 0%, rgba(255, 235, 190, 0.10), transparent 58%),
-            radial-gradient(520px 300px at 86% 28%, rgba(255, 255, 255, 0.06), transparent 60%);
-    opacity: 0.85;
+            radial-gradient(920px 440px at 35% 0%, rgba(255,255,255,0.14), transparent 58%),
+            radial-gradient(620px 340px at 88% 22%, rgba(255,235,190,0.08), transparent 62%);
+    opacity: 0.90;
 }
 
-.closeButton {
+.closeButton{
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
     width: 46px;
     height: 46px;
-    background: rgba(0, 0, 0, 0.55);
+
+    background: rgba(0,0,0,0.55);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 50%;
-    color: #ffffff;
+    color: #fff;
     font-size: 22px;
+
     cursor: pointer;
     z-index: 10000;
-    transition: transform 0.25s var(--ease), background 0.25s var(--ease);
     display: grid;
     place-items: center;
-}
 
-.closeButton:hover {
-    background: rgba(0, 0, 0, 0.72);
+    transition: transform .25s var(--ease), background .25s var(--ease);
+}
+.closeButton:hover{
+    background: rgba(0,0,0,0.72);
     transform: rotate(90deg);
 }
 
-.modalHero {
+.modalHero{
     width: 100%;
     display: grid;
     place-items: center;
@@ -271,25 +356,27 @@
     z-index: 1;
 }
 
-.modalHeroImg {
+.modalHeroImg{
     width: min(900px, 100%);
     aspect-ratio: 16 / 9;
     object-fit: cover;
+
     border-radius: 22px;
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 26px 80px rgba(0,0,0,0.52);
     filter: saturate(1.03) contrast(1.02);
 }
 
-.modalContent {
+.modalContent{
     position: relative;
     z-index: 1;
     padding: 26px 46px 44px;
     overflow: auto;
     text-align: left;
+    -webkit-overflow-scrolling: touch;
 }
 
-.modalTitle {
+.modalTitle{
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 4vw, 46px);
     font-weight: 900;
@@ -300,17 +387,17 @@
     text-shadow: 0 18px 70px rgba(0,0,0,0.40);
 }
 
-.modalSubtitle {
+.modalSubtitle{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
-    color: rgba(255, 235, 190, 0.72);
-    margin: 0 0 22px 0;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--champagne-soft);
+    margin: 0 0 22px 0;
 }
 
-.modalDescription {
+.modalDescription{
     font-family: 'Inter', sans-serif;
     font-size: 17px;
     font-weight: 400;
@@ -319,66 +406,79 @@
     margin: 0 0 28px 0;
 }
 
-.modalCtaLink { text-decoration: none; display: inline-block; }
+.modalCtaLink{ text-decoration:none; display:inline-block; }
 
-.modalCtaButton {
+.modalCtaButton{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
     padding: 14px 22px;
+
     background: rgba(255,255,255,0.08);
     color: rgba(255,255,255,0.92);
-    border: 1px solid rgba(255, 235, 190, 0.22);
+
+    border: 1px solid rgba(255,235,190,0.22);
     border-radius: 999px;
+
     cursor: pointer;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+
     transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
 }
-
-.modalCtaButton:hover {
+.modalCtaButton:hover{
     background: rgba(255,255,255,0.12);
-    border-color: rgba(255, 235, 190, 0.30);
+    border-color: rgba(255,235,190,0.30);
     transform: translateY(-1px);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .casinoTour { padding: 96px 32px 60px; }
-    .container { gap: 18px; grid-template-columns: 1fr; }
-    .block { padding: 32px; border-radius: 30px; }
-    .imageWrapper { height: 180px; }
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 1024px){
+    .casinoTour{ padding: 96px 32px 60px; }
+    .container{ gap: 18px; grid-template-columns: 1fr; }
 
-    .block1, .block2, .block3, .block4, .block5 { grid-column: 1 / -1; grid-row: auto; }
+    .block{ padding: 24px 24px 22px; border-radius: 30px; }
+    .imageWrapper{ height: 180px; }
 
-    .modalContent { padding: 22px 30px 34px; }
-    .modalHero { padding: 22px 22px 0; }
+    .block1,.block2,.block3,.block4,.block5{ grid-column: 1 / -1; grid-row: auto; }
+
+    .modalContent{ padding: 22px 30px 34px; }
+    .modalHero{ padding: 22px 22px 0; }
 }
 
-@media (max-width: 768px) {
-    .casinoTour { padding: 78px 22px 48px; }
-    .block { padding: 28px 24px; border-radius: var(--radius-lg); }
-    .imageWrapper { height: 160px; border-radius: 18px; }
+@media (max-width: 768px){
+    .casinoTour{ padding: 78px 22px 48px; }
 
-    .title { font-size: 26px; }
-    .description { font-size: 15px; }
+    .block{ padding: 22px 20px; border-radius: var(--r-lg); }
+    .imageWrapper{ height: 160px; border-radius: 18px; }
 
-    .modal { border-radius: 24px; }
-    .closeButton { top: 14px; right: 14px; width: 40px; height: 40px; font-size: 20px; }
-    .modalHeroImg { aspect-ratio: 4 / 3; border-radius: 18px; }
-    .modalContent { padding: 18px 20px 26px; }
-    .modalDescription { font-size: 16px; line-height: 1.75; }
+    .title{ font-size: 26px; }
+    .description{ font-size: 15px; line-height: 1.75; }
+
+    .modal{ border-radius: 24px; }
+    .closeButton{
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        top: max(10px, env(safe-area-inset-top));
+        right: max(10px, env(safe-area-inset-right));
+    }
+
+    .modalHeroImg{ aspect-ratio: 4 / 3; border-radius: 18px; }
+    .modalContent{ padding: 18px 20px 26px; }
+    .modalDescription{ font-size: 16px; line-height: 1.75; }
 }
 
-@media (max-width: 480px) {
-    .casinoTour { padding: 70px 18px 40px; }
-    .block { padding: 24px 20px; }
-    .imageWrapper { height: 140px; }
-    .subtitle { letter-spacing: 0.14em; }
+@media (max-width: 480px){
+    .casinoTour{ padding: 70px 18px 40px; }
+    .imageWrapper{ height: 140px; }
+    .subtitle{ letter-spacing: 0.14em; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    * {
+@media (prefers-reduced-motion: reduce){
+    *{
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
