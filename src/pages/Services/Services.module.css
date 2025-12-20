@@ -55,7 +55,7 @@
     position:relative;
     z-index:1;
     max-width:1320px;
-    margin:0 auto;
+    margin: 0 auto;
     padding:110px 40px 90px;
 }
 
@@ -63,6 +63,7 @@
 .header{
     max-width:900px;
     margin-bottom:36px;
+    margin-top: 50px;
 }
 
 .kicker{

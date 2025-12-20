@@ -22,7 +22,7 @@
     padding: 110px 40px 80px;
     overflow-x: hidden;
 
-    /* ✅ новый минималистичный общий фон (НЕ тот “плохой” фон) */
+
     background:
             radial-gradient(900px 700px at 20% 20%, rgba(167,139,250,.18), transparent 60%),
             radial-gradient(900px 650px at 82% 22%, rgba(96,165,250,.14), transparent 58%),
@@ -47,7 +47,7 @@
     position: relative;
     z-index: 1;
     max-width: 1180px;
-    margin: 0 auto 26px;
+    margin: 50px auto 26px;
     display: grid;
     gap: 10px;
 }
