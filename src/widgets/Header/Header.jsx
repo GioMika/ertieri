@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Mail, MessageCircle, X } from "lucide-react";
 import classes from "./Header.module.css";
@@ -18,32 +18,52 @@ const Header = () => {
       []
   );
 
-  const languages = ["GE", "RU", "EN"];
+  const languages = useMemo(() => ["GE", "RU", "EN"], []);
   const emailAddress = "hello@ertieri.com";
   const whatsappNumber = "995XXXXXXXXX";
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = useCallback(
+      (path) => location.pathname === path,
+      [location.pathname]
+  );
 
-  const openMenu = () => setIsMenuOpen(true);
-  const closeMenu = () => setIsMenuOpen(false);
+  const openMenu = useCallback(() => setIsMenuOpen(true), []);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setIsMenuOpen((v) => !v), []);
 
-  // ESC close + lock body scroll
+  // ✅ Закрывать меню при смене роута
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && closeMenu();
-    if (isMenuOpen) {
-      document.addEventListener("keydown", onKey);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // ✅ ESC close + lock body scroll + компенсация скроллбара
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollBarWidth > 0) document.body.style.paddingRight = `${scrollBarWidth}px`;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeMenu();
     };
-  }, [isMenuOpen]);
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    };
+  }, [isMenuOpen, closeMenu]);
 
   return (
       <header className={classes.header}>
         <div className={classes.inner}>
-          <Link to="/" className={classes.logo} onClick={closeMenu}>
+          <Link to="/" className={classes.logo} aria-label="На главную">
             ERTI ERI
           </Link>
 
@@ -62,12 +82,7 @@ const Header = () => {
 
           {/* Right actions */}
           <div className={classes.actions}>
-            <a
-                className={classes.iconBtn}
-                href={`mailto:${emailAddress}`}
-                aria-label="Email"
-                title="Email"
-            >
+            <a className={classes.iconBtn} href={`mailto:${emailAddress}`} aria-label="Email" title="Email">
               <Mail size={18} />
             </a>
 
@@ -90,6 +105,7 @@ const Header = () => {
                       type="button"
                       className={`${classes.langBtn} ${currentLang === L ? classes.langActive : ""}`}
                       onClick={() => setCurrentLang(L)}
+                      aria-pressed={currentLang === L}
                   >
                     {L}
                   </button>
@@ -99,10 +115,11 @@ const Header = () => {
             {/* Mobile burger */}
             <button
                 type="button"
-                className={classes.burger}
-                onClick={openMenu}
-                aria-label="Открыть меню"
+                className={`${classes.burger} ${isMenuOpen ? classes.burgerOpen : ""}`}
+                onClick={toggleMenu}
+                aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
                 aria-expanded={isMenuOpen}
+                aria-controls="mobile-drawer"
             >
               <span />
               <span />
@@ -110,65 +127,78 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Backdrop */}
+        <div
+            className={`${classes.backdrop} ${isMenuOpen ? classes.backdropOpen : ""}`}
+            onClick={closeMenu}
+            aria-hidden="true"
+        />
+
         {/* Drawer */}
-        <div className={`${classes.drawer} ${isMenuOpen ? classes.drawerOpen : ""}`}>
+        <aside
+            id="mobile-drawer"
+            className={`${classes.drawer} ${isMenuOpen ? classes.drawerOpen : ""}`}
+            aria-hidden={!isMenuOpen}
+        >
           <div className={classes.drawerHeader}>
             <span className={classes.drawerBrand}>ERTI ERI</span>
 
-            <button className={classes.closeBtn} onClick={closeMenu} aria-label="Закрыть меню">
+            <button className={classes.closeBtn} onClick={closeMenu} aria-label="Закрыть меню" type="button">
               <X size={18} />
             </button>
           </div>
 
-          <nav className={classes.drawerNav} aria-label="Мобильное меню">
-            {menuItems.map((item, i) => (
-                <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`${classes.drawerLink} ${isActive(item.path) ? classes.drawerActive : ""}`}
-                    onClick={closeMenu}
-                    style={{ animationDelay: `${i * 0.06}s` }}
-                >
-                  {item.title}
-                </Link>
-            ))}
-          </nav>
-
-          <div className={classes.drawerFooter}>
-            <div className={classes.drawerQuick}>
-              <a className={classes.drawerIcon} href={`mailto:${emailAddress}`} aria-label="Email">
-                <Mail size={18} />
-              </a>
-              <a
-                  className={classes.drawerIcon}
-                  href={`https://wa.me/${whatsappNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-              >
-                <MessageCircle size={18} />
-              </a>
-            </div>
-
-            <div className={classes.drawerLang} role="group" aria-label="Язык">
-              {languages.map((L) => (
-                  <button
-                      key={L}
-                      type="button"
-                      className={`${classes.drawerLangBtn} ${
-                          currentLang === L ? classes.drawerLangActive : ""
-                      }`}
-                      onClick={() => setCurrentLang(L)}
+          {/* ✅ ВАЖНО: всё, что нужно — СРАЗУ ПОД ссылками */}
+          <div className={classes.drawerBody}>
+            <nav className={classes.drawerNav} aria-label="Мобильное меню">
+              {menuItems.map((item, i) => (
+                  <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`${classes.drawerLink} ${isActive(item.path) ? classes.drawerActive : ""}`}
+                      style={isMenuOpen ? { animationDelay: `${i * 0.06}s` } : undefined}
                   >
-                    {L}
-                  </button>
+                    {item.title}
+                  </Link>
               ))}
+            </nav>
+
+            {/* ✅ Иконки + языки — сразу под последней ссылкой */}
+            <div className={classes.drawerTools}>
+              <div className={classes.drawerQuick}>
+                <a className={classes.drawerIcon} href={`mailto:${emailAddress}`} aria-label="Email">
+                  <Mail size={18} />
+                </a>
+
+                <a
+                    className={classes.drawerIcon}
+                    href={`https://wa.me/${whatsappNumber}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                >
+                  <MessageCircle size={18} />
+                </a>
+              </div>
+
+              <div className={classes.drawerLang} role="group" aria-label="Язык">
+                {languages.map((L) => (
+                    <button
+                        key={L}
+                        type="button"
+                        className={`${classes.drawerLangBtn} ${
+                            currentLang === L ? classes.drawerLangActive : ""
+                        }`}
+                        onClick={() => setCurrentLang(L)}
+                        aria-pressed={currentLang === L}
+                    >
+                      {L}
+                    </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Backdrop */}
-        {isMenuOpen && <div className={classes.backdrop} onClick={closeMenu} />}
+        </aside>
       </header>
   );
 };

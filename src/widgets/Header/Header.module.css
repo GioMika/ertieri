@@ -1,19 +1,13 @@
-/* ===== Header (Apple-minimal) ===== */
-.header {
+/* ===== Header minimal / glass ===== */
+.header{
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 1000;
-
-    /*background: rgba(10, 14, 20, 0.55);*/
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
-
-    /*border-bottom: 1px solid rgba(255, 255, 255, 0.08);*/
+    pointer-events: none; /* ✅ чтобы клики шли по контенту, кроме inner */
 }
 
-.inner {
+.inner{
+    pointer-events: auto; /* ✅ включаем клики только на самой шапке */
     height: 64px;
     max-width: 1400px;
     margin: 0 auto;
@@ -22,378 +16,404 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    border-radius: 16px;
+    margin-top: 14px;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 18px 60px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
 }
 
 /* Logo */
-.logo {
+.logo{
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.92);
-    font-weight: 700;
+    color: rgba(255,255,255,0.92);
+    font-weight: 800;
     letter-spacing: 0.18em;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
 
     padding: 10px 12px;
     border-radius: 12px;
 
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background .18s ease, color .18s ease;
 }
-.logo:hover {
-    background: rgba(255, 255, 255, 0.06);
+.logo:hover{
+    background: rgba(255,255,255,0.06);
     color: #fff;
 }
 
 /* Desktop nav */
-.nav {
+.nav{
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 18px;
 }
 
-.navLink {
-    color: rgba(255, 255, 255, 0.78);
+.navLink{
+    color: rgba(255,255,255,0.78);
     text-decoration: none;
     font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-weight: 550;
 
-    padding: 10px 10px;
-    border-radius: 12px;
-    transition: background 0.2s ease, color 0.2s ease;
+    padding: 10px 12px;
+    border-radius: 999px;
+
+    transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.navLink:hover{
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.95);
+    transform: translateY(-1px);
 }
 
-.navLink:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.active {
-    background: rgba(255, 255, 255, 0.08);
+.active{
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.12);
     color: #fff;
 }
 
 /* Right actions */
-.actions {
+.actions{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Icon buttons (email/whatsapp) */
-.iconBtn {
-    width: 38px;
-    height: 38px;
+.iconBtn{
+    width: 40px;
+    height: 40px;
     display: grid;
     place-items: center;
 
-    border-radius: 12px;
-    color: rgba(255, 255, 255, 0.86);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    color: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
 
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease;
     text-decoration: none;
 }
-.iconBtn:hover {
+.iconBtn:hover{
     transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.14);
-}
-.iconBtn:active {
-    transform: translateY(0px) scale(0.98);
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.14);
 }
 
 /* Language (desktop) */
-.lang {
+.lang{
     display: flex;
     align-items: center;
     gap: 6px;
 
     padding: 6px;
-    border-radius: 14px;
+    border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
 }
 
-.langBtn {
+.langBtn{
     border: none;
     cursor: pointer;
 
     padding: 8px 10px;
-    border-radius: 10px;
+    border-radius: 999px;
 
     background: transparent;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255,255,255,0.75);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.08em;
 }
-
-.langBtn:hover {
-    color: rgba(255, 255, 255, 0.95);
-    background: rgba(255, 255, 255, 0.06);
+.langBtn:hover{
+    color: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.06);
 }
-
-.langActive {
-    background: rgba(255, 255, 255, 0.1);
+.langActive{
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.12);
     color: #fff;
 }
 
 /* Burger (mobile) */
-.burger {
+.burger{
     display: none;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background: rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.06);
 
     cursor: pointer;
     padding: 0;
+    position: relative;
 
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
-.burger:hover {
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.14);
+.burger:hover{
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.14);
     transform: translateY(-1px);
 }
-.burger:active {
-    transform: translateY(0) scale(0.98);
-}
-.burger span {
-    display: block;
+
+.burger span{
+    position: absolute;
+    left: 50%;
     width: 18px;
     height: 2px;
-    margin: 0 auto;
-
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255,255,255,0.92);
     border-radius: 999px;
+    transform: translateX(-50%);
+    transition: transform .22s ease, top .22s ease, opacity .22s ease;
 }
-.burger span + span {
-    margin-top: 6px;
+.burger span:first-child{ top: 18px; }
+.burger span:last-child{ top: 26px; }
+
+.burgerOpen span:first-child{
+    top: 22px;
+    transform: translateX(-50%) rotate(45deg);
+}
+.burgerOpen span:last-child{
+    top: 22px;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+/* ===== Backdrop (always present, but disabled when closed) ===== */
+.backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    transition: opacity .22s ease, visibility .22s ease;
+}
+.backdropOpen{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 /* ===== Drawer ===== */
-.drawer {
+/* ✅ ключ: когда закрыт -> pointer-events none + visibility hidden,
+   чтобы не ломать клики/переходы */
+.drawer{
     position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 100%;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    width: min(420px, calc(100vw - 24px));
+    z-index: 1200;
 
     transform: translateX(110%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-    background: rgb(10, 14, 20);
-    backdrop-filter: blur(122px);
-    -webkit-backdrop-filter: blur(122px);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 20px 0 60px rgba(0, 0, 0, 0.35);
-
-    z-index: 1200;
+    box-shadow: 0 30px 110px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
 
     display: flex;
     flex-direction: column;
-}
 
-.drawerOpen {
+    transition:
+            transform .28s cubic-bezier(.4,0,.2,1),
+            opacity .22s ease,
+            visibility .22s ease;
+}
+.drawerOpen{
     transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
-.drawerHeader {
-    height: 72px;
-    padding: 0 18px;
-
+.drawerHeader{
+    height: 64px;
+    padding: 0 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
-.drawerBrand {
-    color: rgba(255, 255, 255, 0.92);
-    font-weight: 800;
+.drawerBrand{
+    color: rgba(255,255,255,0.92);
+    font-weight: 900;
     letter-spacing: 0.18em;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-.closeBtn {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
+.closeBtn{
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
 
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.9);
-
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.92);
     cursor: pointer;
+
     display: grid;
     place-items: center;
 
-    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    transition: background .18s ease, transform .18s ease, border-color .18s ease;
 }
-.closeBtn:hover {
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.14);
+.closeBtn:hover{
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.14);
     transform: translateY(-1px);
 }
-.closeBtn:active {
-    transform: translateY(0) scale(0.98);
-}
 
-.drawerNav {
-    padding: 22px 18px 10px;
+/* ✅ контент меню */
+.drawerBody{
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
 }
 
-.drawerLink {
+.drawerNav{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ✅ чтобы точно кликается */
+.drawerLink{
+    position: relative;
+    z-index: 2;
+
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 18px;
+    color: rgba(255,255,255,0.86);
+    font-size: 16px;
     font-weight: 650;
     letter-spacing: -0.01em;
 
     padding: 14px 14px;
     border-radius: 16px;
 
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
 
     opacity: 0;
     transform: translateX(10px);
-    animation: drawerIn 0.45s ease forwards;
-}
+    animation: drawerIn .42s ease forwards;
 
-.drawerLink:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
+    transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease;
+}
+.drawerLink:hover{
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+    color: #fff;
+}
+.drawerActive{
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.14);
     color: #fff;
 }
 
-.drawerActive {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
-    color: #fff;
+@keyframes drawerIn{
+    to{ opacity: 1; transform: translateX(0); }
 }
 
-@keyframes drawerIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.drawerFooter {
-    /*margin-top: auto;*/
-    padding: 16px 18px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-
+/* ✅ tools сразу под меню */
+.drawerTools{
     display: grid;
-    gap: 14px;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.10);
 }
 
-.drawerQuick {
+.drawerQuick{
     display: flex;
     gap: 10px;
-    justify-content: flex-end;
 }
 
-.drawerIcon {
-    width: 44px;
-    height: 44px;
+.drawerIcon{
+    width: 46px;
+    height: 46px;
     display: grid;
     place-items: center;
 
-    border-radius: 14px;
-    color: rgba(255, 255, 255, 0.88);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    color: rgba(255,255,255,0.90);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
 
-    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    transition: background .18s ease, transform .18s ease, border-color .18s ease;
     text-decoration: none;
 }
-.drawerIcon:hover {
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.14);
+.drawerIcon:hover{
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.14);
     transform: translateY(-1px);
 }
 
-.drawerLang {
-    display: flex;
-    gap: 8px;
+.drawerLang{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-.drawerLangBtn {
-    flex: 1;
+.drawerLangBtn{
     padding: 12px 0;
+    border-radius: 16px;
 
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.05);
 
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 800;
+    color: rgba(255,255,255,0.80);
+    font-weight: 900;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
     cursor: pointer;
 
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease;
 }
-.drawerLangBtn:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.12);
+.drawerLangBtn:hover{
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-1px);
     color: #fff;
 }
-.drawerLangActive {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.14);
+.drawerLangActive{
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.16);
     color: #fff;
-}
-
-/* Backdrop */
-.backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 1100;
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 900px) {
-    .nav {
-        display: none;
-    }
-    .lang {
-        display: none;
-    }
-    .burger {
-        display: grid;
-        place-items: center;
-    }
-    .inner {
-        height: 60px;
-        padding: 0 16px;
-    }
+@media (max-width: 900px){
+    .nav{ display: none; }
+    .lang{ display: none; }
+    .burger{ display: grid; place-items: center; }
+    .inner{ height: 60px; padding: 0 16px; }
 }
 
-@media (max-width: 420px) {
-    .iconBtn {
-        width: 36px;
-        height: 36px;
-    }
-    .burger {
-        width: 40px;
-        height: 40px;
-    }
+@media (max-width: 420px){
+    .iconBtn{ width: 38px; height: 38px; }
+    .burger{ width: 42px; height: 42px; }
 }
