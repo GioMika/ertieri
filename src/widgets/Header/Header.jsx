@@ -11,7 +11,7 @@ const Header = () => {
   const menuItems = useMemo(
       () => [
         { title: "О нас", path: "/about" },
-        { title: "Туры", path: "/services" },
+        { title: "Услуги", path: "/services" },
         { title: "Блог", path: "/blog" },
         { title: "Контакты", path: "/contact" },
       ],

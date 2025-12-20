@@ -2,11 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import classes from "./Blog.module.css";
 
-import img1 from "../../shared/images/imagesPages/img1.jpg";
-import img2 from "../../shared/images/imagesPages/img2.jpg";
-import img3 from "../../shared/images/imagesPages/img3.jpg";
-import img4 from "../../shared/images/imagesPages/img4.jpeg";
-import img5 from "../../shared/images/imagesPages/img5.jpeg";
+import img1 from "./images/a-dramatic-mountain-landscape-in-svaneti-with-anci.png";
+import img2 from "./images/a-still-life-composition-inside-an-ancient-wine-ce.png";
+import img3 from "./images/a-sunrise-scene-on-a-calm-black-sea-shore-with-coa.png";
+import img4 from "./images/a-panoramic-night-view-of-tbilisi-old-town-with-wa.png";
+import img5 from "./images/foodgeorian.jpg";
 
 const Blog = () => {
   const [selected, setSelected] = useState(null);
@@ -15,7 +15,7 @@ const Blog = () => {
       () => [
         {
           id: 1,
-          image: img1,
+          image: img4,
           category: "Путешествия",
           title: "Топ-10 мест в Тбилиси",
           excerpt:
@@ -47,7 +47,7 @@ const Blog = () => {
         },
         {
           id: 3,
-          image: img3,
+          image: img5,
           category: "Гастрономия",
           title: "Гастрономический гид по Грузии",
           excerpt:
@@ -63,7 +63,7 @@ const Blog = () => {
         },
         {
           id: 4,
-          image: img4,
+          image: img1,
           category: "Приключения",
           title: "Треккинг в Сванетии",
           excerpt:
@@ -79,7 +79,7 @@ const Blog = () => {
         },
         {
           id: 5,
-          image: img5,
+          image: img3,
           category: "Советы",
           title: "Первый раз в Грузии",
           excerpt:

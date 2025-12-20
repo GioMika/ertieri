@@ -4,25 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './MountainRelax.module.css';
 
 // Use same shared images pack
-import img1 from '../../shared/images/imagesPages/img1.jpg';
-import img2 from '../../shared/images/imagesPages/img2.jpg';
-import img3 from '../../shared/images/imagesPages/img3.jpg';
-import img4 from '../../shared/images/imagesPages/img4.jpeg';
-import img5 from '../../shared/images/imagesPages/img5.jpeg';
-import img6 from '../../shared/images/imagesPages/img6.jpeg';
-import img7 from '../../shared/images/imagesPages/img7.jpeg';
-import img8 from '../../shared/images/imagesPages/img8.jpeg';
-import img9 from '../../shared/images/imagesPages/img9.jpeg';
-import img11 from '../../shared/images/imagesPages/img11.jpeg';
-import img12 from '../../shared/images/imagesPages/img12.jpeg';
-import img13 from '../../shared/images/imagesPages/img13.jpeg';
-import img14 from '../../shared/images/imagesPages/img14.jpeg';
+import img1 from './images/a-climber-standing-near-a-summit-ridge-with-clouds.png';
+import img2 from './images/a-cozy-mountain-hotel-terrace-overlooking-a-dramat.png';
+import img3 from './images/a-dynamic-winter-ski-resort-scene-with-fresh-powde.png';
+import img4 from './images/a-hiker-walking-along-a-narrow-mountain-trail-surr.png';
+import img5 from './images/a-panoramic-view-of-the-caucasus-mountains-in-geor.png';
+
 
 const MountainRelax = () => {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
   const images = useMemo(
-      () => [img1, img2, img3, img4, img5, img6, img7, img8, img9, img11, img12, img13, img14],
+      () => [img1, img2, img3, img4, img5],
       []
   );
 
@@ -36,7 +29,7 @@ const MountainRelax = () => {
               'Откройте для себя отдых в грузинских горах: чистый воздух, снежные вершины Кавказа, альпийские луга и виды, которые хочется оставить в памяти навсегда.',
           fullDescription:
               'Горная Грузия — это другой ритм. Здесь утро начинается с прозрачного воздуха и тишины, а день — с дорог, которые ведут к панорамам, как из кино. Мы подберем маршрут под ваш темп: комфортный, активный или смешанный. Вас ждут смотровые площадки, горные деревни, тёплые гостевые дома, локальная кухня и ощущение свободы, которое дают только горы.',
-          image: images[6]
+          image: images[4]
         },
         {
           id: 2,
@@ -46,7 +39,7 @@ const MountainRelax = () => {
               'Трассы разного уровня, надежный снег в сезон, прокат, инструкторы и комфортная инфраструктура. Зима в Грузии — это красиво, безопасно и по-настоящему драйвово.',
           fullDescription:
               'Гудаури — идеален для тех, кто любит простор и виды. Бакуриани — более семейный и спокойный, с уютной атмосферой. Мы организуем всё “под ключ”: трансфер, жильё, ски-пассы, оборудование, инструктора при необходимости. Хотите кататься или просто наслаждаться зимними видами у камина — сделаем так, чтобы вы отдыхали, а не решали логистику.',
-          image: images[3]
+          image: images[2]
         },
         {
           id: 3,
@@ -56,7 +49,7 @@ const MountainRelax = () => {
               'Сванетия, Казбеги, Тушетия — от лёгких прогулок до серьёзных маршрутов. Опытные гиды, правильный тайминг, красивые точки и ощущение настоящего приключения.',
           fullDescription:
               'Мы делаем треккинг комфортным: подбираем сложность, темп и продолжительность, планируем остановки, видовые точки и время на фото. Можно выбрать однодневные маршруты или несколько дней с ночёвками. По запросу — кемпинг, пикник, фотосопровождение. Важно одно: вы видите лучшее и не устаете “в ноль”.',
-          image: images[2]
+          image: images[3]
         },
         {
           id: 4,
@@ -66,7 +59,7 @@ const MountainRelax = () => {
               'От уютных гестхаусов с домашней кухней до современных отелей с панорамными окнами. Тёплый свет, камин, веранда и вид, ради которого хочется вставать рано.',
           fullDescription:
               'Мы рекомендуем места, где действительно приятно жить: хороший сон, чистота, атмосфера, сервис и виды. Подберём варианты под стиль вашей поездки — романтика, семья, друзья, “тихо и красиво”. Плюс — помощь с бронированием, заездом, трансфером и всей связанной логистикой.',
-          image: images[10]
+          image: images[1]
         },
         {
           id: 5,
@@ -76,7 +69,7 @@ const MountainRelax = () => {
               'Организуем горный отдых под ключ: маршрут, транспорт, размещение, гиды и активности. Зима или лето — вы получаете путешествие, которое хочется повторить.',
           fullDescription:
               'Напишите нам — и мы соберём программу под ваши даты и пожелания. Хотите больше природы, меньше людей, больше комфорта или больше активности — всё возможно. Мы держим контроль за таймингом, маршрутами и сервисом, чтобы вы наслаждались горами без лишней суеты.',
-          image: images[4],
+          image: images[0],
           cta: true
         }
       ],

@@ -4,25 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './WeddingTour.module.css';
 
 // Use the same images pack you already have everywhere
-import img1 from '../../shared/images/imagesPages/img1.jpg';
-import img2 from '../../shared/images/imagesPages/img2.jpg';
-import img3 from '../../shared/images/imagesPages/img3.jpg';
-import img4 from '../../shared/images/imagesPages/img4.jpeg';
-import img5 from '../../shared/images/imagesPages/img5.jpeg';
-import img6 from '../../shared/images/imagesPages/img6.jpeg';
-import img7 from '../../shared/images/imagesPages/img7.jpeg';
-import img8 from '../../shared/images/imagesPages/img8.jpeg';
-import img9 from '../../shared/images/imagesPages/img9.jpeg';
-import img11 from '../../shared/images/imagesPages/img11.jpeg';
-import img12 from '../../shared/images/imagesPages/img12.jpeg';
-import img13 from '../../shared/images/imagesPages/img13.jpeg';
-import img14 from '../../shared/images/imagesPages/img14.jpeg';
+import img1 from './images/a-breathtaking-sunset-over-the-caucasus-mountains-.png';
+import img2 from './images/a-rooftop-terrace-in-old-tbilisi-with-a-view-of-ti.png';
+import img3 from './images/a-vineyard-terrace-overlooking-green-valleys-with-.png';
+import img4 from './images/a-wedding-arch-on-a-black-sea-beach-at-sunset--whi.png';
+import img5 from './images/a-wedding-ceremony-setup-inside-an-ancient-stone-f.png';
+
 
 const WeddingTour = () => {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
   const images = useMemo(
-      () => [img1, img2, img3, img4, img5, img6, img7, img8, img9, img11, img12, img13, img14],
+      () => [img1, img2, img3, img4, img5],
       []
   );
 
@@ -36,7 +29,7 @@ const WeddingTour = () => {
               'Представьте церемонию на фоне заснеженных вершин Кавказа, у берега Черного моря или в древней крепости. Грузия — идеальное место для романтики и настоящего гостеприимства.',
           fullDescription:
               'Свадьба в Грузии — это эмоция, стиль и ощущение “это было по-настоящему”. Мы поможем выбрать концепцию: горы, море, виноградники или архитектура старого города. Подберём локацию, выстроим тайминг, организуем транспорт, декор, фото/видео и банкет. Вы наслаждаетесь моментом — мы держим контроль.',
-          image: images[10]
+          image: images[0]
         },
         {
           id: 2,
@@ -66,7 +59,7 @@ const WeddingTour = () => {
               'Ресторан с видом, традиционная кухня, легендарное вино из квеври. Тамада, живая музыка и танцы — праздник, который запомнят все.',
           fullDescription:
               'Банкет — это кульминация: правильная площадка, меню, вино, музыка и настроение. Мы поможем подобрать ресторан и формат: уютно и камерно или красиво и масштабно. Продумаем детали — от рассадки до финального тоста.',
-          image: images[6]
+          image: images[4]
         },
         {
           id: 5,
@@ -76,7 +69,7 @@ const WeddingTour = () => {
               'Полная организация: документы, локации, фото/видео, декор, банкет, размещение гостей. Свяжитесь с нами — и мы соберем концепцию под вашу историю.',
           fullDescription:
               'Мы делаем свадьбы, которые выглядят “как кино”, но ощущаются легко. Напишите нам — и мы предложим несколько концепций, локаций и сценариев под ваш бюджет и настроение. Всё прозрачно: план, тайминг, сметы и ответственность.',
-          image: images[4],
+          image: images[3],
           cta: true
         }
       ],

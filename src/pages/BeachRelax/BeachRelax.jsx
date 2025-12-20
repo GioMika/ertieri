@@ -4,24 +4,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './BeachRelax.module.css';
 
 // Import all images
-import img1 from '../../shared/images/imagesPages/img1.jpg';
-import img2 from '../../shared/images/imagesPages/img2.jpg';
-import img3 from '../../shared/images/imagesPages/img3.jpg';
-import img4 from '../../shared/images/imagesPages/img4.jpeg';
-import img5 from '../../shared/images/imagesPages/img5.jpeg';
-import img6 from '../../shared/images/imagesPages/img6.jpeg';
-import img7 from '../../shared/images/imagesPages/img7.jpeg';
-import img8 from '../../shared/images/imagesPages/img8.jpeg';
-import img9 from '../../shared/images/imagesPages/img9.jpeg';
-import img11 from '../../shared/images/imagesPages/img11.jpeg';
-import img12 from '../../shared/images/imagesPages/img12.jpeg';
-import img13 from '../../shared/images/imagesPages/img13.jpeg';
-import img14 from '../../shared/images/imagesPages/img14.jpeg';
+import img1 from './images/a-cinematic-black-sea-coast-near-batumi-with-cryst.png';
+import img2 from './images/a-long-pebble-and-sand-beach-with-gradients-of-dee.png';
+import img3 from './images/a-luxury-seaside-hotel-with-glass-facades-reflecti.png';
+import img4 from './images/batumi-nightlife-along-the-coast-with-neon-turquoi.png';
+import img5 from './images/early-sunrise-over-the-black-sea-with-pastel-turqu.png';
+
 
 const BeachRelax = () => {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img11, img12, img13, img14];
+  const images = [img1, img2, img3, img4, img5];
 
   const blocks = [
     {
@@ -30,7 +23,7 @@ const BeachRelax = () => {
       subtitle: 'Черноморское побережье Батуми',
       description: 'Погрузитесь в атмосферу роскошного пляжного отдыха на берегу Черного моря. Батуми — жемчужина грузинского побережья с современной инфраструктурой и бесконечными возможностями для отдыха.',
       fullDescription: 'Батуми — это настоящая жемчужина Черноморского побережья Грузии. Город сочетает в себе современную инфраструктуру, богатую историю и уникальную природу. Здесь вы найдете все для идеального отдыха: чистые пляжи, роскошные отели, рестораны с национальной кухней, живописную набережную и множество развлечений. Мягкий субтропический климат позволяет наслаждаться морем с мая по октябрь.',
-      image: images[0]
+      image: images[4]
     },
     {
       id: 2,
@@ -46,7 +39,7 @@ const BeachRelax = () => {
       subtitle: 'Море активностей',
       description: 'Аквапарк, дельфинарий, канатная дорога Арго, Ботанический сад, современные рестораны, ночные клубы и казино. В Батуми скучать не придется!',
       fullDescription: 'Батуми предлагает развлечения на любой вкус. Посетите современный аквапарк с экстремальными горками, дельфинарий с увлекательными шоу, поднимитесь на канатной дороге Арго на высоту 250 метров для панорамного вида на город. Прогуляйтесь по Ботаническому саду с уникальной коллекцией растений. Вечером город оживает — работают многочисленные рестораны, бары, ночные клубы и казино мирового класса.',
-      image: images[2]
+      image: images[3]
     },
     {
       id: 4,
@@ -54,7 +47,7 @@ const BeachRelax = () => {
       subtitle: 'Комфорт на высшем уровне',
       description: 'Роскошные отели с видом на море, SPA-центры, бассейны, рестораны. Мы подберем идеальное размещение под ваш бюджет — от уютных гестхаусов до 5-звездочных отелей.',
       fullDescription: 'В Батуми представлен широкий выбор отелей на любой вкус и бюджет. Роскошные 5-звездочные отели предлагают номера с видом на море, SPA-центры мирового уровня, бассейны на крыше, рестораны высокой кухни и персональное обслуживание. Для тех, кто ищет более бюджетный вариант, доступны уютные гестхаусы и апартаменты с домашней атмосферой. Мы поможем подобрать идеальное размещение именно для вас.',
-      image: images[3]
+      image: images[2]
     },
     {
       id: 5,

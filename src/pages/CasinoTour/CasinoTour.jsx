@@ -4,25 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './CasinoTour.module.css';
 
 // Use same shared images pack
-import img1 from '../../shared/images/imagesPages/img1.jpg';
-import img2 from '../../shared/images/imagesPages/img2.jpg';
-import img3 from '../../shared/images/imagesPages/img3.jpg';
-import img4 from '../../shared/images/imagesPages/img4.jpeg';
-import img5 from '../../shared/images/imagesPages/img5.jpeg';
-import img6 from '../../shared/images/imagesPages/img6.jpeg';
-import img7 from '../../shared/images/imagesPages/img7.jpeg';
-import img8 from '../../shared/images/imagesPages/img8.jpeg';
-import img9 from '../../shared/images/imagesPages/img9.jpeg';
-import img11 from '../../shared/images/imagesPages/img11.jpeg';
-import img12 from '../../shared/images/imagesPages/img12.jpeg';
-import img13 from '../../shared/images/imagesPages/img13.jpeg';
-import img14 from '../../shared/images/imagesPages/img14.jpeg';
+import img1 from './images/a-high-end-casino-vip-gaming-hall-with-polished-bl.png';
+import img2 from './images/a-premium-rooftop-lounge-pool-at-night--overlookin.png';
+import img3 from './images/deep-shadows--subtle-sparkles--dark-background-fad.png';
+import img4 from './images/a-stylish-night-entertainment-scene-with-a-premium.png';
+import img5 from './images/a-luxurious-nighttime-coastal-city-scene-with-a-wi.png';
+
 
 const CasinoTour = () => {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
   const images = useMemo(
-      () => [img1, img2, img3, img4, img5, img6, img7, img8, img9, img11, img12, img13, img14],
+      () => [img1, img2, img3, img4, img5],
       []
   );
 
@@ -36,7 +29,7 @@ const CasinoTour = () => {
               'Грузия становится новой игорной точкой региона: современные казино мирового уровня, деликатная роскошь, сервис и атмосфера, которую хочется прожить хотя бы раз.',
           fullDescription:
               'Казино-тур — это не про “шумно и ярко”, а про стиль и ощущение уровня: правильные локации, грамотный тайминг, комфортный транспорт и лучшие залы. Мы собираем программу под вас: где играть, где ужинать, где провести вечер — и всё это без суеты. Вы отдыхаете, мы держим контроль.',
-          image: images[12]
+          image: images[0]
         },
         {
           id: 2,
@@ -46,7 +39,7 @@ const CasinoTour = () => {
               'Casino Adjara, Shangri La, OrientExpress — рулетка, покер, блэкджек, слоты. VIP-зоны и спокойная подача без “показухи”.',
           fullDescription:
               'Мы подберём залы и формат под ваш стиль: классика (рулетка/блэкджек), покерные столы или аккуратные игровые автоматы. Поможем с VIP-входом, приоритетом по столам и рекомендациями по лучшим часам. Важно: всё легально, безопасно и с уважением к вашему приватному отдыху.',
-          image: images[7]
+          image: images[1]
         },
         {
           id: 3,
@@ -56,7 +49,7 @@ const CasinoTour = () => {
               'Рестораны, бары, шоу, ночные локации и спокойные места для восстановления: SPA, бассейн, поздний завтрак. Тур строится вокруг удовольствия.',
           fullDescription:
               'Казино-тур — это целая ночь красивых деталей. Мы добавим “вкус”: правильный ресторан, хороший бар, музыку, виды, и обязательно — комфорт на следующий день. Хотите вечер “тихо и статусно” или “с эмоцией” — сделаем, но без лишнего шума.',
-          image: images[9]
+          image: images[4]
         },
         {
           id: 4,
@@ -76,7 +69,7 @@ const CasinoTour = () => {
               'Полная организация поездки: транспорт, размещение, сопровождение и комфортный сценарий вечера. Безопасно, легально и премиально.',
           fullDescription:
               'Напишите нам — и мы соберём программу под ваш вкус. Можно сделать короткий “вечерний” формат или полноценный тур на несколько дней с отдыхом, кухней и лучшими локациями. Вы получаете стильную поездку, а не набор случайных решений.',
-          image: images[4],
+          image: images[2],
           cta: true
         }
       ],

@@ -4,25 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './Excursions.module.css';
 
 // Import all images
-import img1 from '../../shared/images/imagesPages/img1.jpg';
-import img2 from '../../shared/images/imagesPages/img2.jpg';
-import img3 from '../../shared/images/imagesPages/img3.jpg';
-import img4 from '../../shared/images/imagesPages/img4.jpeg';
-import img5 from '../../shared/images/imagesPages/img5.jpeg';
-import img6 from '../../shared/images/imagesPages/img6.jpeg';
-import img7 from '../../shared/images/imagesPages/img7.jpeg';
-import img8 from '../../shared/images/imagesPages/img8.jpeg';
-import img9 from '../../shared/images/imagesPages/img9.jpeg';
-import img11 from '../../shared/images/imagesPages/img11.jpeg';
-import img12 from '../../shared/images/imagesPages/img12.jpeg';
-import img13 from '../../shared/images/imagesPages/img13.jpeg';
-import img14 from '../../shared/images/imagesPages/img14.jpeg';
+import img1 from './images/a-close-up-view-inside-a-vineyard-in-odessa--with-.png';
+import img2 from './images/an-ancient-georgian-monastery-overlooking-the-conf.jpg';
+import img3 from './images/medieval-svaneti-stone-towers-in-mestia-surrounded.jpg';
+import img4 from './images/gonio-fortress-by-the-black-sea--subtropical-palm-.jpg';
+import img5 from './images/night-panorama-of-tbilisi-with-narikala-fortress--.jpg';
+import img6 from './images/majestic-mount-kazbegi-with-the-gergeti-trinity-ch.jpg';
+
 
 const Excursions = () => {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
   const images = useMemo(
-      () => [img1, img2, img3, img4, img5, img6, img7, img8, img9, img11, img12, img13, img14],
+      () => [img1, img2, img3, img4, img5, img6],
       []
   );
 
@@ -46,7 +40,7 @@ const Excursions = () => {
               'Старый город с узкими улочками, серные бани, крепость Нарикала, современный район Вера. Дегустация вина в погребах и ужин в аутентичных ресторанах.',
           fullDescription:
               'Тбилиси — город с душой, где древность органично сплетается с современностью. Прогуляйтесь по старому городу с разноцветными домами на балконах, посетите знаменитые серные бани (где купался сам Пушкин!), поднимитесь по канатной дороге к крепости Нарикала для панорамного вида. Посетите современный район Вера с модными кафе. Вечером — дегустация грузинских вин в традиционном марани и ужин в аутентичном ресторане с живой музыкой.',
-          image: images[1]
+          image: images[4]
         },
         {
           id: 3,
@@ -56,7 +50,7 @@ const Excursions = () => {
               'Храм Джвари (6 век), монастырь Светицховели — место крещения Грузии. Слияние двух рек Арагви и Куры. Винодельня с дегустацией в квеври.',
           fullDescription:
               'Мцхета — древняя столица Грузии и священный город, где крестилась вся страна в 337 году. Храм Джвари (6 век) на вершине горы — шедевр архитектуры, воспетый Лермонтовым в "Мцыри". Кафедральный собор Светицховели хранит хитон Господень. Здесь же сливаются две реки — Арагви и Кура, создавая удивительное зрелище. Завершим день посещением традиционной винодельни с дегустацией вин, выдержанных в квеври — глиняных сосудах, закопанных в землю.',
-          image: images[2]
+          image: images[1]
         },
         {
           id: 4,
@@ -66,7 +60,7 @@ const Excursions = () => {
               'Военно-Грузинская дорога, церковь Гергети на высоте 2170м с видом на гору Казбек (5047м). Захватывающие пейзажи, горные реки и водопады.',
           fullDescription:
               'Казбеги — это высокогорная Грузия во всей красе. Поездка по знаменитой Военно-Грузинской дороге через Крестовый перевал (2395м) подарит незабываемые виды. Главная цель — церковь Святой Троицы в Гергети на высоте 2170 метров, откуда открывается вид на величественный Казбек (5047м). По пути — захватывающие водопады, бурные горные реки, древние крепости. Возможен подъем на джипах или пеший трекинг. Обед в горном ресторане с видом на вершины.',
-          image: images[3]
+          image: images[5]
         },
         {
           id: 5,
@@ -76,7 +70,7 @@ const Excursions = () => {
               'Профессиональные гиды, комфортный транспорт, индивидуальные маршруты. Мы покажем вам Грузию, которую вы полюбите навсегда!',
           fullDescription:
               'Доверьте свое путешествие профессионалам! Наши русскоязычные гиды — настоящие знатоки истории и культуры Грузии, которые сделают экскурсию живой и увлекательной. Комфортабельный транспорт с кондиционером, гибкие маршруты под ваши интересы, помощь с бронированием ресторанов. Предлагаем как групповые, так и индивидуальные туры. Работаем 24/7. Свяжитесь с нами прямо сейчас!',
-          image: images[4],
+          image: images[2],
           cta: true
         }
       ],
