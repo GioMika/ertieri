@@ -143,8 +143,8 @@
 /* Burger (mobile) */
 .burger{
     display: none;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
 
     border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.10);
@@ -172,7 +172,7 @@
     transform: translateX(-50%);
     transition: transform .22s ease, top .22s ease, opacity .22s ease;
 }
-.burger span:first-child{ top: 18px; }
+.burger span:first-child{ top: 11px; }
 .burger span:last-child{ top: 26px; }
 
 .burgerOpen span:first-child{
