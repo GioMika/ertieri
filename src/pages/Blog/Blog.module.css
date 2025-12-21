@@ -383,6 +383,7 @@
     .grid{
         gap: 18px;
         grid-template-columns: 1fr;
+        padding: 0;
     }
 
     .card:nth-child(1),

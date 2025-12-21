@@ -82,7 +82,6 @@ const About = () => {
   return (
       <div className={classes.about}>
         <header className={classes.header}>
-          <div className={classes.brandPill}>Erti Eri</div>
           <h1 className={classes.pageTitle}>О Нашей компании </h1>
           {/*<p className={classes.pageSubtitle}>*/}
           {/*  Минимализм, премиум-подача и смысл — без перегруза.*/}

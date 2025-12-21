@@ -260,6 +260,10 @@
     .grid {
         grid-template-columns:1fr;
     }
+
+    .h1 {
+    padding: 0 20px;
+    }
 }
 
 @media (max-width: 768px) {
