@@ -53,9 +53,9 @@
 .shell {
     position: relative;
     z-index: 1;
-    max-width: 1320px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 110px 40px 90px;
+    padding: 110px 20px 90px;
 }
 
 /* ===== Header ===== */
@@ -254,7 +254,7 @@
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .shell {
-        padding: 96px 14px 72px;
+        padding: 96px 8px 72px;
     }
 
     .grid {
@@ -264,7 +264,7 @@
 
 @media (max-width: 768px) {
     .shell {
-        padding: 86px 14px 60px;
+        padding: 86px 8px 60px;
     }
 
     .card {
@@ -279,7 +279,7 @@
 
 @media (max-width: 480px) {
     .shell {
-        padding: 78px 14px 54px;
+        padding: 78px 8px 54px;
     }
 
     .title {

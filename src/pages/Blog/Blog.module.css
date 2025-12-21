@@ -74,6 +74,7 @@
     color: rgba(255,255,255,.95);
     margin-bottom: 10px;
     text-shadow: 0 22px 70px rgba(0,0,0,.55);
+    padding: 0 20px;
 }
 
 .pageSubtitle{
@@ -98,6 +99,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 22px;
+    padding: 0 20px;
 }
 
 /* ✅ РАСКЛАДКА 1-в-1 (как на скрине About Us) */
