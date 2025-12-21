@@ -36,10 +36,6 @@ const Contact = () => {
           <header className={classes.header}>
             <span className={classes.kicker}>Контакты</span>
             <h1 className={classes.title}>Свяжитесь с нами</h1>
-            <p className={classes.subtitle}>
-              Мы отвечаем быстро и помогаем собрать маршрут под ваш стиль отдыха —
-              море, горы, экскурсии, всё под ключ.
-            </p>
           </header>
 
           <div className={classes.grid}>
@@ -58,7 +54,6 @@ const Contact = () => {
                   <div className={classes.cardBody}>
                     <div className={classes.cardTop}>
                       <span className={classes.cardLabel}>Email</span>
-                      <span className={classes.cardHint}>Ответим в течение дня</span>
                     </div>
                     <div className={classes.cardValueRow}>
                       <strong className={classes.cardValue}>{emailAddress}</strong>
@@ -83,7 +78,6 @@ const Contact = () => {
                   <div className={classes.cardBody}>
                     <div className={classes.cardTop}>
                       <span className={classes.cardLabel}>WhatsApp</span>
-                      <span className={classes.cardHint}>Самый быстрый канал</span>
                     </div>
                     <div className={classes.cardValueRow}>
                       <strong className={classes.cardValue}>+995 XXX XXX XXX</strong>
@@ -102,7 +96,6 @@ const Contact = () => {
                   <div className={classes.cardBody}>
                     <div className={classes.cardTop}>
                       <span className={classes.cardLabel}>Офис</span>
-                      <span className={classes.cardHint}>Можно подъехать</span>
                     </div>
                     <div className={classes.cardValueRow}>
                       <strong className={classes.cardValue}>{address}</strong>
@@ -127,7 +120,6 @@ const Contact = () => {
                   <div className={classes.cardBody}>
                     <div className={classes.cardTop}>
                       <span className={classes.cardLabel}>График</span>
-                      <span className={classes.cardHint}>По местному времени</span>
                     </div>
                     <div className={classes.cardValueRow}>
                       <strong className={classes.cardValue}>{workTime}</strong>
@@ -172,9 +164,6 @@ const Contact = () => {
               <div className={classes.formCard}>
                 <div className={classes.formHeader}>
                   <h2 className={classes.formTitle}>Сообщение</h2>
-                  <p className={classes.formSubtitle}>
-                    Расскажите, что хотите: даты, формат отдыха, бюджет — мы предложим варианты.
-                  </p>
                 </div>
 
                 <form className={classes.form} onSubmit={handleSubmit}>
@@ -211,7 +200,7 @@ const Contact = () => {
                     <textarea
                         className={classes.textarea}
                         name="message"
-                        placeholder="Например: хочу 5 дней в Батуми + 2 дня в горах, трансфер и экскурсии..."
+                        placeholder="Описание"
                         value={formData.message}
                         onChange={handleChange}
                         required
@@ -223,10 +212,6 @@ const Contact = () => {
                     <Send size={18} />
                     Отправить
                   </button>
-
-                  <p className={classes.note}>
-                    Нажимая «Отправить», вы соглашаетесь на обработку сообщения для обратной связи.
-                  </p>
                 </form>
               </div>
             </div>
