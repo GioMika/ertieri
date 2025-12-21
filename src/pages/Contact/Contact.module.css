@@ -362,7 +362,7 @@
 /* Tablet */
 @media (max-width: 1024px) {
     .contact {
-        padding: 110px 20px 70px;
+        padding: 110px 8px 70px;
     }
 
     .grid {

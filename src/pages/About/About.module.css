@@ -300,21 +300,20 @@
 
 /* Responsive */
 @media (max-width: 1024px){
-    .about{ padding: 96px 32px 60px; }
+    .about{ padding: 96px 14px 60px; }
     .grid{ gap: 16px; }
     .card{ grid-column: 1 / -1; }
 }
 
 @media (max-width: 768px){
-    .about{ padding: 78px 22px 48px; }
-    .card{ padding: 22px 20px 18px; border-radius: var(--r-lg); }
+    .about{ padding: 78px 14px 48px; }
+    .card{ padding: 22px 14px 18px; border-radius: var(--r-lg); }
     .pageTitle{ font-size: 40px; }
     .text{ font-size: 14.5px; line-height: 1.75; }
     .tag{ max-width: 26ch; }
 }
 
 @media (max-width: 480px){
-    .about{ padding: 70px 18px 40px; }
     .pageTitle{ font-size: 34px; }
 }
 

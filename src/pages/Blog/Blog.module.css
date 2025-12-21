@@ -288,8 +288,8 @@
     position:absolute;
     top: 12px;
     right: 12px;
-    width: 46px;
-    height: 46px;
+    width: 30px;
+    height: 30px;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,.22);
     background: rgba(0,0,0,.45);
@@ -377,7 +377,7 @@
    Responsive
    ========================= */
 @media (max-width: 1024px){
-    .blog{ padding: 100px 32px 60px; }
+    .blog{ padding: 100px 8px 60px; }
     .grid{
         gap: 18px;
         grid-template-columns: 1fr;
@@ -398,15 +398,14 @@
 }
 
 @media (max-width: 768px){
-    .blog{ padding: 84px 20px 48px; }
+    .blog{ padding: 84px 8px 48px; }
     .media{ height: 190px; border-radius: 18px; }
-    .body{ padding: 16px 18px 20px; }
+    .body{ padding: 18px 14px; }
     .hero{ height: 240px; }
-    .modalContent{ max-height: calc(88dvh - 240px); padding: 16px 16px 22px; }
+    .modalContent{ max-height: calc(88dvh - 240px); padding: 16px 14px; }
 }
 
 @media (max-width: 480px){
-    .blog{ padding: 72px 16px 40px; }
     .media{ height: 170px; margin: 14px 14px 0; }
     .title{ font-size: 26px; }
     .metaLine{ letter-spacing: .14em; }

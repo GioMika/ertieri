@@ -432,7 +432,7 @@
    Responsive
    ========================= */
 @media (max-width: 1024px){
-    .weddingTour{ padding: 96px 32px 60px; }
+    .weddingTour{ padding: 96px 8px 60px; }
     .container{ gap: 18px; }
 
     .block1,.block2,.block3,.block4,.block5{ grid-column: 1 / 13; }
@@ -442,15 +442,15 @@
     .block4{ grid-row: 4; }
     .block5{ grid-row: 5; }
 
-    .modalContent{ padding: 22px 30px 34px; }
+    .modalContent{ padding: 18px 14px; }
     .modalHero{ padding: 22px 22px 0; }
 }
 
 @media (max-width: 768px){
-    .weddingTour{ padding: 78px 22px 48px; }
+    .weddingTour{ padding: 78px 8px 48px; }
     .container{ display: flex; flex-direction: column; gap: 18px; }
 
-    .block{ padding: 22px 20px; border-radius: var(--r-lg); }
+    .block{ padding: 20px 14px; border-radius: var(--r-lg); }
     .imageWrapper{ height: 160px; border-radius: 18px; }
 
     .title{ font-size: 26px; }
@@ -458,20 +458,27 @@
 
     .modal{ border-radius: 24px; }
     .closeButton{
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         font-size: 20px;
         top: max(10px, env(safe-area-inset-top));
         right: max(10px, env(safe-area-inset-right));
     }
 
     .modalHeroImg{ aspect-ratio: 4 / 3; border-radius: 18px; }
-    .modalContent{ padding: 18px 20px 26px; }
+    .modalContent{ padding: 18px 14px; }
     .modalDescription{ font-size: 16px; line-height: 1.75; }
+
+    .modalWrapper{
+        padding: 4px;
+    }
+
+    .modalHero {
+        padding: 4px;
+    }
 }
 
 @media (max-width: 480px){
-    .weddingTour{ padding: 70px 18px 40px; }
     .block{ padding: 20px 18px; }
     .imageWrapper{ height: 140px; }
     .subtitle{ letter-spacing: 0.14em; }

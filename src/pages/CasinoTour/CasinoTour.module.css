@@ -436,10 +436,10 @@
    Responsive
    ========================= */
 @media (max-width: 1024px){
-    .casinoTour{ padding: 96px 32px 60px; }
+    .casinoTour{ padding: 96px 8px 60px; }
     .container{ gap: 18px; grid-template-columns: 1fr; }
 
-    .block{ padding: 24px 24px 22px; border-radius: 30px; }
+    .block{ padding: 18px 14px; border-radius: 30px; }
     .imageWrapper{ height: 180px; }
 
     .block1,.block2,.block3,.block4,.block5{ grid-column: 1 / -1; grid-row: auto; }
@@ -449,9 +449,9 @@
 }
 
 @media (max-width: 768px){
-    .casinoTour{ padding: 78px 22px 48px; }
+    .casinoTour{ padding: 78px 8px 48px; }
 
-    .block{ padding: 22px 20px; border-radius: var(--r-lg); }
+    .block{ padding: 18px 14px; border-radius: var(--r-lg); }
     .imageWrapper{ height: 160px; border-radius: 18px; }
 
     .title{ font-size: 26px; }
@@ -459,20 +459,28 @@
 
     .modal{ border-radius: 24px; }
     .closeButton{
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         font-size: 20px;
         top: max(10px, env(safe-area-inset-top));
         right: max(10px, env(safe-area-inset-right));
     }
 
     .modalHeroImg{ aspect-ratio: 4 / 3; border-radius: 18px; }
-    .modalContent{ padding: 18px 20px 26px; }
+    .modalContent{ padding: 18px 14px; }
     .modalDescription{ font-size: 16px; line-height: 1.75; }
+
+
+    .modalHero{
+        padding: 4px;
+    }
+
+    .modalWrapper {
+        padding: 4px;
+    }
 }
 
 @media (max-width: 480px){
-    .casinoTour{ padding: 70px 18px 40px; }
     .imageWrapper{ height: 140px; }
     .subtitle{ letter-spacing: 0.14em; }
 }

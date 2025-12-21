@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --text: rgba(255,255,255,0.92);
-    --muted: rgba(255,255,255,0.72);
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.72);
 
-    --glass: rgba(255,255,255,0.08);
-    --glass2: rgba(255,255,255,0.11);
-    --border: rgba(255,255,255,0.18);
-    --border2: rgba(255,255,255,0.26);
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass2: rgba(255, 255, 255, 0.11);
+    --border: rgba(255, 255, 255, 0.18);
+    --border2: rgba(255, 255, 255, 0.26);
 
-    --shadow-md: 0 20px 70px rgba(0,0,0,0.38);
-    --shadow-lg: 0 34px 120px rgba(0,0,0,0.55);
-    --shadow-xl: 0 44px 160px rgba(0,0,0,0.62);
+    --shadow-md: 0 20px 70px rgba(0, 0, 0, 0.38);
+    --shadow-lg: 0 34px 120px rgba(0, 0, 0, 0.55);
+    --shadow-xl: 0 44px 160px rgba(0, 0, 0, 0.62);
 
     --r-xl: 34px;
     --r-lg: 26px;
@@ -22,35 +22,34 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     /* ====== THE 5 “ABOUT” GRADIENTS ====== */
-    --g1:
-            radial-gradient(900px 700px at 18% 12%, rgba(96,165,250,.22), transparent 60%),
-            radial-gradient(850px 650px at 82% 18%, rgba(34,211,238,.14), transparent 58%),
-            linear-gradient(135deg, #061726 0%, #081a2b 45%, #06121f 100%);
+    --g1: radial-gradient(900px 700px at 18% 12%, rgba(96, 165, 250, .22), transparent 60%),
+    radial-gradient(850px 650px at 82% 18%, rgba(34, 211, 238, .14), transparent 58%),
+    linear-gradient(135deg, #061726 0%, #081a2b 45%, #06121f 100%);
 
-    --g2:
-            radial-gradient(900px 700px at 20% 20%, rgba(167,139,250,.18), transparent 60%),
-            radial-gradient(900px 650px at 82% 22%, rgba(96,165,250,.14), transparent 58%),
-            linear-gradient(135deg, #070a1a 0%, #0a1030 55%, #06081a 100%);
+    --g2: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, .18), transparent 60%),
+    radial-gradient(900px 650px at 82% 22%, rgba(96, 165, 250, .14), transparent 58%),
+    linear-gradient(135deg, #070a1a 0%, #0a1030 55%, #06081a 100%);
 
-    --g3:
-            radial-gradient(900px 700px at 22% 18%, rgba(34,211,238,.16), transparent 60%),
-            radial-gradient(900px 650px at 78% 24%, rgba(16,185,129,.12), transparent 58%),
-            linear-gradient(135deg, #06141f 0%, #081f2b 55%, #050f18 100%);
+    --g3: radial-gradient(900px 700px at 22% 18%, rgba(34, 211, 238, .16), transparent 60%),
+    radial-gradient(900px 650px at 78% 24%, rgba(16, 185, 129, .12), transparent 58%),
+    linear-gradient(135deg, #06141f 0%, #081f2b 55%, #050f18 100%);
 
-    --g4:
-            radial-gradient(900px 700px at 20% 16%, rgba(96,165,250,.18), transparent 60%),
-            radial-gradient(900px 650px at 78% 26%, rgba(244,114,182,.10), transparent 58%),
-            linear-gradient(135deg, #071022 0%, #0a1530 55%, #060b18 100%);
+    --g4: radial-gradient(900px 700px at 20% 16%, rgba(96, 165, 250, .18), transparent 60%),
+    radial-gradient(900px 650px at 78% 26%, rgba(244, 114, 182, .10), transparent 58%),
+    linear-gradient(135deg, #071022 0%, #0a1530 55%, #060b18 100%);
 
-    --g5:
-            radial-gradient(900px 700px at 18% 14%, rgba(167,139,250,.16), transparent 60%),
-            radial-gradient(900px 650px at 80% 24%, rgba(34,211,238,.12), transparent 58%),
-            linear-gradient(135deg, #06111e 0%, #0a1a2b 55%, #050a14 100%);
+    --g5: radial-gradient(900px 700px at 18% 14%, rgba(167, 139, 250, .16), transparent 60%),
+    radial-gradient(900px 650px at 80% 24%, rgba(34, 211, 238, .12), transparent 58%),
+    linear-gradient(135deg, #06111e 0%, #0a1a2b 55%, #050a14 100%);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.excursions{
+.excursions {
     min-height: 100vh;
     padding: 110px 40px 80px;
     overflow-x: hidden;
@@ -61,19 +60,19 @@
 }
 
 /* subtle premium grain */
-.excursions::before{
-    content:"";
+.excursions::before {
+    content: "";
     position: fixed;
     inset: 0;
-    pointer-events:none;
+    pointer-events: none;
     z-index: 0;
     opacity: 0.10;
     mix-blend-mode: overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
 /* ====== GRID ====== */
-.container{
+.container {
     position: relative;
     z-index: 1;
     max-width: 1400px;
@@ -85,7 +84,7 @@
 }
 
 /* ====== CARD BASE (как About) ====== */
-.block{
+.block {
     position: relative;
     overflow: hidden;
     border-radius: var(--r-xl);
@@ -96,68 +95,80 @@
     flex-direction: column;
 
     /* fallback стекло, если у блока не задан градиент */
-    background:
-            radial-gradient(1200px 520px at 20% 10%, rgba(255,255,255,0.12), transparent 60%),
-            radial-gradient(900px 520px at 85% 25%, rgba(255,255,255,0.06), transparent 62%),
-            linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+    background: radial-gradient(1200px 520px at 20% 10%, rgba(255, 255, 255, 0.12), transparent 60%),
+    radial-gradient(900px 520px at 85% 25%, rgba(255, 255, 255, 0.06), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.06));
 
     border: 1px solid var(--border);
 
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 
-    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.14);
-    transition:
-            transform .35s var(--ease),
-            box-shadow .35s var(--ease),
-            border-color .35s var(--ease),
-            filter .35s var(--ease);
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    transition: transform .35s var(--ease),
+    box-shadow .35s var(--ease),
+    border-color .35s var(--ease),
+    filter .35s var(--ease);
     transform: translateZ(0);
 }
 
-.block::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background: radial-gradient(760px 340px at 35% 0%, rgba(255,255,255,0.14), transparent 58%);
+.block::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(760px 340px at 35% 0%, rgba(255, 255, 255, 0.14), transparent 58%);
     opacity: 0.85;
 }
 
-.block::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
+.block::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
     border-radius: inherit;
     background: linear-gradient(135deg,
-    rgba(255,255,255,0.20),
-    rgba(255,255,255,0.06) 35%,
-    rgba(255,255,255,0.00) 60%);
+    rgba(255, 255, 255, 0.20),
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.00) 60%);
     opacity: 0.55;
 }
 
-.block:hover{
+.block:hover {
     transform: translateY(-8px);
     border-color: var(--border2);
-    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 /* ====== ВОТ ОНО: разноцветные карточки как About ======
    Каждому блоку даём свой из 5 градиентов */
-.block1 { background: var(--g1); }
-.block2 { background: var(--g2); }
-.block3 { background: var(--g3); }
-.block4 { background: var(--g4); }
-.block5 { background: var(--g5); }
+.block1 {
+    background: var(--g1);
+}
+
+.block2 {
+    background: var(--g2);
+}
+
+.block3 {
+    background: var(--g3);
+}
+
+.block4 {
+    background: var(--g4);
+}
+
+.block5 {
+    background: var(--g5);
+}
 
 /* чуть “более важная” CTA карточка */
-.block5{
+.block5 {
     padding: 34px 30px 30px;
 }
 
 /* ====== IMAGE ====== */
-.imageWrapper{
+.imageWrapper {
     width: 100%;
     height: 190px;
     border-radius: 22px;
@@ -165,12 +176,12 @@
     margin-bottom: 18px;
     position: relative;
 
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(0,0,0,0.18);
-    box-shadow: 0 18px 60px rgba(0,0,0,0.30);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.18);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.30);
 }
 
-.blockImage{
+.blockImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -179,83 +190,109 @@
     will-change: transform;
     filter: saturate(1.05) contrast(1.03);
 }
-.block:hover .blockImage{ transform: scale(1.08); }
+
+.block:hover .blockImage {
+    transform: scale(1.08);
+}
 
 /* ====== LAYOUT (как у тебя) ====== */
-.block1 { grid-column: 1 / 13; grid-row: 1; }
-.block2 { grid-column: 1 / 5; grid-row: 2; }
-.block3 { grid-column: 5 / 9; grid-row: 2; }
-.block4 { grid-column: 9 / 13; grid-row: 2; }
-.block5 { grid-column: 1 / 13; grid-row: 3; }
+.block1 {
+    grid-column: 1 / 13;
+    grid-row: 1;
+}
+
+.block2 {
+    grid-column: 1 / 5;
+    grid-row: 2;
+}
+
+.block3 {
+    grid-column: 5 / 9;
+    grid-row: 2;
+}
+
+.block4 {
+    grid-column: 9 / 13;
+    grid-row: 2;
+}
+
+.block5 {
+    grid-column: 1 / 13;
+    grid-row: 3;
+}
 
 /* ====== TYPOGRAPHY ====== */
-.title{
+.title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(26px, 2.4vw, 38px);
     font-weight: 900;
-    color: rgba(255,255,255,0.94);
+    color: rgba(255, 255, 255, 0.94);
     margin: 0 0 10px 0;
     line-height: 1.10;
     letter-spacing: -0.02em;
-    text-shadow: 0 18px 70px rgba(0,0,0,0.34);
+    text-shadow: 0 18px 70px rgba(0, 0, 0, 0.34);
 }
 
-.subtitle{
+.subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.62);
+    color: rgba(255, 255, 255, 0.62);
     margin: 0 0 14px 0;
 }
 
-.description{
+.description {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255, 255, 255, 0.82);
     line-height: 1.85;
     margin: 0;
     max-width: 72ch;
 }
 
 /* ====== CTA ====== */
-.ctaLink{ text-decoration:none; display:inline-block; margin-top: 22px; }
+.ctaLink {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 22px;
+}
 
-.ctaButton{
+.ctaButton {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
     padding: 14px 22px;
 
-    background: rgba(255,255,255,0.10);
-    color: rgba(255,255,255,0.92);
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.92);
 
-    border: 1px solid rgba(255,255,255,0.22);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
 
     cursor: pointer;
     letter-spacing: 0.14em;
     text-transform: uppercase;
 
-    transition:
-            transform .18s var(--ease),
-            background .18s var(--ease),
-            border-color .18s var(--ease),
-            box-shadow .18s var(--ease);
+    transition: transform .18s var(--ease),
+    background .18s var(--ease),
+    border-color .18s var(--ease),
+    box-shadow .18s var(--ease);
 
-    box-shadow: 0 14px 40px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.10);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
-.ctaButton:hover{
+
+.ctaButton:hover {
     transform: translateY(-1px);
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.34);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.34);
 }
 
 /* ====== MODAL (оставляем твою фикс-логику без “дерганья”) ====== */
-.modalBackdrop{
+.modalBackdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -268,7 +305,7 @@
     overflow: hidden;
 }
 
-.modalWrapper{
+.modalWrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -277,15 +314,11 @@
     z-index: 9999;
     display: grid;
     place-items: center;
-    padding:
-            calc(16px + env(safe-area-inset-top))
-            calc(16px + env(safe-area-inset-right))
-            calc(16px + env(safe-area-inset-bottom))
-            calc(16px + env(safe-area-inset-left));
+    padding: calc(16px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
     overscroll-behavior: contain;
 }
 
-.modal{
+.modal {
     width: 100%;
     max-width: 980px;
     max-height: min(86dvh, 920px);
@@ -295,9 +328,9 @@
     -webkit-backdrop-filter: blur(var(--blur-strong));
 
     border-radius: var(--r-xl);
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
-    box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255, 255, 255, 0.18);
     overflow: hidden;
     position: relative;
 
@@ -306,24 +339,24 @@
     transform: translateZ(0);
 }
 
-.modal::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background: radial-gradient(900px 420px at 35% 0%, rgba(255,255,255,0.16), transparent 55%);
+.modal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(900px 420px at 35% 0%, rgba(255, 255, 255, 0.16), transparent 55%);
     opacity: 0.85;
 }
 
-.closeButton{
+.closeButton {
     position: absolute;
     top: max(12px, env(safe-area-inset-top));
     right: max(12px, env(safe-area-inset-right));
     width: 46px;
     height: 46px;
 
-    background: rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 50%;
     color: #fff;
     font-size: 22px;
@@ -335,12 +368,13 @@
 
     transition: transform .25s var(--ease), background .25s var(--ease);
 }
-.closeButton:hover{
-    background: rgba(0,0,0,0.72);
+
+.closeButton:hover {
+    background: rgba(0, 0, 0, 0.72);
     transform: rotate(90deg);
 }
 
-.modalHero{
+.modalHero {
     width: 100%;
     display: grid;
     place-items: center;
@@ -349,19 +383,19 @@
     z-index: 1;
 }
 
-.modalHeroImg{
+.modalHeroImg {
     width: min(900px, 100%);
     aspect-ratio: 16 / 9;
     object-fit: cover;
 
     border-radius: 22px;
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 26px 80px rgba(0,0,0,0.46);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
 
     filter: saturate(1.06) contrast(1.03);
 }
 
-.modalContent{
+.modalContent {
     position: relative;
     z-index: 1;
     padding: 26px 46px 44px;
@@ -370,47 +404,50 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.modalTitle{
+.modalTitle {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 4vw, 46px);
     font-weight: 900;
-    color: rgba(255,255,255,0.94);
+    color: rgba(255, 255, 255, 0.94);
     margin: 0 0 10px 0;
     line-height: 1.14;
     letter-spacing: -0.02em;
-    text-shadow: 0 18px 70px rgba(0,0,0,0.34);
+    text-shadow: 0 18px 70px rgba(0, 0, 0, 0.34);
 }
 
-.modalSubtitle{
+.modalSubtitle {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
-    color: rgba(255,255,255,0.70);
+    color: rgba(255, 255, 255, 0.70);
     margin: 0 0 22px 0;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 }
 
-.modalDescription{
+.modalDescription {
     font-family: 'Inter', sans-serif;
     font-size: 17px;
     font-weight: 400;
-    color: rgba(255,255,255,0.90);
+    color: rgba(255, 255, 255, 0.90);
     line-height: 1.85;
     margin: 0 0 28px 0;
 }
 
-.modalCtaLink{ text-decoration: none; display: inline-block; }
+.modalCtaLink {
+    text-decoration: none;
+    display: inline-block;
+}
 
-.modalCtaButton{
+.modalCtaButton {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
     padding: 14px 22px;
 
-    background: rgba(255,255,255,0.10);
-    color: rgba(255,255,255,0.92);
-    border: 1px solid rgba(255,255,255,0.24);
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 999px;
 
     cursor: pointer;
@@ -419,55 +456,120 @@
 
     transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
 }
-.modalCtaButton:hover{
-    background: rgba(255,255,255,0.16);
-    border-color: rgba(255,255,255,0.36);
+
+.modalCtaButton:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.36);
     transform: translateY(-1px);
 }
 
 /* ====== RESPONSIVE ====== */
-@media (max-width: 1024px){
-    .excursions{ padding: 96px 32px 60px; }
-    .container{ gap: 18px; grid-template-columns: 1fr; }
+@media (max-width: 1024px) {
+    .excursions {
+        padding: 96px 8px 60px;
+    }
 
-    .block{ padding: 24px 24px 22px; border-radius: 30px; }
-    .imageWrapper{ height: 180px; }
+    .container {
+        gap: 18px;
+        grid-template-columns: 1fr;
+    }
 
-    .block1, .block2, .block3, .block4, .block5 { grid-column: 1 / -1; grid-row: auto; }
+    .block {
+        padding: 18px 14px;
+        border-radius: 30px;
+    }
 
-    .modalContent{ padding: 22px 30px 34px; }
-    .modalHero{ padding: 22px 22px 0; }
+    .imageWrapper {
+        height: 180px;
+    }
+
+    .block1, .block2, .block3, .block4, .block5 {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .modalContent {
+        padding: 22px 30px 34px;
+    }
+
+    .modalHero {
+        padding:  4px;
+    }
 }
 
-@media (max-width: 768px){
-    .excursions{ padding: 78px 22px 48px; }
-    .block{ padding: 22px 20px; border-radius: var(--r-lg); }
-    .imageWrapper{ height: 160px; border-radius: 18px; }
+@media (max-width: 768px) {
+    .excursions {
+        padding: 78px 8px 48px;
+    }
 
-    .title{ font-size: 26px; }
-    .description{ font-size: 15px; line-height: 1.75; }
+    .block {
+        padding: 20px 14px;
+        border-radius: var(--r-lg);
+    }
 
-    .modal{ border-radius: 24px; }
-    .closeButton{
-        width: 40px;
-        height: 40px;
+    .imageWrapper {
+        height: 160px;
+        border-radius: 18px;
+    }
+    .modalHeroImg {
+        padding: 0;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .description {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .modal {
+        border-radius: 24px;
+
+    }
+
+    .closeButton {
+        width: 30px;
+        height: 30px;
         font-size: 20px;
         top: max(10px, env(safe-area-inset-top));
         right: max(10px, env(safe-area-inset-right));
     }
-    .modalHeroImg{ aspect-ratio: 4 / 3; border-radius: 18px; }
-    .modalContent{ padding: 18px 20px 26px; }
-    .modalDescription{ font-size: 16px; line-height: 1.75; }
+
+    .modalHeroImg {
+        aspect-ratio: 4 / 3;
+        border-radius: 18px;
+    }
+
+    .modalContent {
+        padding: 18px 14px 18px;
+    }
+
+    .modalDescription {
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    .modalWrapper{
+        padding: 4px;
+    }
 }
 
-@media (max-width: 480px){
-    .excursions{ padding: 70px 18px 40px; }
-    .imageWrapper{ height: 140px; }
-    .subtitle{ letter-spacing: 0.14em; }
+@media (max-width: 480px) {
+
+
+    .imageWrapper {
+        height: 140px;
+    }
+
+    .subtitle {
+        letter-spacing: 0.14em;
+    }
 }
 
-@media (prefers-reduced-motion: reduce){
-    *{
+@media (prefers-reduced-motion: reduce) {
+    * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
