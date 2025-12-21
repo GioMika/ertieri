@@ -1,12 +1,14 @@
 /* ===== Header minimal / glass ===== */
-.header{
+.header {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     pointer-events: none; /* ✅ чтобы клики шли по контенту, кроме inner */
 }
 
-.inner{
+.inner {
     pointer-events: auto; /* ✅ включаем клики только на самой шапке */
     /*height: 44px;*/
     max-width: 1400px;
@@ -29,9 +31,9 @@
 }
 
 /* Logo */
-.logo{
+.logo {
     text-decoration: none;
-    color: rgba(255,255,255,0.92);
+    color: rgba(255, 255, 255, 0.92);
     font-weight: 800;
     letter-spacing: 0.18em;
     font-size: 12px;
@@ -42,20 +44,21 @@
 
     transition: background .18s ease, color .18s ease;
 }
-.logo:hover{
-    background: rgba(255,255,255,0.06);
+
+.logo:hover {
+    background: rgba(255, 255, 255, 0.06);
     color: #fff;
 }
 
 /* Desktop nav */
-.nav{
+.nav {
     display: flex;
     align-items: center;
     gap: 18px;
 }
 
-.navLink{
-    color: rgba(255,255,255,0.78);
+.navLink {
+    color: rgba(255, 255, 255, 0.78);
     text-decoration: none;
     font-size: 14px;
     font-weight: 550;
@@ -65,47 +68,49 @@
 
     transition: background .18s ease, color .18s ease, transform .18s ease;
 }
-.navLink:hover{
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.95);
+
+.navLink:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.95);
     transform: translateY(-1px);
 }
 
-.active{
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.12);
+.active {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
 /* Right actions */
-.actions{
+.actions {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.iconBtn{
+.iconBtn {
     width: 40px;
     height: 40px;
     display: grid;
     place-items: center;
 
     border-radius: 14px;
-    color: rgba(255,255,255,0.88);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     transition: transform .18s ease, background .18s ease, border-color .18s ease;
     text-decoration: none;
 }
-.iconBtn:hover{
+
+.iconBtn:hover {
     transform: translateY(-1px);
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.14);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
 }
 
 /* Language (desktop) */
-.lang{
+.lang {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -113,11 +118,11 @@
     padding: 6px;
     border-radius: 999px;
 
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-.langBtn{
+.langBtn {
     border: none;
     cursor: pointer;
 
@@ -125,30 +130,32 @@
     border-radius: 999px;
 
     background: transparent;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.08em;
 }
-.langBtn:hover{
-    color: rgba(255,255,255,0.95);
-    background: rgba(255,255,255,0.06);
+
+.langBtn:hover {
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.06);
 }
-.langActive{
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.12);
+
+.langActive {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
 /* Burger (mobile) */
-.burger{
+.burger {
     display: none;
     width: 40px;
     height: 40px;
 
     border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.10);
-    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
 
     cursor: pointer;
     padding: 0;
@@ -156,36 +163,44 @@
 
     transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
-.burger:hover{
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.14);
+
+.burger:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
     transform: translateY(-1px);
 }
 
-.burger span{
+.burger span {
     position: absolute;
     left: 50%;
     width: 18px;
     height: 2px;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: 999px;
     transform: translateX(-50%);
     transition: transform .22s ease, top .22s ease, opacity .22s ease;
 }
-.burger span:first-child{ top: 11px; }
-.burger span:last-child{ top: 26px; }
 
-.burgerOpen span:first-child{
+.burger span:first-child {
+    top: 11px;
+}
+
+.burger span:last-child {
+    top: 26px;
+}
+
+.burgerOpen span:first-child {
     top: 22px;
     transform: translateX(-50%) rotate(45deg);
 }
-.burgerOpen span:last-child{
+
+.burgerOpen span:last-child {
     top: 22px;
     transform: translateX(-50%) rotate(-45deg);
 }
 
 /* ===== Backdrop (always present, but disabled when closed) ===== */
-.backdrop{
+.backdrop {
     position: fixed;
     inset: 0;
     z-index: 1100;
@@ -194,13 +209,14 @@
     visibility: hidden;
     pointer-events: none;
 
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 
     transition: opacity .22s ease, visibility .22s ease;
 }
-.backdropOpen{
+
+.backdropOpen {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -209,7 +225,7 @@
 /* ===== Drawer ===== */
 /* ✅ ключ: когда закрыт -> pointer-events none + visibility hidden,
    чтобы не ломать клики/переходы */
-.drawer{
+.drawer {
     position: fixed;
     top: 12px;
     right: 12px;
@@ -223,55 +239,55 @@
     visibility: hidden;
     pointer-events: none;
 
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 22px;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
 
-    box-shadow: 0 30px 110px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    box-shadow: 0 30px 110px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 
     display: flex;
     flex-direction: column;
 
-    transition:
-            transform .28s cubic-bezier(.4,0,.2,1),
-            opacity .22s ease,
-            visibility .22s ease;
+    transition: transform .28s cubic-bezier(.4, 0, .2, 1),
+    opacity .22s ease,
+    visibility .22s ease;
 }
-.drawerOpen{
+
+.drawerOpen {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.drawerHeader{
+.drawerHeader {
     height: 64px;
     padding: 0 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-.drawerBrand{
-    color: rgba(255,255,255,0.92);
+.drawerBrand {
+    color: rgba(255, 255, 255, 0.92);
     font-weight: 900;
     letter-spacing: 0.18em;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-.closeBtn{
+.closeBtn {
     width: 44px;
     height: 44px;
     border-radius: 14px;
 
-    border: 1px solid rgba(255,255,255,0.10);
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.92);
     cursor: pointer;
 
     display: grid;
@@ -279,33 +295,34 @@
 
     transition: background .18s ease, transform .18s ease, border-color .18s ease;
 }
-.closeBtn:hover{
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.14);
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
     transform: translateY(-1px);
 }
 
 /* ✅ контент меню */
-.drawerBody{
+.drawerBody {
     padding: 14px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.drawerNav{
+.drawerNav {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
 /* ✅ чтобы точно кликается */
-.drawerLink{
+.drawerLink {
     position: relative;
     z-index: 2;
 
     text-decoration: none;
-    color: rgba(255,255,255,0.86);
+    color: rgba(255, 255, 255, 0.86);
     font-size: 16px;
     font-weight: 650;
     letter-spacing: -0.01em;
@@ -313,8 +330,8 @@
     padding: 14px 14px;
     border-radius: 16px;
 
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     opacity: 0;
     transform: translateX(10px);
@@ -322,70 +339,76 @@
 
     transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease;
 }
-.drawerLink:hover{
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(255,255,255,0.12);
+
+.drawerLink:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
     transform: translateY(-1px);
     color: #fff;
 }
-.drawerActive{
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(255,255,255,0.14);
+
+.drawerActive {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.14);
     color: #fff;
 }
 
-@keyframes drawerIn{
-    to{ opacity: 1; transform: translateX(0); }
+@keyframes drawerIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ✅ tools сразу под меню */
-.drawerTools{
+.drawerTools {
     display: grid;
     gap: 12px;
     padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.10);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-.drawerQuick{
+.drawerQuick {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
 }
 
-.drawerIcon{
+.drawerIcon {
     width: 46px;
     height: 46px;
     display: grid;
     place-items: center;
 
     border-radius: 16px;
-    color: rgba(255,255,255,0.90);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+    color: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     transition: background .18s ease, transform .18s ease, border-color .18s ease;
     text-decoration: none;
 }
-.drawerIcon:hover{
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.14);
+
+.drawerIcon:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
     transform: translateY(-1px);
 }
 
-.drawerLang{
+.drawerLang {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
-.drawerLangBtn{
+.drawerLangBtn {
     padding: 12px 0;
     border-radius: 16px;
 
-    border: 1px solid rgba(255,255,255,0.10);
-    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.05);
 
-    color: rgba(255,255,255,0.80);
+    color: rgba(255, 255, 255, 0.80);
     font-weight: 900;
     font-size: 12px;
     letter-spacing: 0.10em;
@@ -394,29 +417,57 @@
 
     transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease;
 }
-.drawerLangBtn:hover{
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.14);
+
+.drawerLangBtn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
     transform: translateY(-1px);
     color: #fff;
 }
-.drawerLangActive{
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(255,255,255,0.16);
+
+.drawerLangActive {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.16);
     color: #fff;
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 900px){
-    .nav{ display: none; }
-    .lang{ display: none; }
-    .burger{ display: grid; place-items: center; }
-    .inner{ height: 60px; padding: 0 8px; }
+@media (max-width: 1024px) {
+    .nav {
+        display: none;
+    }
+
+    .lang {
+        display: none;
+    }
+
+    .burger {
+        display: grid;
+        place-items: center;
+    }
+
+    .inner {
+        height: 60px;
+        padding: 0 8px;
+    }
 }
 
-@media (max-width: 420px){
-    .iconBtn{ width: 38px; height: 38px; }
-    .burger{ width: 38px; height: 38px; }
-    .burger span:first-child{ top: 11px; }
-    .burger span:last-child{ top: 24px; }
+@media (max-width: 420px) {
+    .iconBtn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .burger {
+        width: 38px;
+        height: 38px;
+    }
+
+    .burger span:first-child {
+        top: 11px;
+    }
+
+    .burger span:last-child {
+        top: 24px;
+    }
 }
