@@ -416,5 +416,7 @@
 
 @media (max-width: 420px){
     .iconBtn{ width: 38px; height: 38px; }
-    .burger{ width: 42px; height: 42px; }
+    .burger{ width: 38px; height: 38px; }
+    .burger span:first-child{ top: 11px; }
+    .burger span:last-child{ top: 24px; }
 }
