@@ -1,3 +1,9 @@
+/* Оптимизация производительности */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .contact {
     min-height: 100vh;
     position: relative;
@@ -7,9 +13,10 @@
     color: #fff;
     overflow: hidden;
     background: #070a12;
+    will-change: scroll-position;
 }
 
-/* softer, premium background */
+/* Оптимизированный фон (без лагов) */
 .bg {
     position: absolute;
     inset: -200px;
@@ -20,6 +27,8 @@
             linear-gradient(135deg, #060814 0%, #0a0f22 45%, #070a12 100%);
     filter: saturate(1.05);
     pointer-events: none;
+    transform: translateZ(0); /* GPU acceleration */
+    backface-visibility: hidden;
 }
 
 .container {
@@ -30,20 +39,11 @@
     margin: 0 auto;
 }
 
-/* header */
+/* Header */
 .header {
     max-width: 760px;
     margin: 50px auto 44px;
     text-align: center;
-}
-
-.kicker {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 12px;
 }
 
 .title {
@@ -52,6 +52,7 @@
     line-height: 1.05;
     margin: 0 0 14px;
     font-weight: 800;
+    word-wrap: break-word; /* Предотвращение переполнения */
 }
 
 .subtitle {
@@ -59,10 +60,9 @@
     font-size: 16px;
     line-height: 1.8;
     color: rgba(255,255,255,0.72);
-    display: none;
 }
 
-/* layout grid */
+/* Layout grid */
 .grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -70,7 +70,7 @@
     align-items: start;
 }
 
-/* glass base */
+/* Glass base с оптимизацией */
 .cards,
 .mapCard,
 .formCard {
@@ -80,6 +80,8 @@
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    transform: translateZ(0); /* GPU acceleration */
+    will-change: transform;
 }
 
 /* LEFT */
@@ -94,25 +96,34 @@
     gap: 10px;
 }
 
-/* modern contact card (fixes "слиплось") */
+/* Улучшенная карточка контакта (без слипания) */
 .card {
     display: grid;
     grid-template-columns: 44px 1fr;
     gap: 14px;
     align-items: center;
-    padding: 14px 14px;
+    padding: 14px;
     border-radius: 18px;
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
-    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.22s ease,
+    border-color 0.22s ease;
+    cursor: pointer;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
     background: rgba(255,255,255,0.07);
     border-color: rgba(255,255,255,0.14);
+}
+
+.card:active {
+    transform: translateY(0) translateZ(0);
 }
 
 .icon {
@@ -123,10 +134,12 @@
     place-items: center;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.10);
+    flex-shrink: 0; /* Предотвращение сжатия */
 }
 
 .cardBody {
     min-width: 0;
+    overflow: hidden; /* Предотвращение переполнения */
 }
 
 .cardTop {
@@ -141,20 +154,16 @@
     font-size: 13px;
     color: rgba(255,255,255,0.58);
     letter-spacing: 0.04em;
-}
-
-.cardHint {
-    font-size: 12px;
-    color: rgba(255,255,255,0.40);
     white-space: nowrap;
 }
 
-/* IMPORTANT: value row prevents merging */
+/* КРИТИЧЕСКИ ВАЖНО: предотвращаем слипание текста */
 .cardValueRow {
     display: grid;
-    grid-template-columns: 1fr 28px;
+    grid-template-columns: 1fr auto;
     gap: 12px;
     align-items: center;
+    min-width: 0;
 }
 
 .cardValue {
@@ -164,30 +173,39 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0; /* Критично для ellipsis */
 }
 
 .cardAction,
 .cardActionLink {
     width: 28px;
     height: 28px;
+    min-width: 28px; /* Предотвращение сжатия */
     border-radius: 10px;
     display: grid;
     place-items: center;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.10);
     color: rgba(255,255,255,0.9);
+    flex-shrink: 0;
 }
 
 .cardActionLink {
     text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.cardActionLink:hover {
+    transform: scale(1.1);
 }
 
 .cardActionMuted {
     width: 28px;
     height: 28px;
+    min-width: 28px;
 }
 
-/* map */
+/* Map */
 .mapCard {
     padding: 16px;
 }
@@ -198,6 +216,7 @@
     align-items: center;
     gap: 14px;
     padding: 6px 6px 14px;
+    flex-wrap: wrap; /* Предотвращение переполнения */
 }
 
 .mapTitle {
@@ -225,8 +244,10 @@
     border: 1px solid rgba(255,255,255,0.7);
     font-weight: 700;
     font-size: 13px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .mapBtn:hover {
@@ -239,18 +260,21 @@
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.10);
     height: 260px;
+    position: relative;
 }
 
 .map {
     width: 100%;
     height: 100%;
     border: 0;
+    display: block;
 }
 
-/* RIGHT: form */
+/* RIGHT: Form */
 .right {
     position: sticky;
     top: 92px;
+    align-self: start; /* Важно для sticky */
 }
 
 .formCard {
@@ -268,7 +292,7 @@
     letter-spacing: -0.01em;
 }
 
-.formSubtitle {
+.formHint {
     margin: 0;
     font-size: 14px;
     color: rgba(255,255,255,0.64);
@@ -305,9 +329,10 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 16px;
-    padding: 14px 14px;
+    padding: 14px;
     color: rgba(255,255,255,0.92);
     font-size: 14px;
+    font-family: inherit;
     transition: border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -323,9 +348,16 @@
     border-color: rgba(255,255,255,0.24);
 }
 
+.input:disabled,
+.textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .textarea {
     resize: vertical;
     min-height: 140px;
+    font-family: inherit;
 }
 
 .submit {
@@ -341,33 +373,39 @@
     font-weight: 800;
     letter-spacing: 0.02em;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    font-family: inherit;
+    font-size: 14px;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
 }
 
-.submit:hover {
+.submit:hover:not(:disabled) {
     transform: translateY(-2px);
     opacity: 0.95;
 }
 
-.note {
-    margin: 6px 0 0;
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.5;
+.submit:active:not(:disabled) {
+    transform: translateY(0);
 }
 
-/* =========================
-   RESPONSIVE (экраны)
-   ========================= */
+.submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========================= */
+/* RESPONSIVE (оптимизация) */
+/* ========================= */
 
 /* Tablet */
 @media (max-width: 1024px) {
     .contact {
-        padding: 110px 8px 70px;
+        padding: 110px 20px 70px;
     }
 
     .grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .right {
@@ -381,6 +419,10 @@
 
 /* Mobile */
 @media (max-width: 640px) {
+    .contact {
+        padding: 100px 16px 60px;
+    }
+
     .header {
         margin-bottom: 26px;
         text-align: left;
@@ -388,6 +430,7 @@
 
     .title {
         font-size: 34px;
+        line-height: 1.1;
     }
 
     .row {
@@ -396,12 +439,14 @@
 
     .cards {
         padding: 10px;
+        gap: 8px;
     }
 
     .card {
         grid-template-columns: 40px 1fr;
         padding: 12px;
         border-radius: 16px;
+        gap: 12px;
     }
 
     .icon {
@@ -414,9 +459,18 @@
         font-size: 15px;
     }
 
+    .cardAction,
+    .cardActionLink,
+    .cardActionMuted {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+    }
+
     .mapHeader {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
     }
 
     .mapBtn {
@@ -427,11 +481,44 @@
     .mapWrap {
         height: 220px;
     }
+
+    .formCard {
+        padding: 18px;
+    }
+
+    .input,
+    .textarea {
+        padding: 12px;
+        font-size: 16px; /* Предотвращение zoom на iOS */
+    }
 }
 
-/* Reduce motion */
+/* Extra small devices */
+@media (max-width: 375px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .cardValue {
+        font-size: 14px;
+    }
+}
+
+/* Accessibility: Reduce motion */
 @media (prefers-reduced-motion: reduce) {
-    * {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark mode optimization (если планируешь) */
+@media (prefers-color-scheme: dark) {
+    .contact {
+        color-scheme: dark;
     }
 }

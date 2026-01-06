@@ -10,7 +10,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const { t, i18n } = useTranslation("common");
+  const { t, i18n } = useTranslation("header");
 
   // Реальный текущий язык из i18next
   const currentCode = normalize(i18n.resolvedLanguage || i18n.language);

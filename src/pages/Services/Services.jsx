@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import classes from "./Services.module.css";
 
@@ -47,10 +46,6 @@ const Services = () => {
 
   return (
       <>
-        {/* ✅ SEO / Helmet */}
-        <Helmet>
-          <html lang={lang} />
-
           <title>{safeMeta.title}</title>
           <meta name="description" content={safeMeta.description} />
           <meta name="keywords" content={safeMeta.keywords} />
@@ -88,7 +83,6 @@ const Services = () => {
 
           {/* JSON-LD */}
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
 
         {/* ✅ ТВОЯ ВЕРСТКА 1:1 — переходы и структура не меняются */}
         <section className={classes.services}>

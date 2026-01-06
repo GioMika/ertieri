@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 
@@ -124,7 +123,7 @@ const WeddingTour = ({ lang = "ru" }) => {
 
   return (
       <>
-        <Helmet>
+
           <title>{meta?.title}</title>
           <meta name="description" content={meta?.description} />
           <meta name="keywords" content={meta?.keywords} />
@@ -150,7 +149,7 @@ const WeddingTour = ({ lang = "ru" }) => {
           <meta name="twitter:image" content={`${SITE_URL}/og-wedding-tour.jpg`} />
 
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
+
 
         <div className={classes.weddingTour}>
           <div className={classes.container}>

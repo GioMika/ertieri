@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import classes from "./CasinoTour.module.css";
 
@@ -126,9 +125,6 @@ const CasinoTour = () => {
 
   return (
       <>
-        <Helmet>
-          <html lang={lang} />
-
           <title>{meta.title}</title>
           <meta name="description" content={meta.description} />
           <meta name="keywords" content={meta.keywords} />
@@ -158,7 +154,6 @@ const CasinoTour = () => {
 
           {/* JSON-LD */}
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
 
         <main className={classes.casinoTour}>
           <header className={classes.header}>

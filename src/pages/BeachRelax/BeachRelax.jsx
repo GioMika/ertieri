@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import classes from "./BeachRelax.module.css";
 
@@ -23,7 +22,6 @@ const BeachRelax = () => {
 
   const images = useMemo(() => [img1, img2, img3, img4, img5], []);
 
-  // ✅ контент из JSON
   const meta = t("meta", { returnObjects: true });
   const ui = t("ui", { returnObjects: true });
   const pageTitle = t("pageTitle");
@@ -123,8 +121,6 @@ const BeachRelax = () => {
 
   return (
       <>
-        <Helmet>
-          <html lang={lang} />
 
           <title>{safeMeta.title}</title>
           <meta name="description" content={safeMeta.description} />
@@ -158,7 +154,6 @@ const BeachRelax = () => {
 
           {/* JSON-LD */}
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
 
         <main className={classes.beachRelax}>
           <header className={classes.header}>

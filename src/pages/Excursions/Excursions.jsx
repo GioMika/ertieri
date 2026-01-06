@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import classes from "./Excursions.module.css";
 
@@ -136,7 +135,6 @@ const Excursions = () => {
 
   return (
       <>
-        <Helmet>
           <title>{meta.title}</title>
           <meta name="description" content={meta.description} />
           <meta name="keywords" content={meta.keywords} />
@@ -162,7 +160,6 @@ const Excursions = () => {
           <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en/excursions`} />
 
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
 
         <main className={classes.excursions}>
           <header className={classes.header}>

@@ -1,0 +1,21 @@
+{
+  "header": {
+    "homeAria": "На главную — Erti Eri",
+    "navAria": "Главное меню сайта",
+    "langAria": "Выбор языка",
+    "emailAria": "Написать на email",
+    "emailTitle": "Email",
+    "waAria": "Открыть WhatsApp",
+    "waTitle": "WhatsApp",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню",
+    "drawerMenuAria": "Мобильное меню",
+    "drawerBrand": "ERTI ERI",
+    "menu": {
+      "about": "О компании",
+      "services": "Туры и услуги",
+      "blog": "Блог",
+      "contact": "Контакты"
+    }
+  }
+}

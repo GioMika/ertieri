@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import classes from "./Blog.module.css";
 
@@ -177,9 +176,6 @@ const Blog = () => {
 
   return (
       <>
-        <Helmet>
-          <html lang={lang} />
-
           <title>{meta.title}</title>
           <meta name="description" content={meta.description} />
           <meta name="keywords" content={meta.keywords} />
@@ -212,7 +208,6 @@ const Blog = () => {
 
           {/* JSON-LD */}
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        </Helmet>
 
         <main className={classes.blog}>
           <header className={classes.header}>
