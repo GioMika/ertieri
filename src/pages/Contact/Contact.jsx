@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import {
   Mail,
   MessageCircle,
@@ -9,7 +11,13 @@ import {
 } from "lucide-react";
 import classes from "./Contact.module.css";
 
+const SITE_URL = "https://ertieri.ge";
+const normalizeLang = (lng) => (lng || "ru").split("-")[0];
+
 const Contact = () => {
+  const { t, i18n } = useTranslation("contact");
+  const lang = normalizeLang(i18n.resolvedLanguage || i18n.language);
+
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e) =>
@@ -20,204 +28,315 @@ const Contact = () => {
     console.log("Form submitted:", formData);
   };
 
+  // Контакты (можно потом вынести в env/config)
   const whatsappNumber = "995XXXXXXXXX";
   const emailAddress = "hello@ertieri.com";
-  const address = "Батуми, ул. Бако 8";
-  const workTime = "Ежедневно 10:00–20:00";
-  const googleMapsUrl =
-      "https://www.google.com/maps/dir/?api=1&destination=Батуми,+ул.+Бако+8";
+
+  // Тексты
+  const meta = t("meta", { returnObjects: true }) || {};
+  const ui = t("ui", { returnObjects: true }) || {};
+  const data = t("data", { returnObjects: true }) || {};
+
+  const pageTitle = t("pageTitle");
+  const pageSubtitle = t("pageSubtitle");
+
+  const pathLang = lang === "ge" ? "ge" : lang === "en" ? "en" : "ru";
+  const pageUrl = `${SITE_URL}/${pathLang}/contact`;
+
+  const alternates = meta.alternates || {
+    ru: `${SITE_URL}/ru/contact`,
+    en: `${SITE_URL}/en/contact`,
+    ka: `${SITE_URL}/ge/contact`,
+  };
+
+  const ogImage = meta.ogImage || `${SITE_URL}/og-contact.jpg`;
+  const ogLocale = meta.locale || (lang === "ru" ? "ru_RU" : lang === "en" ? "en_US" : "ka_GE");
+
+  const googleMapsUrl = useMemo(() => {
+    const dest = data.mapDestination || data.address || "Batumi, Bako St. 8";
+    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`;
+  }, [data.mapDestination, data.address]);
+
+  // JSON-LD: ContactPage + TravelAgency
+  const jsonLd = useMemo(
+      () => ({
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: meta.title,
+        description: meta.description,
+        url: pageUrl,
+        inLanguage: lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "ka-GE",
+        isPartOf: { "@type": "WebSite", name: "Erti Eri", url: SITE_URL },
+        about: {
+          "@type": "TravelAgency",
+          name: "Erti Eri",
+          url: SITE_URL,
+          email: emailAddress,
+          telephone: `+${whatsappNumber}`,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: data.streetAddress || "",
+            addressLocality: data.city || "",
+            addressCountry: "GE",
+          },
+          openingHours: data.openingHours || "Mo-Su 10:00-20:00",
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              email: emailAddress,
+              telephone: `+${whatsappNumber}`,
+              availableLanguage: ["ru", "en", "ka"],
+            },
+          ],
+        },
+      }),
+      [
+        meta.title,
+        meta.description,
+        pageUrl,
+        lang,
+        data.streetAddress,
+        data.city,
+        data.openingHours,
+        emailAddress,
+        whatsappNumber,
+      ]
+  );
 
   return (
-      <section className={classes.contact}>
-        <div className={classes.bg} />
+      <>
+        <Helmet>
+          <html lang={lang} />
 
-        <div className={classes.container}>
-          {/* HEADER */}
-          <header className={classes.header}>
-            <span className={classes.kicker}>Контакты</span>
-            <h1 className={classes.title}>Свяжитесь с нами</h1>
-          </header>
+          <title>{meta.title}</title>
+          <meta name="description" content={meta.description} />
+          <meta name="keywords" content={meta.keywords} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={pageUrl} />
 
-          <div className={classes.grid}>
-            {/* LEFT: cards + map */}
-            <div className={classes.left}>
-              <div className={classes.cards}>
-                <a
-                    className={classes.card}
-                    href={`mailto:${emailAddress}`}
-                    aria-label="Написать на email"
-                >
-                  <div className={classes.icon}>
-                    <Mail size={20} />
-                  </div>
+          {/* hreflang */}
+          <link rel="alternate" hrefLang="ru" href={alternates.ru} />
+          <link rel="alternate" hrefLang="en" href={alternates.en} />
+          <link rel="alternate" hrefLang="ka" href={alternates.ka} />
+          <link rel="alternate" hrefLang="x-default" href={alternates.en} />
 
-                  <div className={classes.cardBody}>
-                    <div className={classes.cardTop}>
-                      <span className={classes.cardLabel}>Email</span>
+          {/* Open Graph */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={meta.ogTitle || meta.title} />
+          <meta property="og:description" content={meta.ogDescription || meta.description} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:image" content={ogImage} />
+          <meta property="og:site_name" content="Erti Eri" />
+          <meta property="og:locale" content={ogLocale} />
+
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={meta.ogTitle || meta.title} />
+          <meta name="twitter:description" content={meta.ogDescription || meta.description} />
+          <meta name="twitter:image" content={ogImage} />
+
+          {/* JSON-LD */}
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        </Helmet>
+
+        <section className={classes.contact}>
+          <div className={classes.bg} />
+
+          <div className={classes.container}>
+            {/* HEADER */}
+            <header className={classes.header}>
+              <span className={classes.kicker}>{ui.kicker}</span>
+              <h1 className={classes.title}>{pageTitle}</h1>
+              <p className={classes.subtitle}>{pageSubtitle}</p>
+            </header>
+
+            <div className={classes.grid}>
+              {/* LEFT: cards + map */}
+              <div className={classes.left}>
+                <div className={classes.cards}>
+                  <a
+                      className={classes.card}
+                      href={`mailto:${emailAddress}`}
+                      aria-label={ui.ctaEmail}
+                  >
+                    <div className={classes.icon}>
+                      <Mail size={20} />
                     </div>
-                    <div className={classes.cardValueRow}>
-                      <strong className={classes.cardValue}>{emailAddress}</strong>
-                      <span className={classes.cardAction}>
-                      <ArrowUpRight size={18} />
-                    </span>
-                    </div>
-                  </div>
-                </a>
 
-                <a
-                    className={classes.card}
-                    href={`https://wa.me/${whatsappNumber}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Открыть WhatsApp"
-                >
-                  <div className={classes.icon}>
-                    <MessageCircle size={20} />
-                  </div>
-
-                  <div className={classes.cardBody}>
-                    <div className={classes.cardTop}>
-                      <span className={classes.cardLabel}>WhatsApp</span>
-                    </div>
-                    <div className={classes.cardValueRow}>
-                      <strong className={classes.cardValue}>+995 XXX XXX XXX</strong>
-                      <span className={classes.cardAction}>
-                      <ArrowUpRight size={18} />
-                    </span>
-                    </div>
-                  </div>
-                </a>
-
-                <div className={classes.card} role="group" aria-label="Адрес офиса">
-                  <div className={classes.icon}>
-                    <MapPin size={20} />
-                  </div>
-
-                  <div className={classes.cardBody}>
-                    <div className={classes.cardTop}>
-                      <span className={classes.cardLabel}>Офис</span>
-                    </div>
-                    <div className={classes.cardValueRow}>
-                      <strong className={classes.cardValue}>{address}</strong>
-                      <a
-                          className={classes.cardActionLink}
-                          href={googleMapsUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Построить маршрут"
-                      >
+                    <div className={classes.cardBody}>
+                      <div className={classes.cardTop}>
+                        <span className={classes.cardLabel}>Email</span>
+                      </div>
+                      <div className={classes.cardValueRow}>
+                        <strong className={classes.cardValue}>{emailAddress}</strong>
+                        <span className={classes.cardAction}>
                         <ArrowUpRight size={18} />
-                      </a>
+                      </span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                <div className={classes.card} role="group" aria-label="Время работы">
-                  <div className={classes.icon}>
-                    <Clock size={20} />
-                  </div>
-
-                  <div className={classes.cardBody}>
-                    <div className={classes.cardTop}>
-                      <span className={classes.cardLabel}>График</span>
-                    </div>
-                    <div className={classes.cardValueRow}>
-                      <strong className={classes.cardValue}>{workTime}</strong>
-                      <span className={classes.cardActionMuted} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={classes.mapCard}>
-                <div className={classes.mapHeader}>
-                  <div>
-                    <h2 className={classes.mapTitle}>Мы на карте</h2>
-                    <p className={classes.mapSubtitle}>Батуми</p>
-                  </div>
+                  </a>
 
                   <a
-                      className={classes.mapBtn}
-                      href={googleMapsUrl}
+                      className={classes.card}
+                      href={`https://wa.me/${whatsappNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={ui.ctaWhatsApp}
                   >
-                    Маршрут <ArrowUpRight size={18} />
+                    <div className={classes.icon}>
+                      <MessageCircle size={20} />
+                    </div>
+
+                    <div className={classes.cardBody}>
+                      <div className={classes.cardTop}>
+                        <span className={classes.cardLabel}>WhatsApp</span>
+                      </div>
+                      <div className={classes.cardValueRow}>
+                        <strong className={classes.cardValue}>
+                          {data.whatsappDisplay || `+${whatsappNumber}`}
+                        </strong>
+                        <span className={classes.cardAction}>
+                        <ArrowUpRight size={18} />
+                      </span>
+                      </div>
+                    </div>
                   </a>
-                </div>
 
-                <div className={classes.mapWrap}>
-                  <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.5!2d41.6433!3d41.6415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM4JzI5LjQiTiA0McKwMzgnMzUuOSJF!5e0!3m2!1sru!2sge!4v1234567890"
-                      className={classes.map}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Наш офис на карте"
-                  />
-                </div>
-              </div>
-            </div>
+                  <div className={classes.card} role="group" aria-label={ui.office}>
+                    <div className={classes.icon}>
+                      <MapPin size={20} />
+                    </div>
 
-            {/* RIGHT: form */}
-            <div className={classes.right}>
-              <div className={classes.formCard}>
-                <div className={classes.formHeader}>
-                  <h2 className={classes.formTitle}>Сообщение</h2>
-                </div>
-
-                <form className={classes.form} onSubmit={handleSubmit}>
-                  <div className={classes.row}>
-                    <label className={classes.field}>
-                      <span className={classes.label}>Имя</span>
-                      <input
-                          className={classes.input}
-                          type="text"
-                          name="name"
-                          placeholder="Ваше имя"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                      />
-                    </label>
-
-                    <label className={classes.field}>
-                      <span className={classes.label}>Email</span>
-                      <input
-                          className={classes.input}
-                          type="email"
-                          name="email"
-                          placeholder="you@email.com"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                      />
-                    </label>
+                    <div className={classes.cardBody}>
+                      <div className={classes.cardTop}>
+                        <span className={classes.cardLabel}>{ui.office}</span>
+                      </div>
+                      <div className={classes.cardValueRow}>
+                        <strong className={classes.cardValue}>{data.address}</strong>
+                        <a
+                            className={classes.cardActionLink}
+                            href={googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={ui.route}
+                        >
+                          <ArrowUpRight size={18} />
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  <label className={classes.field}>
-                    <span className={classes.label}>Сообщение</span>
-                    <textarea
-                        className={classes.textarea}
-                        name="message"
-                        placeholder="Описание"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={6}
-                    />
-                  </label>
+                  <div className={classes.card} role="group" aria-label={ui.schedule}>
+                    <div className={classes.icon}>
+                      <Clock size={20} />
+                    </div>
 
-                  <button type="submit" className={classes.submit}>
-                    <Send size={18} />
-                    Отправить
-                  </button>
-                </form>
+                    <div className={classes.cardBody}>
+                      <div className={classes.cardTop}>
+                        <span className={classes.cardLabel}>{ui.schedule}</span>
+                      </div>
+                      <div className={classes.cardValueRow}>
+                        <strong className={classes.cardValue}>{data.workTime}</strong>
+                        <span className={classes.cardActionMuted} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={classes.mapCard}>
+                  <div className={classes.mapHeader}>
+                    <div>
+                      <h2 className={classes.mapTitle}>{ui.mapTitle}</h2>
+                      <p className={classes.mapSubtitle}>{ui.mapSubtitle}</p>
+                    </div>
+
+                    <a
+                        className={classes.mapBtn}
+                        href={googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                      {ui.route} <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+
+                  <div className={classes.mapWrap}>
+                    <iframe
+                        src={data.embedMapSrc}
+                        className={classes.map}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={ui.mapIframeTitle}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT: form */}
+              <div className={classes.right}>
+                <div className={classes.formCard}>
+                  <div className={classes.formHeader}>
+                    <h2 className={classes.formTitle}>{ui.messageTitle}</h2>
+                    {ui.hint && <p className={classes.formHint}>{ui.hint}</p>}
+                  </div>
+
+                  <form className={classes.form} onSubmit={handleSubmit}>
+                    <div className={classes.row}>
+                      <label className={classes.field}>
+                        <span className={classes.label}>{ui.name}</span>
+                        <input
+                            className={classes.input}
+                            type="text"
+                            name="name"
+                            placeholder={ui.namePh}
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            autoComplete="name"
+                        />
+                      </label>
+
+                      <label className={classes.field}>
+                        <span className={classes.label}>{ui.email}</span>
+                        <input
+                            className={classes.input}
+                            type="email"
+                            name="email"
+                            placeholder={ui.emailPh}
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            autoComplete="email"
+                        />
+                      </label>
+                    </div>
+
+                    <label className={classes.field}>
+                      <span className={classes.label}>{ui.message}</span>
+                      <textarea
+                          className={classes.textarea}
+                          name="message"
+                          placeholder={ui.messagePh}
+                          value={formData.message}
+                          onChange={handleChange}
+                          required
+                          rows={6}
+                      />
+                    </label>
+
+                    <button type="submit" className={classes.submit} aria-label={ui.send}>
+                      <Send size={18} />
+                      {ui.send}
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </>
   );
 };
 

@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Georgia Travel Blog — Tbilisi, routes, wine, food & tips | Erti Eri",
+    "description": "Erti Eri blog about traveling in Georgia: Tbilisi highlights, Svaneti trekking, Georgian wine (qvevri), local food and practical travel tips. Calm itineraries without tourist traps.",
+    "keywords": "Georgia travel blog, Tbilisi things to do, Georgia itinerary, qvevri wine, Georgian cuisine guide, Svaneti trekking, travel tips Georgia, Batumi seaside, Kazbegi mountains",
+    "ogTitle": "Erti Eri Blog — Georgia without rush: routes, wine, cuisine",
+    "ogDescription": "Short, useful articles: what to see in Tbilisi, how to choose a winery tasting, where to eat well, and how to travel comfortably in Georgia.",
+    "canonical": "https://ertieri.ge/en/blog",
+    "alternates": {
+      "ru": "https://ertieri.ge/ru/blog",
+      "en": "https://ertieri.ge/en/blog",
+      "ka": "https://ertieri.ge/ge/blog"
+    },
+    "locale": "en_US",
+    "ogImage": "https://ertieri.ge/og-blog.jpg"
+  },
+  "ui": {
+    "close": "Close"
+  },
+  "pageTitle": "Georgia Blog",
+  "pageSubtitle": "Routes, Tbilisi, wine, food and tips — to make your trip smooth, safe and beautiful.",
+  "articles": [
+    {
+      "id": 1,
+      "imageIndex": 3,
+      "category": "Tbilisi",
+      "title": "Top 10 places in Tbilisi: a calm 1–2 day route",
+      "excerpt": "Old Town, sulfur baths, viewpoints and spots where Tbilisi feels real. Perfect for a short stay.",
+      "date": "Dec 15, 2024",
+      "readTime": "5 min",
+      "datePublishedIso": "2024-12-15",
+      "content": [
+        "Tbilisi is all about vibe: courtyards, balconies, narrow streets and a modern pace.",
+        "Start with Abanotubani and the Old Town, then Narikala fortress for the best panoramas. End the day with a wine bar or dinner with a view.",
+        "To add depth: a morning market, a small cellar tasting, and one or two modern districts."
+      ]
+    },
+    {
+      "id": 2,
+      "imageIndex": 1,
+      "category": "Wine",
+      "title": "Georgian wine: qvevri and 8,000 years of tradition",
+      "excerpt": "Why a family winery tasting feels deeper than a standard tour: qvevri, terroirs, grapes and atmosphere.",
+      "date": "Dec 12, 2024",
+      "readTime": "7 min",
+      "datePublishedIso": "2024-12-12",
+      "content": [
+        "Georgia is one of the world’s historic wine regions — backed by archaeological evidence.",
+        "Qvevri are clay vessels buried in the ground, creating a layered, “alive” taste profile.",
+        "Best format: tasting with the host — wine, story, proper serving and local snacks."
+      ]
+    },
+    {
+      "id": 3,
+      "imageIndex": 4,
+      "category": "Food",
+      "title": "Georgian food guide: what to try and where",
+      "excerpt": "Beyond khinkali and khachapuri: regional differences, seasonal dishes and how to avoid tourist traps.",
+      "date": "Dec 10, 2024",
+      "readTime": "6 min",
+      "datePublishedIso": "2024-12-10",
+      "content": [
+        "Georgian cuisine is about regions, traditions and seasonality — not a single universal list.",
+        "Classics matter, but the real magic is in sauces, vegetables, spices and home-style serving.",
+        "Simple rule: if locals eat there — it’s usually honest and delicious."
+      ]
+    },
+    {
+      "id": 4,
+      "imageIndex": 0,
+      "category": "Mountains",
+      "title": "Svaneti trekking: how to prepare and what to choose",
+      "excerpt": "Towers, glaciers and cinematic routes. First-timer tips: pace, clothing, weather and logistics.",
+      "date": "Dec 8, 2024",
+      "readTime": "8 min",
+      "datePublishedIso": "2024-12-08",
+      "content": [
+        "Svaneti is scale and emotion: peaks, fog, towers and a true adventure feeling.",
+        "For your first trip, pick moderate routes with guesthouses — comfortable and atmospheric.",
+        "Weather changes fast: proper shoes, layering, and time buffer are essential."
+      ]
+    },
+    {
+      "id": 5,
+      "imageIndex": 2,
+      "category": "Tips",
+      "title": "First time in Georgia: 7 practical tips for comfort",
+      "excerpt": "How to plan without stress: transport, money, connectivity and habits that make travel easy.",
+      "date": "Dec 5, 2024",
+      "readTime": "4 min",
+      "datePublishedIso": "2024-12-05",
+      "content": [
+        "Plan around 2–3 base locations and one strong day trip (mountains / wine / sea).",
+        "Between cities, comfort often matters more than saving — train or private transfer helps a lot.",
+        "Don’t try to do everything — Georgia is best when you actually live the moments."
+      ]
+    }
+  ]
+}

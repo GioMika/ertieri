@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Tours in Georgia — excursions, sea, mountains, casino, wedding | Erti Eri",
+    "description": "Erti Eri builds Georgia tours around your style: excursions across regions, Batumi sea relaxation, mountain routes & resorts, casino tour and wedding tour. Comfortable transport, clear timing, and details handled.",
+    "keywords": "Georgia tours, tours in Georgia, Georgia excursions, Tbilisi tours, Batumi tours, Batumi sea holiday, Black Sea Batumi, mountain holiday Georgia, Gudauri tour, Bakuriani tour, hiking Georgia, trekking Georgia, casino tour Georgia, Batumi casino tour, wedding tour Georgia, wedding in Georgia, private tours Georgia, travel agency Georgia",
+    "ogTitle": "Erti Eri Tours — Georgia, done right",
+    "ogDescription": "Choose your format: excursions, sea, mountains, casino night or wedding tour. We plan the route, timing and comfort.",
+    "canonical": "https://ertieri.ge/en/services",
+    "alternates": {
+      "ru": "https://ertieri.ge/ru/services",
+      "en": "https://ertieri.ge/en/services",
+      "ka": "https://ertieri.ge/ge/services"
+    },
+    "locale": "en_US"
+  },
+  "h1": "A service that collects emotions",
+  "ui": {
+    "open": "Open",
+    "more": "Learn more"
+  },
+  "tours": [
+    {
+      "title": "Excursions",
+      "subtitle": "History, culture, atmosphere",
+      "text": "Tbilisi, Mtskheta, Kazbegi and standout locations across Georgia. Engaging storytelling, comfortable pace and smart daily flow — from classics to local hidden gems.",
+      "link": "/excursions",
+      "pill": "Tours"
+    },
+    {
+      "title": "Sea Relax",
+      "subtitle": "Batumi & the Black Sea coast",
+      "text": "Beaches, a long promenade, a stylish resort rhythm and beautiful seaside evenings. We handle hotel, transfer and a calm itinerary — no hassle on the spot.",
+      "link": "/beach-relax",
+      "pill": "Sea"
+    },
+    {
+      "title": "Mountain Relax",
+      "subtitle": "Caucasus views & fresh air",
+      "text": "Panoramas, hiking, cozy stays and routes at your pace. Winter: Gudauri & Bakuriani. Summer: trails, canyons and waterfalls. Clean logistics, clear timing, great experience.",
+      "link": "/mountain-relax",
+      "pill": "Mountains"
+    },
+    {
+      "title": "Casino Tour",
+      "subtitle": "A premium night: style & emotions",
+      "text": "Modern casinos, restaurants and the best nightlife spots — in a discreet premium format. We plan the whole evening: logistics, stay, privacy and the right places.",
+      "link": "/casino-tour",
+      "pill": "Night"
+    },
+    {
+      "title": "Wedding Tour",
+      "subtitle": "A tasteful ceremony in Georgia",
+      "text": "Cinematic locations: mountains, sea, architecture or vineyards. Ceremony planning, timing, decor, photo/video and dinner — elegant, confident and stress-free.",
+      "link": "/wedding-tour",
+      "pill": "Wedding"
+    }
+  ]
+}

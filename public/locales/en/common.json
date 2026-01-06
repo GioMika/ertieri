@@ -1,0 +1,21 @@
+{
+  "header": {
+    "homeAria": "Home — Erti Eri",
+    "navAria": "Main site navigation",
+    "langAria": "Language selector",
+    "emailAria": "Send an email",
+    "emailTitle": "Email",
+    "waAria": "Open WhatsApp",
+    "waTitle": "WhatsApp",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "drawerMenuAria": "Mobile navigation",
+    "drawerBrand": "ERTI ERI",
+    "menu": {
+      "about": "About",
+      "services": "Tours & Services",
+      "blog": "Georgia Blog",
+      "contact": "Contacts"
+    }
+  }
+}

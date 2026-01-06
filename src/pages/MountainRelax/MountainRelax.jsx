@@ -1,87 +1,64 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import classes from './MountainRelax.module.css';
+import React, { useMemo, useState, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import classes from "./MountainRelax.module.css";
 
-// Use same shared images pack
-import img1 from './images/a-climber-standing-near-a-summit-ridge-with-clouds.png';
-import img2 from './images/a-cozy-mountain-hotel-terrace-overlooking-a-dramat.png';
-import img3 from './images/a-dynamic-winter-ski-resort-scene-with-fresh-powde.png';
-import img4 from './images/a-hiker-walking-along-a-narrow-mountain-trail-surr.png';
-import img5 from './images/a-panoramic-view-of-the-caucasus-mountains-in-geor.png';
+// Images
+import img1 from "./images/a-climber-standing-near-a-summit-ridge-with-clouds.png";
+import img2 from "./images/a-cozy-mountain-hotel-terrace-overlooking-a-dramat.png";
+import img3 from "./images/a-dynamic-winter-ski-resort-scene-with-fresh-powde.png";
+import img4 from "./images/a-hiker-walking-along-a-narrow-mountain-trail-surr.png";
+import img5 from "./images/a-panoramic-view-of-the-caucasus-mountains-in-geor.png";
 
+const SITE_URL = "https://ertieri.ge";
+
+const normalizeLang = (lng) => {
+  if (!lng) return "ru";
+  // у тебя грузинский хранится как "ge", иногда браузер даёт "ka"
+  if (lng === "ka") return "ge";
+  return lng;
+};
 
 const MountainRelax = () => {
+  const navigate = useNavigate();
   const [selectedBlock, setSelectedBlock] = useState(null);
 
-  const images = useMemo(
-      () => [img1, img2, img3, img4, img5],
+  const { t, i18n, ready } = useTranslation("mountainRelax", { useSuspense: false });
+  const lang = normalizeLang(i18n.resolvedLanguage);
+
+  // чтобы не “мигало” RU, пока ns грузится
+  if (!ready) return null;
+
+  const meta = t("meta", { returnObjects: true });
+  const pageTitle = t("pageTitle");
+  const pageSubtitle = t("pageSubtitle");
+  const ui = t("ui", { returnObjects: true });
+  const sectionsRaw = t("sections", { returnObjects: true });
+
+  const imagesById = useMemo(
+      () => ({
+        1: img5,
+        2: img3,
+        3: img4,
+        4: img2,
+        5: img1,
+      }),
       []
   );
 
-  const blocks = useMemo(
-      () => [
-        {
-          id: 1,
-          title: 'Отдых в горах',
-          subtitle: 'Величие Кавказа',
-          description:
-              'Откройте для себя отдых в грузинских горах: чистый воздух, снежные вершины Кавказа, альпийские луга и виды, которые хочется оставить в памяти навсегда.',
-          fullDescription:
-              'Горная Грузия — это другой ритм. Здесь утро начинается с прозрачного воздуха и тишины, а день — с дорог, которые ведут к панорамам, как из кино. Мы подберем маршрут под ваш темп: комфортный, активный или смешанный. Вас ждут смотровые площадки, горные деревни, тёплые гостевые дома, локальная кухня и ощущение свободы, которое дают только горы.',
-          image: images[4]
-        },
-        {
-          id: 2,
-          title: 'Горнолыжные курорты',
-          subtitle: 'Гудаури и Бакуриани',
-          description:
-              'Трассы разного уровня, надежный снег в сезон, прокат, инструкторы и комфортная инфраструктура. Зима в Грузии — это красиво, безопасно и по-настоящему драйвово.',
-          fullDescription:
-              'Гудаури — идеален для тех, кто любит простор и виды. Бакуриани — более семейный и спокойный, с уютной атмосферой. Мы организуем всё “под ключ”: трансфер, жильё, ски-пассы, оборудование, инструктора при необходимости. Хотите кататься или просто наслаждаться зимними видами у камина — сделаем так, чтобы вы отдыхали, а не решали логистику.',
-          image: images[2]
-        },
-        {
-          id: 3,
-          title: 'Треккинг и хайкинг',
-          subtitle: 'Маршруты для всех',
-          description:
-              'Сванетия, Казбеги, Тушетия — от лёгких прогулок до серьёзных маршрутов. Опытные гиды, правильный тайминг, красивые точки и ощущение настоящего приключения.',
-          fullDescription:
-              'Мы делаем треккинг комфортным: подбираем сложность, темп и продолжительность, планируем остановки, видовые точки и время на фото. Можно выбрать однодневные маршруты или несколько дней с ночёвками. По запросу — кемпинг, пикник, фотосопровождение. Важно одно: вы видите лучшее и не устаете “в ноль”.',
-          image: images[3]
-        },
-        {
-          id: 4,
-          title: 'Горные отели',
-          subtitle: 'Комфорт на высоте',
-          description:
-              'От уютных гестхаусов с домашней кухней до современных отелей с панорамными окнами. Тёплый свет, камин, веранда и вид, ради которого хочется вставать рано.',
-          fullDescription:
-              'Мы рекомендуем места, где действительно приятно жить: хороший сон, чистота, атмосфера, сервис и виды. Подберём варианты под стиль вашей поездки — романтика, семья, друзья, “тихо и красиво”. Плюс — помощь с бронированием, заездом, трансфером и всей связанной логистикой.',
-          image: images[1]
-        },
-        {
-          id: 5,
-          title: 'Покорите вершины',
-          subtitle: 'Начните приключение',
-          description:
-              'Организуем горный отдых под ключ: маршрут, транспорт, размещение, гиды и активности. Зима или лето — вы получаете путешествие, которое хочется повторить.',
-          fullDescription:
-              'Напишите нам — и мы соберём программу под ваши даты и пожелания. Хотите больше природы, меньше людей, больше комфорта или больше активности — всё возможно. Мы держим контроль за таймингом, маршрутами и сервисом, чтобы вы наслаждались горами без лишней суеты.',
-          image: images[0],
-          cta: true
-        }
-      ],
-      [images]
-  );
+  const sections = useMemo(() => {
+    const list = Array.isArray(sectionsRaw) ? sectionsRaw : [];
+    return list.map((s) => ({
+      ...s,
+      image: imagesById[s.id] || img1,
+    }));
+  }, [sectionsRaw, imagesById]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.08 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
   };
 
   const itemVariants = {
@@ -90,113 +67,200 @@ const MountainRelax = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: 'spring', damping: 20, stiffness: 140 }
-    }
+      transition: { type: "spring", damping: 20, stiffness: 140 },
+    },
   };
 
   const layoutIdByBlock = (id) => `mountain-img-${id}`;
 
-  const openModal = (block) => {
-    if (!block.cta) setSelectedBlock(block);
-  };
+  const openModal = useCallback((block) => {
+    if (!block?.cta) setSelectedBlock(block);
+  }, []);
 
-  const closeModal = () => setSelectedBlock(null);
+  const closeModal = useCallback(() => setSelectedBlock(null), []);
+
+  const go = useCallback(
+      (to) => {
+        if (!to) return;
+        navigate(to);
+      },
+      [navigate]
+  );
+
+  const onCardKeyDown = useCallback(
+      (e, to, disabled) => {
+        if (!to || disabled) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          navigate(to);
+        }
+      },
+      [navigate]
+  );
+
+  const pathLang = lang === "ge" ? "ge" : lang === "en" ? "en" : "ru";
+  const pageUrl = `${SITE_URL}/${pathLang}/mountain-relax`;
+
+  const jsonLd = useMemo(
+      () => ({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            name: meta.title,
+            description: meta.description,
+            url: pageUrl,
+            inLanguage: lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "ka-GE",
+            isPartOf: { "@type": "WebSite", name: "Erti Eri", url: SITE_URL },
+          },
+          {
+            "@type": "Service",
+            name: lang === "en" ? "Mountain tours in Georgia" : lang === "ru" ? "Горные туры по Грузии" : "მთის ტურები საქართველოში",
+            provider: { "@type": "TravelAgency", name: "Erti Eri", url: SITE_URL },
+            areaServed: [{ "@type": "Country", name: "Georgia" }],
+            serviceType: "Mountain tours, hiking and ski trips",
+            url: pageUrl,
+          },
+        ],
+      }),
+      [meta.title, meta.description, pageUrl, lang]
+  );
 
   return (
-      <div className={classes.mountainRelax}>
-        <motion.div
-            className={classes.container}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-          {blocks.map((block) => (
-              <motion.div
-                  key={block.id}
-                  className={`${classes.block} ${classes[`block${block.id}`]}`}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -6, transition: { duration: 0.25 } }}
-                  onClick={() => openModal(block)}
-                  role={!block.cta ? "button" : undefined}
-                  tabIndex={!block.cta ? 0 : -1}
-              >
-                <div className={classes.imageWrapper}>
-                  <motion.img
-                      src={block.image}
-                      alt={block.title}
-                      className={classes.blockImage}
-                      layoutId={layoutIdByBlock(block.id)}
-                  />
-                </div>
+      <>
+        <Helmet>
+          <title>{meta.title}</title>
+          <meta name="description" content={meta.description} />
+          <meta name="keywords" content={meta.keywords} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={pageUrl} />
 
-                <h2 className={classes.title}>{block.title}</h2>
-                <p className={classes.subtitle}>{block.subtitle}</p>
-                <p className={classes.description}>{block.description}</p>
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={meta.ogTitle} />
+          <meta property="og:description" content={meta.ogDescription} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:image" content={`${SITE_URL}/og-mountain-relax.jpg`} />
+          <meta property="og:site_name" content="Erti Eri" />
+          <meta property="og:locale" content={lang === "ru" ? "ru_RU" : lang === "en" ? "en_US" : "ka_GE"} />
 
-                {block.cta && (
-                    <Link to="/contact" className={classes.ctaLink}>
-                      <motion.button
-                          className={classes.ctaButton}
-                          whileHover={{ scale: 1.06 }}
-                          whileTap={{ scale: 0.97 }}
-                      >
-                        Забронировать тур
-                      </motion.button>
-                    </Link>
-                )}
-              </motion.div>
-          ))}
-        </motion.div>
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={meta.ogTitle} />
+          <meta name="twitter:description" content={meta.ogDescription} />
+          <meta name="twitter:image" content={`${SITE_URL}/og-mountain-relax.jpg`} />
 
-        <AnimatePresence>
-          {selectedBlock && (
-              <>
-                <motion.div
-                    className={classes.modalBackdrop}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeModal}
-                />
+          <link rel="alternate" hrefLang="ru" href={`${SITE_URL}/ru/mountain-relax`} />
+          <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/mountain-relax`} />
+          <link rel="alternate" hrefLang="ka" href={`${SITE_URL}/ge/mountain-relax`} />
+          <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en/mountain-relax`} />
 
-                <motion.div
-                    className={classes.modalWrapper}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 24 }}
-                    transition={{ type: "spring", damping: 28, stiffness: 320 }}
-                    role="dialog"
-                    aria-modal="true"
-                >
-                  <div className={classes.modal}>
-                    <button className={classes.closeButton} onClick={closeModal} aria-label="Закрыть">
-                      ✕
-                    </button>
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        </Helmet>
 
-                    <div className={classes.modalHero}>
+        <main className={classes.mountainRelax}>
+          <header className={classes.header}>
+            <h1 className={classes.pageTitle}>{pageTitle}</h1>
+            <p className={classes.pageSubtitle}>{pageSubtitle}</p>
+          </header>
+
+          <motion.section
+              className={classes.container}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              aria-label={ui.ariaSections}
+          >
+            {sections.map((block) => {
+              const isCta = Boolean(block.cta);
+              const clickable = Boolean(block.to) && !isCta;
+
+              return (
+                  <motion.article
+                      key={block.id}
+                      className={`${classes.block} ${classes[`block${block.id}`]}`}
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.02, y: -6, transition: { duration: 0.25 } }}
+                      onClick={() => (isCta ? go(block.to) : openModal(block))}
+                      role={clickable ? "button" : undefined}
+                      tabIndex={clickable ? 0 : -1}
+                      onKeyDown={(e) => onCardKeyDown(e, block.to, !clickable)}
+                      aria-label={clickable ? `${block.title}. ${ui.open}` : undefined}
+                  >
+                    <div className={classes.imageWrapper}>
                       <motion.img
-                          src={selectedBlock.image}
-                          alt={selectedBlock.title}
-                          className={classes.modalHeroImg}
-                          layoutId={layoutIdByBlock(selectedBlock.id)}
+                          src={block.image}
+                          alt={block.imageAlt || block.title}
+                          className={classes.blockImage}
+                          layoutId={layoutIdByBlock(block.id)}
+                          loading="lazy"
                       />
                     </div>
 
-                    <div className={classes.modalContent}>
-                      <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
-                      <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
-                      <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+                    <h2 className={classes.title}>{block.title}</h2>
+                    <p className={classes.subtitle}>{block.subtitle}</p>
+                    <p className={classes.description}>{block.description}</p>
 
-                      <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
-                        <button className={classes.modalCtaButton}>Забронировать</button>
-                      </Link>
+                    {isCta && (
+                        <div className={classes.ctaArea}>
+                          <Link to="/contact" className={classes.ctaLink}>
+                            <motion.button className={classes.ctaButton} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }}>
+                              {block.ctaText}
+                            </motion.button>
+                          </Link>
+                          {block.ctaHint && <div className={classes.ctaHint}>{block.ctaHint}</div>}
+                        </div>
+                    )}
+                  </motion.article>
+              );
+            })}
+          </motion.section>
+
+          <AnimatePresence>
+            {selectedBlock && (
+                <>
+                  <motion.div className={classes.modalBackdrop} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeModal} />
+
+                  <motion.div
+                      className={classes.modalWrapper}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 24 }}
+                      transition={{ type: "spring", damping: 28, stiffness: 320 }}
+                      role="dialog"
+                      aria-modal="true"
+                      aria-label={selectedBlock.title}
+                  >
+                    <div className={classes.modal}>
+                      <button className={classes.closeButton} onClick={closeModal} aria-label={ui.close} type="button">
+                        ✕
+                      </button>
+
+                      <div className={classes.modalHero}>
+                        <motion.img
+                            src={selectedBlock.image}
+                            alt={selectedBlock.imageAlt || selectedBlock.title}
+                            className={classes.modalHeroImg}
+                            layoutId={layoutIdByBlock(selectedBlock.id)}
+                        />
+                      </div>
+
+                      <div className={classes.modalContent}>
+                        <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
+                        <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
+                        <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+
+                        <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
+                          <button className={classes.modalCtaButton} type="button">
+                            {ui.book}
+                          </button>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </>
-          )}
-        </AnimatePresence>
-      </div>
+                  </motion.div>
+                </>
+            )}
+          </AnimatePresence>
+        </main>
+      </>
   );
 };
 

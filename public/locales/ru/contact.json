@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Контакты Erti Eri — связаться, WhatsApp, адрес в Батуми | Туры и экскурсии по Грузии",
+    "description": "Свяжитесь с Erti Eri: WhatsApp, email и офис в Батуми. Ответим быстро, поможем подобрать тур по Грузии, маршрут, отель и трансфер. Оставьте заявку — предложим варианты под ваш стиль отдыха.",
+    "keywords": "контакты Erti Eri, связаться Erti Eri, туры Грузия контакты, экскурсии Батуми контакты, WhatsApp туры Грузия, туристическая компания Батуми, заказать тур Батуми, туры по Грузии заявка",
+    "ogTitle": "Контакты Erti Eri — напишите нам, мы на связи",
+    "ogDescription": "WhatsApp, email, офис в Батуми. Подберём тур и маршрут по Грузии под ваш запрос. Ответим быстро.",
+    "alternates": {
+      "ru": "https://ertieri.ge/ru/contact",
+      "en": "https://ertieri.ge/en/contact",
+      "ka": "https://ertieri.ge/ge/contact"
+    },
+    "locale": "ru_RU",
+    "ogImage": "https://ertieri.ge/og-contact.jpg"
+  },
+  "pageTitle": "Контакты",
+  "pageSubtitle": "Напишите нам — и мы соберём ваш тур по Грузии: маршрут, тайминг, отель и детали без суеты",
+  "ui": {
+    "kicker": "Контакты",
+    "ctaEmail": "Написать на email",
+    "ctaWhatsApp": "Открыть WhatsApp",
+    "office": "Офис",
+    "schedule": "График",
+    "mapTitle": "Мы на карте",
+    "mapSubtitle": "Батуми",
+    "route": "Маршрут",
+    "messageTitle": "Сообщение",
+    "name": "Имя",
+    "email": "Email",
+    "message": "Сообщение",
+    "namePh": "Ваше имя",
+    "emailPh": "you@email.com",
+    "messagePh": "Куда хотите поехать, на сколько дней, сколько человек, что важно (море/горы/вино/экскурсии/комфорт)…",
+    "send": "Отправить",
+    "hint": "Ответим быстро. Если хотите — напишите сразу в WhatsApp, так быстрее подобрать варианты.",
+    "mapIframeTitle": "Офис на карте"
+  },
+  "data": {
+    "address": "Батуми, ул. Бако 8",
+    "streetAddress": "ул. Бако 8",
+    "city": "Батуми",
+    "workTime": "Ежедневно 10:00–20:00",
+    "openingHours": "Mo-Su 10:00-20:00",
+    "whatsappDisplay": "+995 XXX XXX XXX",
+    "mapDestination": "Батуми, ул. Бако 8",
+    "embedMapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.5!2d41.6433!3d41.6415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM4JzI5LjQiTiA0McKwMzgnMzUuOSJF!5e0!3m2!1sru!2sge!4v1234567890"
+  }
+}

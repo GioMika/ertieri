@@ -1,84 +1,48 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import classes from './CasinoTour.module.css';
+import React, { useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import classes from "./CasinoTour.module.css";
 
-// Use same shared images pack
-import img1 from './images/a-high-end-casino-vip-gaming-hall-with-polished-bl.png';
-import img2 from './images/a-premium-rooftop-lounge-pool-at-night--overlookin.png';
-import img3 from './images/deep-shadows--subtle-sparkles--dark-background-fad.png';
-import img4 from './images/a-stylish-night-entertainment-scene-with-a-premium.png';
-import img5 from './images/a-luxurious-nighttime-coastal-city-scene-with-a-wi.png';
+// Images
+import img1 from "./images/a-high-end-casino-vip-gaming-hall-with-polished-bl.png";
+import img2 from "./images/a-premium-rooftop-lounge-pool-at-night--overlookin.png";
+import img3 from "./images/deep-shadows--subtle-sparkles--dark-background-fad.png";
+import img4 from "./images/a-stylish-night-entertainment-scene-with-a-premium.png";
+import img5 from "./images/a-luxurious-nighttime-coastal-city-scene-with-a-wi.png";
 
+const SITE_URL = "https://ertieri.ge";
+const normalizeLang = (lng) => (lng || "ru").split("-")[0];
 
 const CasinoTour = () => {
+  const navigate = useNavigate();
   const [selectedBlock, setSelectedBlock] = useState(null);
 
-  const images = useMemo(
-      () => [img1, img2, img3, img4, img5],
-      []
-  );
+  const { t, i18n } = useTranslation("casinoTour");
+  const lang = normalizeLang(i18n.resolvedLanguage || i18n.language);
 
-  const blocks = useMemo(
-      () => [
-        {
-          id: 1,
-          title: 'Казино тур',
-          subtitle: 'Роскошь и азарт',
-          description:
-              'Грузия становится новой игорной точкой региона: современные казино мирового уровня, деликатная роскошь, сервис и атмосфера, которую хочется прожить хотя бы раз.',
-          fullDescription:
-              'Казино-тур — это не про “шумно и ярко”, а про стиль и ощущение уровня: правильные локации, грамотный тайминг, комфортный транспорт и лучшие залы. Мы собираем программу под вас: где играть, где ужинать, где провести вечер — и всё это без суеты. Вы отдыхаете, мы держим контроль.',
-          image: images[0]
-        },
-        {
-          id: 2,
-          title: 'Премиум казино',
-          subtitle: 'Лучшие игровые залы',
-          description:
-              'Casino Adjara, Shangri La, OrientExpress — рулетка, покер, блэкджек, слоты. VIP-зоны и спокойная подача без “показухи”.',
-          fullDescription:
-              'Мы подберём залы и формат под ваш стиль: классика (рулетка/блэкджек), покерные столы или аккуратные игровые автоматы. Поможем с VIP-входом, приоритетом по столам и рекомендациями по лучшим часам. Важно: всё легально, безопасно и с уважением к вашему приватному отдыху.',
-          image: images[1]
-        },
-        {
-          id: 3,
-          title: 'Развлечения',
-          subtitle: 'Не только игры',
-          description:
-              'Рестораны, бары, шоу, ночные локации и спокойные места для восстановления: SPA, бассейн, поздний завтрак. Тур строится вокруг удовольствия.',
-          fullDescription:
-              'Казино-тур — это целая ночь красивых деталей. Мы добавим “вкус”: правильный ресторан, хороший бар, музыку, виды, и обязательно — комфорт на следующий день. Хотите вечер “тихо и статусно” или “с эмоцией” — сделаем, но без лишнего шума.',
-          image: images[4]
-        },
-        {
-          id: 4,
-          title: 'VIP-сервис',
-          subtitle: 'Эксклюзивное обслуживание',
-          description:
-              'Трансфер на премиум авто, лучшие номера, персональный хост, гибкий маршрут. Вы чувствуете контроль и лёгкость — всё идет по плану.',
-          fullDescription:
-              'Мы организуем логистику и детали так, чтобы всё выглядело естественно и уверенно: время, маршруты, входы, размещение, приватность. По запросу — персональный менеджер на связи, индивидуальные программы и аккуратные VIP-решения без излишнего блеска.',
-          image: images[3]
-        },
-        {
-          id: 5,
-          title: 'Испытайте удачу',
-          subtitle: 'Забронируйте казино тур',
-          description:
-              'Полная организация поездки: транспорт, размещение, сопровождение и комфортный сценарий вечера. Безопасно, легально и премиально.',
-          fullDescription:
-              'Напишите нам — и мы соберём программу под ваш вкус. Можно сделать короткий “вечерний” формат или полноценный тур на несколько дней с отдыхом, кухней и лучшими локациями. Вы получаете стильную поездку, а не набор случайных решений.',
-          image: images[2],
-          cta: true
-        }
-      ],
-      [images]
-  );
+  const images = useMemo(() => [img1, img2, img3, img4, img5], []);
+
+  // ====== texts ======
+  const meta = t("meta", { returnObjects: true }) || {};
+  const ui = t("ui", { returnObjects: true }) || {};
+
+  const pageTitle = t("pageTitle");
+  const pageSubtitle = t("pageSubtitle");
+
+  const sectionsRaw = t("sections", { returnObjects: true });
+  const sections = useMemo(() => {
+    const arr = Array.isArray(sectionsRaw) ? sectionsRaw : [];
+    return arr.map((s) => ({
+      ...s,
+      image: images[s.imageIndex ?? 0],
+    }));
+  }, [sectionsRaw, images]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.08 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
   };
 
   const itemVariants = {
@@ -87,113 +51,240 @@ const CasinoTour = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: 'spring', damping: 20, stiffness: 140 }
-    }
+      transition: { type: "spring", damping: 20, stiffness: 140 },
+    },
   };
 
   const layoutIdByBlock = (id) => `casino-img-${id}`;
 
   const openModal = (block) => {
-    if (!block.cta) setSelectedBlock(block);
+    if (!block?.cta) setSelectedBlock(block);
   };
 
   const closeModal = () => setSelectedBlock(null);
 
+  const go = (to) => {
+    if (!to) return;
+    navigate(to);
+  };
+
+  const onCardKeyDown = (e, to, disabled) => {
+    if (!to || disabled) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigate(to);
+    }
+  };
+
+  const pathLang = lang === "ge" ? "ge" : lang === "en" ? "en" : "ru";
+  const pageUrl = `${SITE_URL}/${pathLang}/casino-tour`;
+
+  const alternates = meta.alternates || {
+    ru: `${SITE_URL}/ru/casino-tour`,
+    en: `${SITE_URL}/en/casino-tour`,
+    ka: `${SITE_URL}/ge/casino-tour`,
+  };
+
+  const ogImage = meta.ogImage || `${SITE_URL}/og-casino-tour.jpg`;
+  const ogLocale = meta.locale || (lang === "ru" ? "ru_RU" : lang === "en" ? "en_US" : "ka_GE");
+
+  // ====== JSON-LD ======
+  const jsonLd = useMemo(
+      () => ({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: meta.title,
+        description: meta.description,
+        url: pageUrl,
+        inLanguage: lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "ka-GE",
+        isPartOf: { "@type": "WebSite", name: "Erti Eri", url: SITE_URL },
+        about: [
+          {
+            "@type": "TouristDestination",
+            name: lang === "en" ? "Batumi" : lang === "ru" ? "Батуми" : "ბათუმი",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Batumi",
+              addressRegion: "Ajara",
+              addressCountry: "GE",
+            },
+          },
+          {
+            "@type": "Thing",
+            name: lang === "en" ? "Casino Tour" : lang === "ru" ? "Казино-тур" : "კაზინო ტური",
+          },
+        ],
+        publisher: {
+          "@type": "TravelAgency",
+          name: "Erti Eri",
+          url: SITE_URL,
+          telephone: "+995-XXX-XXX-XXX",
+        },
+      }),
+      [meta.title, meta.description, pageUrl, lang]
+  );
+
   return (
-      <div className={classes.casinoTour}>
-        <motion.div
-            className={classes.container}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-          {blocks.map((block) => (
-              <motion.div
-                  key={block.id}
-                  className={`${classes.block} ${classes[`block${block.id}`]}`}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -6, transition: { duration: 0.25 } }}
-                  onClick={() => openModal(block)}
-                  role={!block.cta ? 'button' : undefined}
-                  tabIndex={!block.cta ? 0 : -1}
-              >
-                <div className={classes.imageWrapper}>
-                  <motion.img
-                      src={block.image}
-                      alt={block.title}
-                      className={classes.blockImage}
-                      layoutId={layoutIdByBlock(block.id)}
-                  />
-                </div>
+      <>
+        <Helmet>
+          <html lang={lang} />
 
-                <h2 className={classes.title}>{block.title}</h2>
-                <p className={classes.subtitle}>{block.subtitle}</p>
-                <p className={classes.description}>{block.description}</p>
+          <title>{meta.title}</title>
+          <meta name="description" content={meta.description} />
+          <meta name="keywords" content={meta.keywords} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={pageUrl} />
 
-                {block.cta && (
-                    <Link to="/contact" className={classes.ctaLink}>
-                      <motion.button
-                          className={classes.ctaButton}
-                          whileHover={{ scale: 1.06 }}
-                          whileTap={{ scale: 0.97 }}
-                      >
-                        Забронировать тур
-                      </motion.button>
-                    </Link>
-                )}
-              </motion.div>
-          ))}
-        </motion.div>
+          {/* hreflang */}
+          <link rel="alternate" hrefLang="ru" href={alternates.ru} />
+          <link rel="alternate" hrefLang="en" href={alternates.en} />
+          <link rel="alternate" hrefLang="ka" href={alternates.ka} />
+          <link rel="alternate" hrefLang="x-default" href={alternates.en} />
 
-        <AnimatePresence>
-          {selectedBlock && (
-              <>
-                <motion.div
-                    className={classes.modalBackdrop}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeModal}
-                />
+          {/* Open Graph */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={meta.ogTitle || meta.title} />
+          <meta property="og:description" content={meta.ogDescription || meta.description} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:image" content={ogImage} />
+          <meta property="og:site_name" content="Erti Eri" />
+          <meta property="og:locale" content={ogLocale} />
 
-                <motion.div
-                    className={classes.modalWrapper}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 24 }}
-                    transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-                    role="dialog"
-                    aria-modal="true"
-                >
-                  <div className={classes.modal}>
-                    <button className={classes.closeButton} onClick={closeModal} aria-label="Закрыть">
-                      ✕
-                    </button>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={meta.ogTitle || meta.title} />
+          <meta name="twitter:description" content={meta.ogDescription || meta.description} />
+          <meta name="twitter:image" content={ogImage} />
 
-                    <div className={classes.modalHero}>
+          {/* JSON-LD */}
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        </Helmet>
+
+        <main className={classes.casinoTour}>
+          <header className={classes.header}>
+            <h1 className={classes.pageTitle}>{pageTitle}</h1>
+            <p className={classes.pageSubtitle}>{pageSubtitle}</p>
+          </header>
+
+          <motion.section
+              className={classes.container}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              aria-label={ui.sectionsAria || "Page sections"}
+          >
+            {sections.map((block) => {
+              const isCta = Boolean(block.cta);
+              const clickable = Boolean(block.to) && !isCta;
+
+              return (
+                  <motion.article
+                      key={block.id}
+                      className={`${classes.block} ${classes[`block${block.id}`]}`}
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.02, y: -6, transition: { duration: 0.25 } }}
+                      onClick={() => (isCta ? go(block.to) : openModal(block))}
+                      role={clickable ? "button" : undefined}
+                      tabIndex={clickable ? 0 : -1}
+                      onKeyDown={(e) => onCardKeyDown(e, block.to, !clickable)}
+                      aria-label={
+                        clickable
+                            ? `${block.title}. ${ui.open || "Open"}`
+                            : undefined
+                      }
+                  >
+                    <div className={classes.imageWrapper}>
                       <motion.img
-                          src={selectedBlock.image}
-                          alt={selectedBlock.title}
-                          className={classes.modalHeroImg}
-                          layoutId={layoutIdByBlock(selectedBlock.id)}
+                          src={block.image}
+                          alt={block.imageAlt || block.title}
+                          className={classes.blockImage}
+                          layoutId={layoutIdByBlock(block.id)}
+                          loading="lazy"
                       />
                     </div>
 
-                    <div className={classes.modalContent}>
-                      <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
-                      <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
-                      <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+                    <h2 className={classes.title}>{block.title}</h2>
+                    <p className={classes.subtitle}>{block.subtitle}</p>
+                    <p className={classes.description}>{block.description}</p>
 
-                      <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
-                        <button className={classes.modalCtaButton}>Забронировать</button>
-                      </Link>
+                    {isCta && (
+                        <div className={classes.ctaArea}>
+                          <Link to="/contact" className={classes.ctaLink}>
+                            <motion.button
+                                className={classes.ctaButton}
+                                whileHover={{ scale: 1.06 }}
+                                whileTap={{ scale: 0.97 }}
+                                aria-label={block.ctaText}
+                            >
+                              {block.ctaText}
+                            </motion.button>
+                          </Link>
+                          {block.ctaHint && <div className={classes.ctaHint}>{block.ctaHint}</div>}
+                        </div>
+                    )}
+                  </motion.article>
+              );
+            })}
+          </motion.section>
+
+          {/* Modal */}
+          <AnimatePresence>
+            {selectedBlock && (
+                <>
+                  <motion.div
+                      className={classes.modalBackdrop}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={closeModal}
+                  />
+
+                  <motion.div
+                      className={classes.modalWrapper}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 24 }}
+                      transition={{ type: "spring", damping: 28, stiffness: 320 }}
+                      role="dialog"
+                      aria-modal="true"
+                      aria-label={selectedBlock.title}
+                  >
+                    <div className={classes.modal}>
+                      <button
+                          className={classes.closeButton}
+                          onClick={closeModal}
+                          aria-label={ui.close || "Close"}
+                      >
+                        ✕
+                      </button>
+
+                      <div className={classes.modalHero}>
+                        <motion.img
+                            src={selectedBlock.image}
+                            alt={selectedBlock.imageAlt || selectedBlock.title}
+                            className={classes.modalHeroImg}
+                            layoutId={layoutIdByBlock(selectedBlock.id)}
+                        />
+                      </div>
+
+                      <div className={classes.modalContent}>
+                        <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
+                        <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
+                        <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+
+                        <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
+                          <button className={classes.modalCtaButton}>
+                            {ui.book || "Book"}
+                          </button>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </>
-          )}
-        </AnimatePresence>
-      </div>
+                  </motion.div>
+                </>
+            )}
+          </AnimatePresence>
+        </main>
+      </>
   );
 };
 

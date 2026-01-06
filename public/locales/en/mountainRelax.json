@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Mountain Holiday in Georgia — Gudauri, Bakuriani, Hiking & Hotels | Caucasus Mountain Tour",
+    "description": "Plan your mountain getaway in Georgia: Gudauri & Bakuriani resorts, hiking/trekking routes, Caucasus panoramas, cozy hotels and transfer. Tailored itinerary — calm, beautiful, well-paced.",
+    "keywords": "mountain holiday Georgia, Georgia mountain tour, Caucasus mountains Georgia, Gudauri tour, Bakuriani tour, hiking Georgia, trekking Georgia, mountain hotels Georgia, Kazbegi tour, Svaneti tour, active holiday Georgia",
+    "ogTitle": "Mountain Holiday in Georgia — Caucasus views & smart routing",
+    "ogDescription": "Gudauri, Bakuriani, hiking, cozy stays and top viewpoints. We plan logistics, timing and comfort end-to-end."
+  },
+  "pageTitle": "Mountain Holiday in Georgia",
+  "pageSubtitle": "Caucasus panoramas, fresh air and routes that feel right — in your pace",
+  "ui": {
+    "open": "Open",
+    "close": "Close",
+    "book": "Book",
+    "ariaSections": "Mountain routes & formats"
+  },
+  "sections": [
+    {
+      "id": 1,
+      "title": "Mountain Relax",
+      "subtitle": "The Caucasus grandeur",
+      "description": "Georgia’s mountains are about silence, space and jaw-dropping views. We build a trip that feels light, not exhausting.",
+      "fullDescription": "Mountain Georgia has its own rhythm: clear air in the morning and cinematic panoramas throughout the day. We match the format to you: comfort-first, active, or mixed. Expect scenic stops, beautiful roads, tasty breaks and enough time to simply breathe — so the trip feels cohesive and effortless.",
+      "imageAlt": "Panoramic Caucasus mountains in Georgia — wide ridges and crisp alpine atmosphere",
+      "to": "/services"
+    },
+    {
+      "id": 2,
+      "title": "Ski Resorts",
+      "subtitle": "Gudauri & Bakuriani",
+      "description": "Skiing, views and solid infrastructure. We’ll choose the right resort and a format that fits your style — energetic or calm.",
+      "fullDescription": "We arrange winter plans end-to-end: transfer, accommodation, rental spots, clear timing and location tips. Gudauri is loved for open slopes and big views; Bakuriani for a calmer, family-friendly vibe. Whether you want full-day skiing or cozy evenings with mountain scenery — we’ll craft your scenario.",
+      "imageAlt": "Winter ski resort in Georgia — fresh powder, movement and mountain scenery",
+      "to": "/services"
+    },
+    {
+      "id": 3,
+      "title": "Hiking & Trekking",
+      "subtitle": "Routes for every level",
+      "description": "Svaneti, Kazbegi, Tusheti and more — from easy walks to full days of scenery with smart stops and pacing.",
+      "fullDescription": "We plan trekking the smart way: difficulty, pace, duration, scenic points and comfortable breaks. Choose a one-day hike or a multi-day program with overnights. Optional: picnic, photo stops, more nature or more local authenticity. The priority is a strong experience — without burning out.",
+      "imageAlt": "Hiker on a narrow mountain trail in Georgia — trekking with panoramic views",
+      "to": "/blog"
+    },
+    {
+      "id": 4,
+      "title": "Mountain Hotels & Guesthouses",
+      "subtitle": "Comfort with a view",
+      "description": "Cozy stays where you sleep well and wake up to the scenery: terrace, warm light, quiet nights and mountain air.",
+      "fullDescription": "We recommend places that truly feel good: clean rooms, atmosphere, service and a view worth waking up early for. We match the stay to your trip: romantic, family, friends, ‘quiet & beautiful’ or ‘base for activities’. Booking and logistics — on us, so it stays simple.",
+      "imageAlt": "Cozy mountain hotel terrace in Georgia — dramatic peaks and calm evening comfort",
+      "to": "/services"
+    },
+    {
+      "id": 5,
+      "title": "Ready for an Adventure?",
+      "subtitle": "Book a mountain tour",
+      "description": "We’ll tailor a route to your dates: transport, accommodation, activities and a clear plan. Winter or summer — it will be beautiful.",
+      "fullDescription": "Message us and we’ll propose a few options that match your style: more nature, fewer crowds, more comfort or more activity. We handle routes, timing and service details — so you enjoy the mountains with calm confidence.",
+      "imageAlt": "Climber near a summit ridge — freedom, altitude and dramatic mountain clouds",
+      "cta": true,
+      "to": "/contact",
+      "ctaText": "Book the tour",
+      "ctaHint": "Fast reply. We’ll tailor the format."
+    }
+  ]
+}

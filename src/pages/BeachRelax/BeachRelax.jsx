@@ -1,71 +1,47 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import classes from './BeachRelax.module.css';
+import React, { useMemo, useState, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import classes from "./BeachRelax.module.css";
 
-// Import all images
-import img1 from './images/a-cinematic-black-sea-coast-near-batumi-with-cryst.png';
-import img2 from './images/a-long-pebble-and-sand-beach-with-gradients-of-dee.png';
-import img3 from './images/a-luxury-seaside-hotel-with-glass-facades-reflecti.png';
-import img4 from './images/batumi-nightlife-along-the-coast-with-neon-turquoi.png';
-import img5 from './images/early-sunrise-over-the-black-sea-with-pastel-turqu.png';
+// Images
+import img1 from "./images/a-cinematic-black-sea-coast-near-batumi-with-cryst.png";
+import img2 from "./images/a-long-pebble-and-sand-beach-with-gradients-of-dee.png";
+import img3 from "./images/a-luxury-seaside-hotel-with-glass-facades-reflecti.png";
+import img4 from "./images/batumi-nightlife-along-the-coast-with-neon-turquoi.png";
+import img5 from "./images/early-sunrise-over-the-black-sea-with-pastel-turqu.png";
 
+const normalizeLang = (lng) => (lng || "ru").split("-")[0];
 
 const BeachRelax = () => {
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation("beachRelax");
+  const lang = normalizeLang(i18n.resolvedLanguage || i18n.language);
+
   const [selectedBlock, setSelectedBlock] = useState(null);
 
-  const images = [img1, img2, img3, img4, img5];
+  const images = useMemo(() => [img1, img2, img3, img4, img5], []);
 
-  const blocks = [
-    {
-      id: 1,
-      title: 'Отдых на море',
-      subtitle: 'Черноморское побережье Батуми',
-      description: 'Погрузитесь в атмосферу роскошного пляжного отдыха на берегу Черного моря. Батуми — жемчужина грузинского побережья с современной инфраструктурой и бесконечными возможностями для отдыха.',
-      fullDescription: 'Батуми — это настоящая жемчужина Черноморского побережья Грузии. Город сочетает в себе современную инфраструктуру, богатую историю и уникальную природу. Здесь вы найдете все для идеального отдыха: чистые пляжи, роскошные отели, рестораны с национальной кухней, живописную набережную и множество развлечений. Мягкий субтропический климат позволяет наслаждаться морем с мая по октябрь.',
-      image: images[4]
-    },
-    {
-      id: 2,
-      title: 'Пляжи и набережная',
-      subtitle: 'Километры чистых пляжей',
-      description: 'Галечные и песчаные пляжи протянулись вдоль всего побережья. Знаменитый Батумский бульвар длиной 7 километров — идеальное место для вечерних прогулок с видом на море.',
-      fullDescription: 'Батумское побережье славится своими ухоженными пляжами и знаменитым бульваром. 7-километровая набережная оснащена велосипедными дорожками, кафе, фонтанами и современными арт-объектами. Пляжи оборудованы лежаками, зонтиками и душевыми. Вечером набережная превращается в оживленное место встреч с уличными музыкантами и художниками.',
-      image: images[1]
-    },
-    {
-      id: 3,
-      title: 'Развлечения',
-      subtitle: 'Море активностей',
-      description: 'Аквапарк, дельфинарий, канатная дорога Арго, Ботанический сад, современные рестораны, ночные клубы и казино. В Батуми скучать не придется!',
-      fullDescription: 'Батуми предлагает развлечения на любой вкус. Посетите современный аквапарк с экстремальными горками, дельфинарий с увлекательными шоу, поднимитесь на канатной дороге Арго на высоту 250 метров для панорамного вида на город. Прогуляйтесь по Ботаническому саду с уникальной коллекцией растений. Вечером город оживает — работают многочисленные рестораны, бары, ночные клубы и казино мирового класса.',
-      image: images[3]
-    },
-    {
-      id: 4,
-      title: 'Отели премиум-класса',
-      subtitle: 'Комфорт на высшем уровне',
-      description: 'Роскошные отели с видом на море, SPA-центры, бассейны, рестораны. Мы подберем идеальное размещение под ваш бюджет — от уютных гестхаусов до 5-звездочных отелей.',
-      fullDescription: 'В Батуми представлен широкий выбор отелей на любой вкус и бюджет. Роскошные 5-звездочные отели предлагают номера с видом на море, SPA-центры мирового уровня, бассейны на крыше, рестораны высокой кухни и персональное обслуживание. Для тех, кто ищет более бюджетный вариант, доступны уютные гестхаусы и апартаменты с домашней атмосферой. Мы поможем подобрать идеальное размещение именно для вас.',
-      image: images[2]
-    },
-    {
-      id: 5,
-      title: 'Готовы к отдыху?',
-      subtitle: 'Свяжитесь с нами сейчас!',
-      description: 'Мы организуем ваш идеальный пляжный отдых в Батуми. Трансфер из аэропорта, бронирование отеля, экскурсии — всё включено. Оставьте заявку прямо сейчас!',
-      fullDescription: 'Доверьте организацию вашего отдыха профессионалам! Мы предлагаем полный пакет услуг: встреча в аэропорту и трансфер до отеля, бронирование лучших отелей по специальным ценам, организация экскурсий по Батуми и окрестностям, помощь с арендой автомобиля, рекомендации по ресторанам и развлечениям. Работаем 24/7, всегда на связи. Свяжитесь с нами прямо сейчас и получите индивидуальное предложение!',
-      image: images[4],
-      cta: true
-    }
-  ];
+  // ✅ контент из JSON
+  const meta = t("meta", { returnObjects: true });
+  const ui = t("ui", { returnObjects: true });
+  const pageTitle = t("pageTitle");
+  const pageSubtitle = t("pageSubtitle");
+  const sectionsRaw = t("sections", { returnObjects: true });
 
+  const sections = useMemo(() => {
+    const arr = Array.isArray(sectionsRaw) ? sectionsRaw : [];
+    return arr.map((s) => ({
+      ...s,
+      image: images[s.imageIndex ?? 0],
+    }));
+  }, [sectionsRaw, images]);
+
+  // ====== НЕ ТРОГАЮ: твои анимации ======
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
   };
 
   const blockVariants = {
@@ -75,122 +51,239 @@ const BeachRelax = () => {
       opacity: 1,
       scale: 1,
       rotate: 0,
-      transition: { type: "spring", damping: 15, stiffness: 120, duration: 0.9 }
+      transition: { type: "spring", damping: 15, stiffness: 120, duration: 0.9 },
+    },
+  };
+  // =====================================
+
+  const layoutIdByBlock = (id) => `beach-img-${id}`;
+
+  const handleBlockClick = useCallback((block) => {
+    if (!block?.cta) setSelectedBlock(block);
+  }, []);
+
+  const closeModal = useCallback(() => setSelectedBlock(null), []);
+
+  // (оставляю как у тебя: навигация по Enter/Space, кликом — модалка)
+  const onCardKeyDown = (e, to, isDisabled) => {
+    if (!to || isDisabled) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigate(to);
     }
   };
 
-  const handleBlockClick = (block) => {
-    if (!block.cta) setSelectedBlock(block);
+  // ✅ SEO URLs
+  const canonical =
+      meta?.canonical ||
+      `https://ertieri.ge/${lang === "en" ? "en" : lang === "ge" ? "ge" : "ru"}/beach-relax`;
+
+  const alternates = meta?.alternates || {
+    ru: "https://ertieri.ge/ru/beach-relax",
+    en: "https://ertieri.ge/en/beach-relax",
+    ka: "https://ertieri.ge/ge/beach-relax",
   };
 
-  const closeModal = () => setSelectedBlock(null);
+  const ogImage = meta?.ogImage || "https://ertieri.ge/og-beach-relax.jpg";
 
-  // For shared layout animation
-  const layoutIdByBlock = (id) => `beach-img-${id}`;
+  // ✅ JSON-LD
+  const jsonLd = useMemo(() => {
+    const inLanguage = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "ka-GE";
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: meta?.title,
+      description: meta?.description,
+      url: canonical,
+      inLanguage,
+      isPartOf: { "@type": "WebSite", name: "Erti Eri", url: "https://ertieri.ge" },
+      about: {
+        "@type": "TouristDestination",
+        name: lang === "en" ? "Batumi" : lang === "ge" ? "ბათუმი" : "Батуми",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Batumi",
+          addressRegion: "Ajara",
+          addressCountry: "GE",
+        },
+      },
+      provider: {
+        "@type": "TravelAgency",
+        name: "Erti Eri",
+        url: "https://ertieri.ge",
+        telephone: "+995-XXX-XXX-XXX",
+      },
+    };
+  }, [lang, meta?.title, meta?.description, canonical]);
+
+  // ✅ safety fallback (если JSON не подгрузился)
+  const safeMeta = meta || {};
+  const safeUi = ui || {};
 
   return (
-      <div className={classes.beachRelax}>
-        <motion.div
-            className={classes.container}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-          {blocks.map((block) => (
-              <motion.div
-                  key={block.id}
-                  className={`${classes.block} ${classes[`block${block.id}`]}`}
-                  variants={blockVariants}
-                  whileHover={{
-                    scale: 1.03,
-                    y: -8,
-                    transition: { duration: 0.3 }
-                  }}
-                  onClick={() => handleBlockClick(block)}
-                  role={!block.cta ? "button" : undefined}
-                  tabIndex={!block.cta ? 0 : -1}
-              >
-                <div className={classes.imageWrapper}>
-                  <motion.img
-                      src={block.image}
-                      alt={block.title}
-                      className={classes.blockImage}
-                      layoutId={layoutIdByBlock(block.id)}
-                  />
-                </div>
+      <>
+        <Helmet>
+          <html lang={lang} />
 
-                <h2 className={classes.title}>{block.title}</h2>
-                <p className={classes.subtitle}>{block.subtitle}</p>
-                <p className={classes.description}>{block.description}</p>
+          <title>{safeMeta.title}</title>
+          <meta name="description" content={safeMeta.description} />
+          <meta name="keywords" content={safeMeta.keywords} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={canonical} />
 
-                {block.cta && (
-                    <Link to="/contact" className={classes.ctaLink}>
-                      <motion.button
-                          className={classes.ctaButton}
-                          whileHover={{ scale: 1.08 }}
-                          whileTap={{ scale: 0.96 }}
-                      >
-                        Забронировать тур
-                      </motion.button>
-                    </Link>
-                )}
-              </motion.div>
-          ))}
-        </motion.div>
+          {/* hreflang */}
+          <link rel="alternate" hrefLang="ru" href={alternates.ru} />
+          <link rel="alternate" hrefLang="en" href={alternates.en} />
+          <link rel="alternate" hrefLang="ka" href={alternates.ka} />
+          <link rel="alternate" hrefLang="x-default" href={alternates.en} />
 
-        {/* Modal */}
-        <AnimatePresence>
-          {selectedBlock && (
-              <>
-                <motion.div
-                    className={classes.modalBackdrop}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeModal}
-                />
+          {/* Open Graph */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={safeMeta.ogTitle || safeMeta.title} />
+          <meta property="og:description" content={safeMeta.ogDescription || safeMeta.description} />
+          <meta property="og:url" content={canonical} />
+          <meta property="og:image" content={ogImage} />
+          <meta property="og:site_name" content="Erti Eri" />
+          <meta
+              property="og:locale"
+              content={safeMeta.locale || (lang === "ru" ? "ru_RU" : lang === "en" ? "en_US" : "ka_GE")}
+          />
 
-                <motion.div
-                    className={classes.modalWrapper}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 24 }}
-                    transition={{ type: "spring", damping: 28, stiffness: 320 }}
-                    role="dialog"
-                    aria-modal="true"
-                >
-                  <div className={classes.modal}>
-                    <button className={classes.closeButton} onClick={closeModal} aria-label="Закрыть">
-                      ✕
-                    </button>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={safeMeta.ogTitle || safeMeta.title} />
+          <meta name="twitter:description" content={safeMeta.ogDescription || safeMeta.description} />
+          <meta name="twitter:image" content={ogImage} />
 
-                    {/* Centered hero image (shared layout => perfect centering) */}
-                    <div className={classes.modalHero}>
+          {/* JSON-LD */}
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        </Helmet>
+
+        <main className={classes.beachRelax}>
+          <header className={classes.header}>
+            <h1 className={classes.pageTitle}>{pageTitle}</h1>
+            <p className={classes.pageSubtitle}>{pageSubtitle}</p>
+          </header>
+
+          <motion.section
+              className={classes.container}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              aria-label={safeUi.sectionsAria || "Sections"}
+          >
+            {sections.map((block) => {
+              const isCta = Boolean(block.cta);
+              const clickable = Boolean(block.to) && !isCta;
+
+              return (
+                  <motion.article
+                      key={block.id}
+                      className={`${classes.block} ${classes[`block${block.id}`]}`}
+                      variants={blockVariants}
+                      whileHover={{ scale: 1.03, y: -8, transition: { duration: 0.3 } }}
+                      onClick={() => handleBlockClick(block)}
+                      role={clickable ? "button" : undefined}
+                      tabIndex={clickable ? 0 : -1}
+                      onKeyDown={(e) => onCardKeyDown(e, block.to, isCta)}
+                      aria-label={
+                        clickable ? `${block.title}. ${safeUi.openDetails || "Open details"}` : undefined
+                      }
+                  >
+                    <div className={classes.imageWrapper}>
                       <motion.img
-                          src={selectedBlock.image}
-                          alt={selectedBlock.title}
-                          className={classes.modalHeroImg}
-                          layoutId={layoutIdByBlock(selectedBlock.id)}
+                          src={block.image}
+                          alt={block.imageAlt || block.title}
+                          className={classes.blockImage}
+                          layoutId={layoutIdByBlock(block.id)}
+                          loading="lazy"
                       />
                     </div>
 
-                    <div className={classes.modalContent}>
-                      <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
-                      <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
-                      <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+                    <h2 className={classes.title}>{block.title}</h2>
+                    <p className={classes.subtitle}>{block.subtitle}</p>
+                    <p className={classes.description}>{block.description}</p>
 
-                      <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
-                        <button className={classes.modalCtaButton}>
-                          Забронировать
-                        </button>
-                      </Link>
+                    {isCta && (
+                        <div className={classes.ctaArea}>
+                          <Link to={block.to || "/contact"} className={classes.ctaLink}>
+                            <motion.button
+                                className={classes.ctaButton}
+                                whileHover={{ scale: 1.08 }}
+                                whileTap={{ scale: 0.96 }}
+                                aria-label={block.ctaText}
+                            >
+                              {block.ctaText}
+                            </motion.button>
+                          </Link>
+                          {block.ctaHint && <div className={classes.ctaHint}>{block.ctaHint}</div>}
+                        </div>
+                    )}
+                  </motion.article>
+              );
+            })}
+          </motion.section>
+
+          {/* Modal */}
+          <AnimatePresence>
+            {selectedBlock && (
+                <>
+                  <motion.div
+                      className={classes.modalBackdrop}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={closeModal}
+                  />
+
+                  <motion.div
+                      className={classes.modalWrapper}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 24 }}
+                      transition={{ type: "spring", damping: 28, stiffness: 320 }}
+                      role="dialog"
+                      aria-modal="true"
+                      aria-label={selectedBlock.title}
+                  >
+                    <div className={classes.modal}>
+                      <button
+                          className={classes.closeButton}
+                          onClick={closeModal}
+                          aria-label={safeUi.close || "Close"}
+                          type="button"
+                      >
+                        ✕
+                      </button>
+
+                      <div className={classes.modalHero}>
+                        <motion.img
+                            src={selectedBlock.image}
+                            alt={selectedBlock.imageAlt || selectedBlock.title}
+                            className={classes.modalHeroImg}
+                            layoutId={layoutIdByBlock(selectedBlock.id)}
+                        />
+                      </div>
+
+                      <div className={classes.modalContent}>
+                        <h2 className={classes.modalTitle}>{selectedBlock.title}</h2>
+                        <p className={classes.modalSubtitle}>{selectedBlock.subtitle}</p>
+                        <p className={classes.modalDescription}>{selectedBlock.fullDescription}</p>
+
+                        <Link to="/contact" className={classes.modalCtaLink} onClick={closeModal}>
+                          <button className={classes.modalCtaButton} type="button">
+                            {safeUi.book || "Book"}
+                          </button>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </>
-          )}
-        </AnimatePresence>
-      </div>
+                  </motion.div>
+                </>
+            )}
+          </AnimatePresence>
+        </main>
+      </>
   );
 };
 

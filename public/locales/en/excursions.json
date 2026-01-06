@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Georgia Excursions — Tbilisi, Mtskheta, Kazbegi | Private & Group Tours with a Guide",
+    "description": "Excursions in Georgia with professional guides: Tbilisi & surroundings, Mtskheta, Kazbegi, forts and wine routes. Comfortable transport, clear timing, tailored itinerary.",
+    "keywords": "Georgia excursions, Georgia tours, Tbilisi tour, Mtskheta tour, Kazbegi tour, guide in Georgia, private tours Georgia, group tours Georgia, day trips Georgia, tour from Batumi",
+    "ogTitle": "Georgia Excursions — routes you’ll remember",
+    "ogDescription": "Tbilisi, Mtskheta, Kazbegi and the best viewpoints. We plan the route, timing and comfort — tailored to your style."
+  },
+  "pageTitle": "Excursions in Georgia",
+  "pageSubtitle": "History, nature, food and the right routes — at a comfortable pace with a live, engaging guide",
+  "ui": {
+    "ariaSections": "Excursions & routes",
+    "open": "Open",
+    "close": "Close",
+    "book": "Book"
+  },
+  "sections": [
+    {
+      "id": 1,
+      "title": "Top Excursions in Georgia",
+      "subtitle": "Culture, views, atmosphere",
+      "description": "Georgia shines in the details: ancient monasteries, fortresses, old towns, wine culture and viewpoints worth the ride.",
+      "fullDescription": "We build excursions so you don’t just “tick spots off a list.” Clear route logic, comfortable stops, time for photos and a guide who explains things in a human way. Want more history? We’ll go deeper. Want more nature and scenery? We’ll shape the day around landscapes. The goal: calm, beautiful and well-organized.",
+      "imageAlt": "Coastal fortress with lush subtropical greenery — history near the sea in Georgia",
+      "to": "/services"
+    },
+    {
+      "id": 2,
+      "title": "Tbilisi & Surroundings",
+      "subtitle": "A capital with character",
+      "description": "Old streets, panoramas, courtyards, sulfur baths, modern cafés and local places that feel authentic.",
+      "fullDescription": "Tbilisi is a blend of old and new: balconies and narrow streets, panoramic viewpoints, hidden courtyards, modern coffee spots and a warm evening vibe. We show the city beyond clichés: where it’s truly beautiful at sunset, where it’s genuinely tasty, and how to pace the day. Optional: wine tasting, dinner, or a short trip outside the city to complete the experience.",
+      "imageAlt": "Night panorama of Tbilisi — city lights and a fortress on the hill",
+      "to": "/services"
+    },
+    {
+      "id": 3,
+      "title": "Mtskheta",
+      "subtitle": "Silence, heritage, viewpoints",
+      "description": "One of the strongest day trips near Tbilisi: iconic sites, scenic overlooks and that deep ‘old Georgia’ feeling.",
+      "fullDescription": "Mtskheta has a special, calm atmosphere. We plan the route to avoid crowds, keep it comfortable and meaningful: best viewpoints, a walk through the old area, clear storytelling, and tasty stops. If you’d like, we can add a small wine tasting or a local lunch along the way.",
+      "imageAlt": "Ancient monastery above a valley — classic heritage view in Georgia",
+      "to": "/services"
+    },
+    {
+      "id": 4,
+      "title": "Kazbegi & the Mountains",
+      "subtitle": "Great Caucasus landscapes",
+      "description": "A legendary mountain route with scenic stops, rivers and iconic panoramas — worth every kilometer.",
+      "fullDescription": "Kazbegi is the kind of day that stays with you. We drive one of the most beautiful roads in the region, stop where it truly makes sense, and reach one of Georgia’s most recognizable mountain viewpoints. Choose the format: more viewpoints or more walking/trekking. Either way — comfortable transport and clear timing.",
+      "imageAlt": "Mount Kazbek and a hilltop church — iconic mountain landscape in Georgia",
+      "to": "/blog"
+    },
+    {
+      "id": 5,
+      "title": "Let’s Plan Your Trip",
+      "subtitle": "Book an excursion",
+      "description": "We’ll match the route to your dates and style: private or group. Guide, transport, stops and recommendations — all arranged.",
+      "fullDescription": "Message us and we’ll propose 2–3 options — from a short city walk to a full-day route. We consider season, your pace and interests: history, mountains, sea, tastings, photo spots, family format. You get a clear plan and calm support — no last-minute chaos.",
+      "imageAlt": "Mountain towers and nature — powerful travel routes in Georgia",
+      "cta": true,
+      "to": "/contact",
+      "ctaText": "Book an excursion",
+      "ctaHint": "Fast reply. We’ll suggest the best route options."
+    }
+  ]
+}

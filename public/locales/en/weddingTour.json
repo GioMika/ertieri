@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "Wedding in Georgia — Wedding Tour Turnkey | Locations, Ceremony, Reception | Erti Eri",
+    "description": "Turnkey wedding in Georgia: ceremony, paperwork guidance, best locations (mountains, sea, Tbilisi, vineyards), decor, photo/video, reception and guest accommodation. Elegant, calm and well-planned.",
+    "keywords": "wedding in Georgia, Georgia wedding tour, wedding planning Georgia, Tbilisi wedding, Batumi wedding, wedding ceremony Georgia, marriage registration Georgia, wedding documents Georgia, wedding locations Georgia, mountain wedding Georgia, beach wedding Georgia, vineyard wedding Georgia, wedding reception Georgia, wedding decor Georgia, wedding photographer Georgia",
+    "ogTitle": "Wedding in Georgia — cinematic, yet effortless",
+    "ogDescription": "Mountains, sea, vineyards or Old Tbilisi: we plan concept, timing and service. Paperwork, ceremony, reception, photo/video — end-to-end."
+  },
+  "canonical": "/en/wedding-tour",
+  "alternates": {
+    "ru": "/ru/wedding-tour",
+    "en": "/en/wedding-tour",
+    "ka": "/ge/wedding-tour"
+  },
+  "ui": {
+    "close": "Close",
+    "ctaMain": "Plan the wedding",
+    "ctaModal": "Book a consultation"
+  },
+  "blocks": [
+    {
+      "id": 1,
+      "title": "Wedding Tour",
+      "subtitle": "A cinematic  — in your style",
+      "description": "Mountains, sea, vineyards or Old Town: we choose the right location and pace the day so it feels beautiful and effortless — no rush.",
+      "fullDescription": "A wedding in Georgia is about emotion and taste: everything looks premium, but feels calm. We help you choose a concept that matches your story and budget: mountains, sea, vineyards, or Tbilisi architecture. We plan location, timing, transport, decor, photo/video and reception. You enjoy the moment — we control the details."
+    },
+    {
+      "id": 2,
+      "title": "Ceremony Planning",
+      "subtitle": "Paperwork & a confident plan",
+      "description": "We build a clear preparation route: documents, timing, ceremony format and the on-site part. Transparent, calm and step-by-step.",
+      "fullDescription": "We handle the organizational part: a clear document list, timeline guidance, booking and support. Want a small registration, an outdoor ceremony, or a full day with a host? We tailor it. The key is confidence: you know what happens next and don’t worry about formalities."
+    },
+    {
+      "id": 3,
+      "title": "Locations & Photo Session",
+      "subtitle": "Frames that feel alive",
+      "description": "We choose locations, light and routing so your photo/video feels natural and strong — no forced poses or long transfers.",
+      "fullDescription": "We know the places and the timing when the picture ‘just works’: Tbilisi romance, mountain scale, soft seaside light or vineyards. We plan points around your story, with smart logistics and pacing — so the visuals look like a cover, yet stay real. No rush, no chaos — just the right flow."
+    },
+    {
+      "id": 4,
+      "title": "Reception & Atmosphere",
+      "subtitle": "Georgian hospitality — with taste",
+      "description": "A view restaurant, cuisine, wine and mood. We match the format: intimate and cozy or elegant and grand — with the right details.",
+      "fullDescription": "The reception is the day’s climax. We help you choose a venue and format: panoramic restaurant, old-town courtyard, hotel hall, or vineyard setting. We plan menu, timing, music and accents so it all feels coherent. From seating to the final toast — no chaos, but lots of emotion."
+    },
+    {
+      "id": 5,
+      "title": "Say “Yes!” in Georgia",
+      "subtitle": "Turnkey wedding planning",
+      "description": "Documents, locations, decor, photo/video, reception, logistics and guests. Message us — we’ll propose 2–3 concepts for your story and budget.",
+      "fullDescription": "We create weddings that look cinematic but feel easy. Message us and we’ll propose several concepts and scenarios by location, style and budget. Everything is transparent: plan, timing, estimate and responsibility. You get a celebration where everything is in place — and you can simply live the moment."
+    }
+  ]
+}

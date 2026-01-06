@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "Batumi Beach Holiday — beaches, hotels & highlights | Erti Eri",
+    "description": "Plan your seaside stay in Batumi: best beaches and promenade, beachfront hotels, activities and Ajara mini-trips. Transfer, accommodation and itinerary — handled end-to-end.",
+    "keywords": "Batumi beach holiday, Batumi Black Sea, Batumi beaches, Batumi boulevard, Batumi tours, Ajara tours, Black Sea Georgia, beachfront hotels Batumi, Georgia seaside vacation, things to do in Batumi",
+    "ogTitle": "Batumi by the sea — calm pace, great locations",
+    "ogDescription": "Beaches, boulevard walks and the right hotel. We arrange transfer, stay and a curated itinerary in Batumi.",
+    "canonical": "https://ertieri.ge/en/beach-relax",
+    "alternates": {
+      "ru": "https://ertieri.ge/ru/beach-relax",
+      "en": "https://ertieri.ge/en/beach-relax",
+      "ka": "https://ertieri.ge/ge/beach-relax"
+    },
+    "locale": "en_US",
+    "ogImage": "https://ertieri.ge/og-beach-relax.jpg"
+  },
+  "ui": {
+    "sectionsAria": "Page sections: Batumi seaside holiday",
+    "openDetails": "Open details",
+    "close": "Close",
+    "book": "Book"
+  },
+  "pageTitle": "Batumi Beach Holiday",
+  "pageSubtitle": "Black Sea coast, long promenade walks, great hotels and curated experiences — at a comfortable pace",
+  "sections": [
+    {
+      "id": 1,
+      "title": "Seaside Relax",
+      "subtitle": "Batumi on the Black Sea",
+      "description": "Batumi is a perfect seaside base: modern infrastructure, easy logistics, and a great mix of beach and city life.",
+      "fullDescription": "Batumi is a Black Sea resort where sea breeze meets vibrant city energy. We plan your trip so it feels effortless: a clear day rhythm, smart stops, and the best views without rushing. From May to October the city is especially pleasant — warm evenings, boulevard walks and that calm “everything is handled” feeling.",
+      "imageIndex": 4,
+      "imageAlt": "Sunrise over the Black Sea in Batumi — soft light and peaceful seaside atmosphere",
+      "to": "/services"
+    },
+    {
+      "id": 2,
+      "title": "Beaches & Promenade",
+      "subtitle": "Long walks by the water",
+      "description": "Batumi beaches and the iconic boulevard are made for sunsets, biking and relaxed evenings — great for families, couples and solo travelers.",
+      "fullDescription": "Batumi Boulevard is a long seaside promenade with cafés, bike lanes, modern art and sea views. Beaches are mostly pebble (with some sand spots); in season you’ll find amenities like sunbeds and umbrellas. We’ll recommend the best areas depending on your vibe: calmer spots, better sea entry, and the prettiest sunsets.",
+      "imageIndex": 1,
+      "imageAlt": "Batumi beach with pebble and sand — calm shoreline and deep sea gradients",
+      "to": "/services"
+    },
+    {
+      "id": 3,
+      "title": "Activities & Highlights",
+      "subtitle": "Sea by day, city by night",
+      "description": "Waterpark, dolphinarium, cable car, botanical garden, restaurants, bars and nightlife — Batumi never feels boring.",
+      "fullDescription": "If you want more than beach time: we can add the cable car for panoramic views, a walk in the Botanical Garden, and a shortlist of genuinely good food spots. On request — family-friendly activities, romantic routes, photo stops, and curated Ajara mini-trips with the right pacing.",
+      "imageIndex": 3,
+      "imageAlt": "Batumi coastline at night — neon lights, promenade vibe and city energy",
+      "to": "/blog"
+    },
+    {
+      "id": 4,
+      "title": "Hotels by the Sea",
+      "subtitle": "From apartments to 5★ premium",
+      "description": "We’ll match your stay to your needs: location, sea view, SPA, pool, quiet comfort, or city-life right on the boulevard.",
+      "fullDescription": "Batumi offers everything from premium hotels with SPA to modern beachfront apartments and cozy guesthouses. We consider what matters: sea view, kitchen, proximity to the boulevard, parking, noise level, and overall comfort. The goal is simple — a place that truly fits your style, not just a “nice listing.”",
+      "imageIndex": 2,
+      "imageAlt": "Modern seaside hotel in Batumi — glass facade reflecting the coast",
+      "to": "/services"
+    },
+    {
+      "id": 5,
+      "title": "Ready to Go?",
+      "subtitle": "We’ll plan it end-to-end",
+      "description": "Transfer, hotel, beach days and the best Batumi spots — we arrange it so you can simply enjoy the sea.",
+      "fullDescription": "We make your trip simple: airport pick-up/transfer, hotel booking, beach recommendations, a light itinerary based on your interests and support on the ground. Want it quieter? We’ll do calm. Want more nightlife and energy? We’ll add it. Reach out — we’ll send a personalized offer.",
+      "imageIndex": 0,
+      "imageAlt": "Cinematic Black Sea coastline near Batumi — crisp water and dramatic shore",
+      "cta": true,
+      "to": "/contact",
+      "ctaText": "Book your getaway",
+      "ctaHint": "Quick reply. Hotel + itinerary tailored to you."
+    }
+  ]
+}

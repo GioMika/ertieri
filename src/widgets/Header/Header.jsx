@@ -1,24 +1,44 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Mail, MessageCircle, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import classes from "./Header.module.css";
+
+const normalize = (lng) => (lng || "ru").split("-")[0].toLowerCase();
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("RU");
   const location = useLocation();
 
+  const { t, i18n } = useTranslation("common");
+
+  // Реальный текущий язык из i18next
+  const currentCode = normalize(i18n.resolvedLanguage || i18n.language);
+
+  // Твои кнопки в UI (как было)
+  const languages = useMemo(() => ["GE", "RU", "EN"], []);
+
+  // Маппинг UI -> i18n language code
+  const langMap = useMemo(() => ({ GE: "ge", RU: "ru", EN: "en" }), []);
+
+  // Определяем активную кнопку из i18n
+  const activeLangLabel = useMemo(() => {
+    if (currentCode === "ge") return "GE";
+    if (currentCode === "en") return "EN";
+    return "RU";
+  }, [currentCode]);
+
+  // Меню — ТОЛЬКО тексты через i18next, пути не трогаем
   const menuItems = useMemo(
       () => [
-        { title: "О нас", path: "/about" },
-        { title: "Услуги", path: "/services" },
-        { title: "Блог", path: "/blog" },
-        { title: "Контакты", path: "/contact" },
+        { title: t("header.menu.about"), path: "/about" },
+        { title: t("header.menu.services"), path: "/services" },
+        { title: t("header.menu.blog"), path: "/blog" },
+        { title: t("header.menu.contact"), path: "/contact" },
       ],
-      []
+      [t]
   );
 
-  const languages = useMemo(() => ["GE", "RU", "EN"], []);
   const emailAddress = "hello@ertieri.com";
   const whatsappNumber = "995XXXXXXXXX";
 
@@ -27,7 +47,6 @@ const Header = () => {
       [location.pathname]
   );
 
-  const openMenu = useCallback(() => setIsMenuOpen(true), []);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const toggleMenu = useCallback(() => setIsMenuOpen((v) => !v), []);
 
@@ -43,9 +62,13 @@ const Header = () => {
     const prevOverflow = document.body.style.overflow;
     const prevPaddingRight = document.body.style.paddingRight;
 
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const scrollBarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
     document.body.style.overflow = "hidden";
-    if (scrollBarWidth > 0) document.body.style.paddingRight = `${scrollBarWidth}px`;
+    if (scrollBarWidth > 0) {
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    }
 
     const onKeyDown = (e) => {
       if (e.key === "Escape") closeMenu();
@@ -60,29 +83,57 @@ const Header = () => {
     };
   }, [isMenuOpen, closeMenu]);
 
+  const changeLang = useCallback(
+      async (label) => {
+        const next = langMap[label];
+        if (!next) return;
+
+        const nextCode = normalize(next);
+        if (nextCode === currentCode) return;
+
+        try {
+          await i18n.changeLanguage(nextCode);
+        } catch (e) {
+          // no-op
+        }
+      },
+      [i18n, langMap, currentCode]
+  );
+
   return (
       <header className={classes.header}>
         <div className={classes.inner}>
-          <Link to="/" className={classes.logo} aria-label="На главную">
+          <Link to="/" className={classes.logo} aria-label={t("header.homeAria")}>
             ERTI ERI
           </Link>
 
           {/* Desktop nav */}
-          <nav className={classes.nav} aria-label="Главное меню">
-            {menuItems.map((item) => (
-                <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`${classes.navLink} ${isActive(item.path) ? classes.active : ""}`}
-                >
-                  {item.title}
-                </Link>
-            ))}
+          <nav className={classes.nav} aria-label={t("header.navAria")}>
+            {menuItems.map((item) => {
+              const active = isActive(item.path);
+              return (
+                  <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`${classes.navLink} ${
+                          active ? classes.active : ""
+                      }`}
+                      aria-current={active ? "page" : undefined}
+                  >
+                    {item.title}
+                  </Link>
+              );
+            })}
           </nav>
 
           {/* Right actions */}
           <div className={classes.actions}>
-            <a className={classes.iconBtn} href={`mailto:${emailAddress}`} aria-label="Email" title="Email">
+            <a
+                className={classes.iconBtn}
+                href={`mailto:${emailAddress}`}
+                aria-label={t("header.emailAria")}
+                title={t("header.emailTitle")}
+            >
               <Mail size={18} />
             </a>
 
@@ -91,21 +142,23 @@ const Header = () => {
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                title="WhatsApp"
+                aria-label={t("header.waAria")}
+                title={t("header.waTitle")}
             >
               <MessageCircle size={18} />
             </a>
 
             {/* Desktop language */}
-            <div className={classes.lang} role="group" aria-label="Язык">
+            <div className={classes.lang} role="group" aria-label={t("header.langAria")}>
               {languages.map((L) => (
                   <button
                       key={L}
                       type="button"
-                      className={`${classes.langBtn} ${currentLang === L ? classes.langActive : ""}`}
-                      onClick={() => setCurrentLang(L)}
-                      aria-pressed={currentLang === L}
+                      className={`${classes.langBtn} ${
+                          activeLangLabel === L ? classes.langActive : ""
+                      }`}
+                      onClick={() => changeLang(L)}
+                      aria-pressed={activeLangLabel === L}
                   >
                     {L}
                   </button>
@@ -115,9 +168,11 @@ const Header = () => {
             {/* Mobile burger */}
             <button
                 type="button"
-                className={`${classes.burger} ${isMenuOpen ? classes.burgerOpen : ""}`}
+                className={`${classes.burger} ${
+                    isMenuOpen ? classes.burgerOpen : ""
+                }`}
                 onClick={toggleMenu}
-                aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+                aria-label={isMenuOpen ? t("header.closeMenu") : t("header.openMenu")}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-drawer"
             >
@@ -129,7 +184,9 @@ const Header = () => {
 
         {/* Backdrop */}
         <div
-            className={`${classes.backdrop} ${isMenuOpen ? classes.backdropOpen : ""}`}
+            className={`${classes.backdrop} ${
+                isMenuOpen ? classes.backdropOpen : ""
+            }`}
             onClick={closeMenu}
             aria-hidden="true"
         />
@@ -137,36 +194,51 @@ const Header = () => {
         {/* Drawer */}
         <aside
             id="mobile-drawer"
-            className={`${classes.drawer} ${isMenuOpen ? classes.drawerOpen : ""}`}
+            className={`${classes.drawer} ${
+                isMenuOpen ? classes.drawerOpen : ""
+            }`}
             aria-hidden={!isMenuOpen}
         >
           <div className={classes.drawerHeader}>
-            <span className={classes.drawerBrand}>ERTI ERI</span>
+            <span className={classes.drawerBrand}>{t("header.drawerBrand")}</span>
 
-            <button className={classes.closeBtn} onClick={closeMenu} aria-label="Закрыть меню" type="button">
+            <button
+                className={classes.closeBtn}
+                onClick={closeMenu}
+                aria-label={t("header.closeMenu")}
+                type="button"
+            >
               <X size={18} />
             </button>
           </div>
 
-          {/* ✅ ВАЖНО: всё, что нужно — СРАЗУ ПОД ссылками */}
           <div className={classes.drawerBody}>
-            <nav className={classes.drawerNav} aria-label="Мобильное меню">
-              {menuItems.map((item, i) => (
-                  <Link
-                      key={item.path}
-                      to={item.path}
-                      className={`${classes.drawerLink} ${isActive(item.path) ? classes.drawerActive : ""}`}
-                      style={isMenuOpen ? { animationDelay: `${i * 0.06}s` } : undefined}
-                  >
-                    {item.title}
-                  </Link>
-              ))}
+            <nav className={classes.drawerNav} aria-label={t("header.drawerMenuAria")}>
+              {menuItems.map((item, i) => {
+                const active = isActive(item.path);
+                return (
+                    <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`${classes.drawerLink} ${
+                            active ? classes.drawerActive : ""
+                        }`}
+                        style={isMenuOpen ? { animationDelay: `${i * 0.06}s` } : undefined}
+                        aria-current={active ? "page" : undefined}
+                    >
+                      {item.title}
+                    </Link>
+                );
+              })}
             </nav>
 
-            {/* ✅ Иконки + языки — сразу под последней ссылкой */}
             <div className={classes.drawerTools}>
               <div className={classes.drawerQuick}>
-                <a className={classes.drawerIcon} href={`mailto:${emailAddress}`} aria-label="Email">
+                <a
+                    className={classes.drawerIcon}
+                    href={`mailto:${emailAddress}`}
+                    aria-label={t("header.emailAria")}
+                >
                   <Mail size={18} />
                 </a>
 
@@ -175,22 +247,22 @@ const Header = () => {
                     href={`https://wa.me/${whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="WhatsApp"
+                    aria-label={t("header.waAria")}
                 >
                   <MessageCircle size={18} />
                 </a>
               </div>
 
-              <div className={classes.drawerLang} role="group" aria-label="Язык">
+              <div className={classes.drawerLang} role="group" aria-label={t("header.langAria")}>
                 {languages.map((L) => (
                     <button
                         key={L}
                         type="button"
                         className={`${classes.drawerLangBtn} ${
-                            currentLang === L ? classes.drawerLangActive : ""
+                            activeLangLabel === L ? classes.drawerLangActive : ""
                         }`}
-                        onClick={() => setCurrentLang(L)}
-                        aria-pressed={currentLang === L}
+                        onClick={() => changeLang(L)}
+                        aria-pressed={activeLangLabel === L}
                     >
                       {L}
                     </button>

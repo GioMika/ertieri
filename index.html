@@ -1,13 +1,186 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ertieri</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Basic SEO (sitewide defaults; pages can override) -->
+  <title>Erti Eri — Tours & Experiences in Georgia | Batumi</title>
+  <meta
+          name="description"
+          content="Erti Eri is a travel & tour service in Georgia (based in Batumi). We organize excursions across Georgia (Tbilisi, Mtskheta, Kazbegi, Svaneti), sea & mountain отдых, premium experiences, transfers, hotels, private tours, curated itineraries and VIP formats. Calm planning, clear timing, and comfort without tourist traps."
+  />
+  <meta
+          name="keywords"
+          content="Georgia tours, Batumi tours, excursions in Georgia, Tbilisi tour, Mtskheta tour, Kazbegi tour, Svaneti tour, guided excursions Georgia, private tour Georgia, day trips Georgia, Batumi transfer, hotels Georgia, itinerary Georgia, mountain tour Georgia, sea holiday Batumi, VIP tour Batumi, casino tour Batumi, wedding in Georgia"
+  />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical (default; internal pages should set their own canonical) -->
+  <link rel="canonical" href="https://ertieri.ge/" />
+
+  <!-- hreflang (sitewide) -->
+  <link rel="alternate" hrefLang="ru" href="https://ertieri.ge/ru/" />
+  <link rel="alternate" hrefLang="en" href="https://ertieri.ge/en/" />
+  <link rel="alternate" hrefLang="ka" href="https://ertieri.ge/ge/" />
+  <link rel="alternate" hrefLang="x-default" href="https://ertieri.ge/en/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Erti Eri" />
+  <meta property="og:title" content="Erti Eri — Tours & Experiences in Georgia" />
+  <meta
+          property="og:description"
+          content="Excursions across Georgia, Batumi sea отдых, mountain tours, transfers, hotels, curated itineraries and premium experiences. Clear pacing, comfort and privacy."
+  />
+  <meta property="og:url" content="https://ertieri.ge/" />
+  <meta property="og:image" content="https://ertieri.ge/og-home.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:locale:alternate" content="ka_GE" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Erti Eri — Tours & Experiences in Georgia" />
+  <meta
+          name="twitter:description"
+          content="Excursions, sea & mountain отдых, transfers, hotels, premium experiences and curated routes in Georgia."
+  />
+  <meta name="twitter:image" content="https://ertieri.ge/og-home.jpg" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- (Optional) Performance hints -->
+  <link rel="dns-prefetch" href="https://www.google.com" />
+  <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+
+  <!-- Structured Data (WebSite + TravelAgency + OfferCatalog) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://ertieri.ge/#website",
+          "url": "https://ertieri.ge/",
+          "name": "Erti Eri",
+          "description": "Tours and experiences in Georgia: excursions, sea & mountain отдых, curated itineraries, transfers and hotels.",
+          "inLanguage": ["en", "ru", "ka"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ertieri.ge/en/blog?query={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "TravelAgency",
+          "@id": "https://ertieri.ge/#travelagency",
+          "name": "Erti Eri",
+          "url": "https://ertieri.ge/",
+          "description": "Travel agency based in Batumi. We plan excursions across Georgia, curated routes, transfers, hotels and premium experiences with clear timing and comfort.",
+          "areaServed": [
+            { "@type": "Country", "name": "Georgia" }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bako St. 8",
+            "addressLocality": "Batumi",
+            "addressCountry": "GE"
+          },
+          "email": "hello@ertieri.com",
+          "telephone": "+995XXXXXXXXX",
+          "openingHours": "Mo-Su 10:00-20:00",
+          "availableLanguage": ["en", "ru", "ka"],
+          "makesOffer": {
+            "@type": "OfferCatalog",
+            "name": "Tours & Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "name": "Excursions in Georgia",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Excursions in Georgia",
+                  "serviceType": "Guided tours & excursions",
+                  "description": "Private and group excursions: Tbilisi, Mtskheta, Kazbegi, Svaneti and scenic routes. Clear timing, comfortable transport and a balanced pace."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Sea Relax in Batumi",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Sea Relax in Batumi",
+                  "serviceType": "Sea отдых & coastal experiences",
+                  "description": "Batumi sea отдых: beaches, viewpoints, evening routes, restaurants and calm planning without tourist traps."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Mountain Relax in Georgia",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mountain Relax in Georgia",
+                  "serviceType": "Mountain tours, hiking & ski trips",
+                  "description": "Gudauri, Bakuriani, hiking/trekking, panoramic routes, cozy hotels and transfers. Tailored itinerary for your pace."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Casino Tour in Batumi",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Casino Tour in Batumi",
+                  "serviceType": "Premium nightlife experience",
+                  "description": "Curated casino tour: VIP format, discreet service, dinner, transfer, and a well-paced night scenario. Legal, safe and calm."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Wedding Tour in Georgia",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Wedding Tour in Georgia",
+                  "serviceType": "Wedding planning / wedding tour",
+                  "description": "Turnkey wedding planning: concepts, locations (mountains/sea/Tbilisi/vineyards), logistics, photo/video and reception support."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Transfers & Logistics",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Transfers & Logistics",
+                  "serviceType": "Transport & itinerary support",
+                  "description": "Transfers, route planning, timing, stops and coordination — so the trip is smooth and predictable."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Hotels & Accommodation",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Hotels & Accommodation",
+                  "serviceType": "Accommodation подбор",
+                  "description": "Hotel подбор by style and budget: sea-view stays, mountain guesthouses, city hotels, and comfortable booking support."
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
 </html>

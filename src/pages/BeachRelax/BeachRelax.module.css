@@ -88,6 +88,16 @@
     gap: 22px;
 }
 
+
+.header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.header h1 {
+    margin-bottom: 16px;
+}
+
 /* =========================
    Card base (About style)
    ========================= */

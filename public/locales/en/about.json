@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "About Erti Eri — Tours in Georgia | Guides, excursions & private itineraries",
+    "description": "Erti Eri is a travel company in Georgia. Private tours and excursions in Tbilisi, Kazbegi, Svaneti, wine routes and Batumi seaside отдых. Comfortable transport, experienced guides, full trip planning.",
+    "keywords": "Erti Eri, tours in Georgia, Tbilisi excursions, private tours Georgia, wine tours Georgia, Kazbegi tour, Svaneti tour, Batumi seaside, Georgia guide",
+    "ogTitle": "Erti Eri — Georgia travel, planned with taste",
+    "ogDescription": "Tailored itineraries: sea, mountains, city & wine. Transfers, guides and smooth logistics — you simply enjoy the trip."
+  },
+  "pageTitle": "About Erti Eri",
+  "pageSubtitle": "Your guide to Georgia: calm, beautiful, well-planned",
+  "sections": [
+    {
+      "title": "About Us",
+      "subtitle": "Your local guide",
+      "text": "Erti Eri is a team that knows Georgia from the inside. We design trips with clear logic: route, pace, stops and details are planned in advance. You don’t just “visit places” — you feel the country.",
+      "to": "/services"
+    },
+    {
+      "title": "Our Mission",
+      "subtitle": "Show the real Georgia",
+      "text": "We blend culture, nature, cuisine and wine into a balanced experience. Iconic highlights + hidden gems, stories and facts, authentic flavors and atmosphere — so your trip feels alive.",
+      "to": "/services"
+    },
+    {
+      "title": "Our Experience",
+      "subtitle": "10+ years in tourism",
+      "text": "We build comfortable and safe itineraries for travelers from different countries. From a weekend escape to a full Georgia journey — we tailor the program to your request.",
+      "to": "/blog"
+    },
+    {
+      "title": "What We Do",
+      "subtitle": "Personal itineraries",
+      "text": "Tbilisi tours, regional excursions, wine routes, Batumi seaside отдых, Kazbegi & Svaneti mountains, events and family trips. We handle transport, timing, locations and support — you simply relax.",
+      "to": "/services"
+    },
+    {
+      "title": "Start Your Journey",
+      "subtitle": "Georgia is waiting",
+      "text": "Message us — and we’ll propose an itinerary for your dates and style: comfortable pace, great stops and wow viewpoints. Erti Eri — when everything is organized and you enjoy the moment.",
+      "cta": true,
+      "to": "/contact",
+      "ctaText": "Contact Us",
+      "ctaHint": "Quick reply. We’ll suggest the best format and route."
+    }
+  ]
+}

@@ -77,10 +77,19 @@
     z-index: 1;
     max-width: 1400px;
     margin: 50px auto;
-
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 22px;
+}
+
+
+.header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.header h1 {
+    margin-bottom: 16px;
 }
 
 /* ====== CARD BASE (как About) ====== */
@@ -493,7 +502,7 @@
     }
 
     .modalHero {
-        padding:  4px;
+        padding: 4px;
     }
 }
 
@@ -511,6 +520,7 @@
         height: 160px;
         border-radius: 18px;
     }
+
     .modalHeroImg {
         padding: 0;
     }
@@ -551,7 +561,7 @@
         line-height: 1.75;
     }
 
-    .modalWrapper{
+    .modalWrapper {
         padding: 4px;
     }
 }

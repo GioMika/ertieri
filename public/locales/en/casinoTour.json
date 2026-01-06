@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Casino Tour in Batumi — Premium Night & VIP Service | Casinos, Dinner, Transfer & Hotel",
+    "description": "We arrange a Batumi casino tour: top venues, private VIP format, premium transfer, dinner, nightlife and comfortable accommodation. Legal, safe and stress-free.",
+    "keywords": "Batumi casino tour, Georgia casino tour, Batumi casinos, VIP casino Batumi, Ajara casinos, Batumi nightlife, Batumi transfer, premium holiday Batumi, Batumi tours, casino and dinner Batumi",
+    "ogTitle": "Batumi Casino Tour — a curated premium night",
+    "ogDescription": "Right venues, VIP style, smooth transfer and a calm, well-paced itinerary. We plan your Batumi casino tour end-to-end.",
+    "alternates": {
+      "ru": "https://ertieri.ge/ru/casino-tour",
+      "en": "https://ertieri.ge/en/casino-tour",
+      "ka": "https://ertieri.ge/ge/casino-tour"
+    },
+    "locale": "en_US",
+    "ogImage": "https://ertieri.ge/og-casino-tour.jpg"
+  },
+  "ui": {
+    "close": "Close",
+    "open": "Open",
+    "book": "Book",
+    "sectionsAria": "Page sections"
+  },
+  "pageTitle": "Batumi Casino Tour",
+  "pageSubtitle": "A premium night, top gaming halls and discreet VIP service — with clear timing, logistics and privacy",
+  "sections": [
+    {
+      "id": 1,
+      "imageIndex": 0,
+      "title": "Casino Tour",
+      "subtitle": "Style, atmosphere, level",
+      "description": "A casino tour isn’t just bright lights — it’s a well-curated night: smooth logistics, the right venues and a premium feel.",
+      "fullDescription": "We design a casino tour as a premium scenario, not a random list of places. Timing matters: when to start, where to go next, and how to end the night without feeling exhausted. You get a calm rhythm, privacy and reliable service — exactly how a high-level night out should feel.",
+      "imageAlt": "VIP casino gaming hall in Batumi — premium interior and discreet atmosphere",
+      "to": "/services"
+    },
+    {
+      "id": 2,
+      "imageIndex": 1,
+      "title": "Premium Casinos",
+      "subtitle": "Top halls & the right timing",
+      "description": "We match the format to your style: roulette, poker, blackjack or slots. VIP areas, table priority and smart timing tips.",
+      "fullDescription": "We pick venues based on real quality: service, comfort, privacy and overall vibe. We can help with VIP entry and a smooth plan: the best hours to arrive, where the atmosphere feels right, and how to avoid unnecessary fuss. The focus is on discreet premium service — no forced glamour.",
+      "imageAlt": "Premium rooftop lounge at night — relaxed vibe after gaming with a great view",
+      "to": "/services"
+    },
+    {
+      "id": 3,
+      "imageIndex": 4,
+      "title": "Nightlife & Experiences",
+      "subtitle": "Not only gaming — taste & mood",
+      "description": "Dinner, bars, music and scenic spots — we build the tour around enjoyment and atmosphere, not just the tables.",
+      "fullDescription": "A great casino night includes the right “taste”: a good restaurant before, a classy bar after, scenic locations and comfortable pauses. On request we add nightlife options, and the next day — recovery: SPA, pool, late breakfast and a light itinerary. Want it calm and discreet? Done. Want more energy? We’ll add it — without chaos.",
+      "imageAlt": "Luxurious coastal city scene at night in Batumi — lights, mood and premium vibe",
+      "to": "/blog"
+    },
+    {
+      "id": 4,
+      "imageIndex": 3,
+      "title": "VIP Service",
+      "subtitle": "Transfer, hotel, privacy",
+      "description": "Premium car transfer, great rooms, personal host and flexible routing. Everything feels natural, confident and on plan.",
+      "fullDescription": "We manage the details that create the premium feeling: logistics, timing, entrances, accommodation and privacy. On request — a personal manager on call, custom scenarios and discreet VIP solutions. You relax — we make it run smoothly.",
+      "imageAlt": "Stylish night entertainment scene — premium atmosphere and private format",
+      "to": "/services"
+    },
+    {
+      "id": 5,
+      "imageIndex": 2,
+      "title": "Ready to Try Your Luck?",
+      "subtitle": "Book your casino tour",
+      "description": "End-to-end organization: transport, accommodation, evening plan and a comfortable scenario. Legal, safe and premium.",
+      "fullDescription": "Message us and we’ll tailor the itinerary to your taste and pace. Choose a short evening format or a multi-day tour: sea by day, premium nights by night. You get a complete experience — elegant, logical and effortless.",
+      "imageAlt": "Dark premium background with subtle sparkles — mood of a private VIP night",
+      "cta": true,
+      "to": "/contact",
+      "ctaText": "Book the tour",
+      "ctaHint": "Fast reply. VIP format tailored to you."
+    }
+  ]
+}
