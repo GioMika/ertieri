@@ -493,8 +493,8 @@ const Contact = () => {
                           style={{ marginTop: 12, fontSize: 14 }}
                       >
                         {status.ok
-                            ? ui.success || "Сообщение отправлено ✅"
-                            : status.error || ui.error || "Ошибка отправки ❌"}
+                            ? ui.success || "✅"
+                            : status.error || ui.error || "❌"}
                       </div>
                   )}
                 </form>
