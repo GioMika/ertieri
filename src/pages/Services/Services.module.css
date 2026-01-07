@@ -262,7 +262,8 @@
     }
 
     .h1 {
-    padding: 0 20px;
+    padding: 0;
+        font-size: 30px;
     }
 }
 
@@ -277,7 +278,7 @@
     }
 
     .title {
-        font-size: 40px;
+        font-size: 26px;
     }
 }
 
@@ -287,7 +288,11 @@
     }
 
     .title {
-        font-size: 34px;
+        font-size: 26px;
+    }
+
+    .h1 {
+        font-size: 28px;
     }
 }
 

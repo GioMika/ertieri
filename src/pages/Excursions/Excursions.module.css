@@ -511,6 +511,10 @@
         padding: 78px 8px 48px;
     }
 
+    h1{
+        font-size: 30px;
+    }
+
     .block {
         padding: 20px 14px;
         border-radius: var(--r-lg);
@@ -575,6 +579,10 @@
 
     .subtitle {
         letter-spacing: 0.14em;
+    }
+
+    h1{
+        font-size: 28px;
     }
 }
 

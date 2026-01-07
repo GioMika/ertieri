@@ -462,6 +462,10 @@
         max-height: calc(88dvh - 240px);
         padding: 16px 14px;
     }
+
+    .pageTitle{
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -470,8 +474,12 @@
         margin: 14px 14px 0;
     }
 
+    .pageTitle{
+        font-size: 28px;
+    }
+
     .title {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .metaLine {

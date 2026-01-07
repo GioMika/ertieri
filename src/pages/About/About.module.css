@@ -335,6 +335,12 @@
         grid-column: 1 / -1;
     }
 
+
+    .header {
+
+        padding: 0 ;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -348,7 +354,7 @@
     }
 
     .pageTitle {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .text {
@@ -363,7 +369,7 @@
 
 @media (max-width: 480px) {
     .pageTitle {
-        font-size: 34px;
+        font-size: 28px;
     }
 }
 

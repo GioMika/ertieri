@@ -14,7 +14,7 @@
     "ogImage": "https://ertieri.ge/og-contact.jpg"
   },
   "pageTitle": "Contact",
-  "pageSubtitle": "Message us — and we’ll build your Georgia tour: itinerary, timing, hotel and the details handled calmly",
+  "pageSubtitle": "",
   "ui": {
     "kicker": "Contact",
     "ctaEmail": "Email us",
@@ -30,9 +30,9 @@
     "message": "Message",
     "namePh": "Your name",
     "emailPh": "you@email.com",
-    "messagePh": "Where do you want to go, how many days, how many people, what matters (sea/mountains/wine/comfort)…",
+    "messagePh": "",
     "send": "Send",
-    "hint": "We reply quickly. For faster planning, message us on WhatsApp.",
+    "hint": "",
     "mapIframeTitle": "Office on the map"
   },
   "data": {

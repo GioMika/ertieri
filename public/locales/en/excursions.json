@@ -61,7 +61,7 @@
       "cta": true,
       "to": "/contact",
       "ctaText": "Book an excursion",
-      "ctaHint": "Fast reply. We’ll suggest the best route options."
+      "ctaHint": ""
     }
   ]
 }
