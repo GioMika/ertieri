@@ -1,58 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+/* CSS Variables */
 :root {
     --text: rgba(255, 255, 255, 0.92);
     --muted: rgba(255, 255, 255, 0.72);
-
     --glass: rgba(255, 255, 255, 0.08);
     --glass-strong: rgba(255, 255, 255, 0.12);
-
     --border: rgba(255, 255, 255, 0.18);
     --border-strong: rgba(255, 255, 255, 0.28);
-
     --shadow-md: 0 22px 70px rgba(0, 0, 0, 0.38);
     --shadow-lg: 0 36px 120px rgba(0, 0, 0, 0.55);
-
     --blur: 26px;
-
     --r-xl: 34px;
     --r-lg: 26px;
-
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Оптимизация производительности */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Page ===== */
+/* ===== Главный контейнер ===== */
 .services {
     min-height: 100vh;
+    position: relative;
     color: var(--text);
-    background: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, .18), transparent 60%),
-    radial-gradient(900px 650px at 82% 22%, rgba(96, 165, 250, .14), transparent 58%),
-    linear-gradient(135deg, #070a1a 0%, #0a1030 55%, #06081a 100%);
     overflow-x: hidden;
 }
 
-/* subtle grain */
+/* ===== Видео фон (фиксированный) ===== */
+.videoBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.35) saturate(1.15) blur(1px);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Оверлей поверх видео с градиентом */
+.videoOverlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, 0.18), transparent 60%),
+    radial-gradient(900px 650px at 82% 22%, rgba(96, 165, 250, 0.14), transparent 58%),
+    linear-gradient(135deg, rgba(7, 10, 26, 0.85) 0%, rgba(10, 16, 48, 0.75) 55%, rgba(6, 8, 26, 0.85) 100%);
+    pointer-events: none;
+}
+
+/* Тонкий шум/зерно поверх всего */
 .services::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
-    opacity: .1;
+    z-index: 2;
+    opacity: 0.1;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
-/* ===== Layout ===== */
+/* ===== Контейнер контента ===== */
 .shell {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     max-width: 1400px;
     margin: 0 auto;
     padding: 110px 20px 90px;
@@ -69,9 +101,9 @@
     font-family: 'Inter', sans-serif;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: .18em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .55);
+    color: rgba(255, 255, 255, 0.55);
     margin-bottom: 12px;
 }
 
@@ -80,140 +112,160 @@
     font-size: clamp(38px, 4.4vw, 64px);
     font-weight: 900;
     line-height: 1.06;
-    letter-spacing: -.02em;
+    letter-spacing: -0.02em;
     margin-bottom: 14px;
     max-width: 26ch;
+    word-wrap: break-word;
+    text-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
 }
 
 .lead {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, .80);
+    color: rgba(255, 255, 255, 0.80);
     max-width: 80ch;
 }
 
-/* ===== Grid ===== */
+/* ===== Grid карточек ===== */
 .grid {
     display: grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
-/* ===== Link wrapper ===== */
+/* ===== Ссылка-обертка ===== */
 .cardLink {
     display: block;
     text-decoration: none;
     color: inherit;
+    transition: transform 0.35s var(--ease);
+    will-change: transform;
 }
 
-/* ===== Card ===== */
+.cardLink:hover {
+    transform: translateY(-8px);
+}
+
+/* ===== Карточка тура ===== */
 .card {
     position: relative;
     overflow: hidden;
     border-radius: var(--r-xl);
     padding: 30px 30px 26px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
     background: var(--card-bg),
-    radial-gradient(1200px 520px at 20% 10%, rgba(255, 255, 255, .12), transparent 60%),
-    linear-gradient(180deg, var(--glass), rgba(255, 255, 255, .06));
+    radial-gradient(1200px 520px at 20% 10%, rgba(255, 255, 255, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--glass), rgba(255, 255, 255, 0.06));
 
     border: 1px solid var(--border);
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 
-    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, .14);
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.14);
 
-    transition: transform .35s var(--ease),
-    box-shadow .35s var(--ease),
-    border-color .35s var(--ease),
-    background .35s var(--ease);
+    transition: box-shadow 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    background 0.35s var(--ease);
+
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
+/* Блик сверху */
 .card::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(720px 340px at 35% 0%, rgba(255, 255, 255, .14), transparent 58%);
-    opacity: .85;
+    background: radial-gradient(720px 340px at 35% 0%, rgba(255, 255, 255, 0.14), transparent 58%);
+    opacity: 0.85;
 }
 
 .cardLink:hover .card {
-    transform: translateY(-8px);
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, .18);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
-/* ===== Card themes (как About) ===== */
+/* ===== Темы карточек (цветные градиенты) ===== */
 .card1 {
-    --card-bg: radial-gradient(900px 700px at 18% 12%, rgba(96, 165, 250, .22), transparent 60%),
+    --card-bg: radial-gradient(900px 700px at 18% 12%, rgba(96, 165, 250, 0.22), transparent 60%),
     linear-gradient(135deg, #061726, #081a2b 60%, #06121f);
 }
 
 .card2 {
-    --card-bg: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, .18), transparent 60%),
+    --card-bg: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, 0.18), transparent 60%),
     linear-gradient(135deg, #070a1a, #0a1030 55%, #06081a);
 }
 
 .card3 {
-    --card-bg: radial-gradient(900px 700px at 22% 18%, rgba(34, 211, 238, .16), transparent 60%),
+    --card-bg: radial-gradient(900px 700px at 22% 18%, rgba(34, 211, 238, 0.16), transparent 60%),
     linear-gradient(135deg, #06141f, #081f2b 55%, #050f18);
 }
 
 .card4 {
-    --card-bg: radial-gradient(900px 700px at 20% 16%, rgba(96, 165, 250, .18), transparent 60%),
+    --card-bg: radial-gradient(900px 700px at 20% 16%, rgba(96, 165, 250, 0.18), transparent 60%),
     linear-gradient(135deg, #071022, #0a1530 55%, #060b18);
 }
 
 .card5 {
-    --card-bg: radial-gradient(900px 700px at 18% 14%, rgba(167, 139, 250, .16), transparent 60%),
+    --card-bg: radial-gradient(900px 700px at 18% 14%, rgba(167, 139, 250, 0.16), transparent 60%),
     linear-gradient(135deg, #06111e, #0a1a2b 55%, #050a14);
 }
 
-/* ===== Content ===== */
+/* ===== Контент карточки ===== */
 .cardTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 18px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .num {
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 800;
-    letter-spacing: .18em;
-    color: rgba(255, 255, 255, .55);
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.55);
+    font-variant-numeric: tabular-nums;
 }
 
 .pill {
     padding: 9px 14px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, .10);
-    border: 1px solid rgba(255, 255, 255, .22);
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 700;
-    color: rgba(255, 255, 255, .78);
+    color: rgba(255, 255, 255, 0.78);
+    white-space: nowrap;
 }
 
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 3.2vw, 54px);
+    font-size: clamp(28px, 3.2vw, 44px);
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -.02em;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: 10px;
+    word-wrap: break-word;
+    position: relative;
+    z-index: 1;
 }
 
 .subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
-    letter-spacing: .18em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .62);
+    color: rgba(255, 255, 255, 0.62);
     margin-bottom: 16px;
 }
 
@@ -221,8 +273,12 @@
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.85;
-    color: rgba(255, 255, 255, .80);
+    color: rgba(255, 255, 255, 0.80);
     max-width: 70ch;
+    word-wrap: break-word;
+    flex: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .footer {
@@ -230,77 +286,188 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    opacity: .85;
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
 }
 
 .more {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 900;
-    letter-spacing: .14em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.cardLink:hover .more {
+    color: #fff;
 }
 
 .arrow {
     font-size: 16px;
     transform: translateX(0);
-    transition: transform .25s var(--ease);
+    transition: transform 0.25s var(--ease);
+    display: inline-block;
 }
 
 .cardLink:hover .arrow {
     transform: translateX(4px);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 1024px) {
-    .shell {
-        padding: 96px 8px 72px;
-    }
+/* ===== RESPONSIVE ===== */
 
+/* Large screens */
+@media (max-width: 1200px) {
     .grid {
-        grid-template-columns:1fr;
-    }
-
-    .h1 {
-    padding: 0;
-        font-size: 30px;
+        gap: 16px;
     }
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+    .shell {
+        padding: 96px 20px 72px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        padding: 0;
+    }
+
+    .title {
+        font-size: clamp(26px, 4vw, 36px);
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .shell {
-        padding: 86px 8px 60px;
+        padding: 86px 16px 60px;
+    }
+
+    .header {
+        margin-top: 30px;
+        margin-bottom: 28px;
+    }
+
+    .h1 {
+        font-size: 32px;
     }
 
     .card {
         border-radius: var(--r-lg);
-        padding:20px 14px 18px;
+        padding: 24px 20px 22px;
     }
 
     .title {
         font-size: 26px;
+    }
+
+    .text {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Видео оптимизация для мобильных */
+    .video {
+        filter: brightness(0.3) saturate(1.1) blur(2px);
     }
 }
 
+/* Small mobile */
 @media (max-width: 480px) {
     .shell {
-        padding: 78px 8px 54px;
+        padding: 78px 16px 54px;
     }
 
-    .title {
-        font-size: 26px;
+    .header {
+        margin-top: 20px;
     }
 
     .h1 {
         font-size: 28px;
     }
+
+    .card {
+        padding: 20px 16px 18px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .cardTop {
+        margin-bottom: 14px;
+    }
 }
 
-/* ===== Accessibility ===== */
+/* ===== ACCESSIBILITY ===== */
+
+/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: .01ms !important;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .video {
+        animation: none !important;
+    }
+
+    .cardLink:hover {
+        transform: none;
+    }
+}
+
+/* Low data mode - отключаем видео */
+@media (prefers-reduced-data: reduce) {
+    .video {
+        display: none;
+    }
+
+    .videoBackground {
+        background: linear-gradient(
+                135deg,
+                #070a1a 0%,
+                #0a1030 55%,
+                #06081a 100%
+        );
+    }
+
+    .videoOverlay {
+        background: radial-gradient(900px 700px at 20% 20%, rgba(167, 139, 250, 0.18), transparent 60%),
+        radial-gradient(900px 650px at 82% 22%, rgba(96, 165, 250, 0.14), transparent 58%);
+    }
+}
+
+/* Высокая контрастность */
+@media (prefers-contrast: high) {
+    .card {
+        border-width: 2px;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .text {
+        color: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Dark mode (если понадобится) */
+@media (prefers-color-scheme: dark) {
+    .services {
+        color-scheme: dark;
     }
 }

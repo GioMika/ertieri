@@ -68,7 +68,7 @@ const Main = () => {
 
         <section className={classes.main}>
           <video className={classes.video} autoPlay loop muted playsInline>
-            <source src="/video.mp4" type="video/mp4" />
+            <source src="/back.mp4" type="video/mp4" />
           </video>
 
           <div className={classes.overlay}>
