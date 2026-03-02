@@ -23,7 +23,6 @@ const About = () => {
       <article className={classes.about}>
         <header className={classes.header}>
           <div className={classes.headerInner}>
-            <p className={classes.eyebrow}>Erti Eri</p>
             <h1 className={classes.pageTitle}>{pageTitle}</h1>
             <p className={classes.pageSubtitle}>{pageSubtitle}</p>
           </div>

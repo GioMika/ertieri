@@ -81,7 +81,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className={classes.logo} aria-label={t("header.homeAria")}>
             <img src={logo} alt="Erti Eri" className={classes.logoImg} />
-            <span className={classes.logoName}>Erti Eri</span>
+            <span className={classes.logoName}>INVESRTOUR</span>
           </Link>
 
           {/* Desktop nav */}

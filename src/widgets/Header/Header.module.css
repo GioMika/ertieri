@@ -37,7 +37,7 @@
 /* The pill */
 .inner {
     pointer-events: auto;
-    max-width: 1340px;
+    /*max-width: 1340px;*/
     margin: 0 auto;
     padding: 0 6px 0 6px;
     height: 62px;
@@ -505,10 +505,11 @@
     .logoName { display: none; }
     .burger { display: grid; place-items: center; }
     .inner { height: 58px; padding: 0 6px; }
+    .header { padding: 8px 6px 0; }
 }
 
 @media (max-width: 480px) {
-    .header { padding: 8px 10px 0; }
+    .header { padding: 8px 6px 0; }
     .iconBtn { width: 36px; height: 36px; }
     .burger  { width: 36px; height: 36px; }
     .burger span:first-child { top: 11px; }

@@ -43,7 +43,7 @@ const Excursions = () => {
       <main className={classes.excursions}>
 
         <header className={classes.header}>
-          <p className={classes.eyebrow}>Erti Eri</p>
+
           <h1 className={classes.pageTitle}>{pageTitle}</h1>
           {pageSubtitle && <p className={classes.pageSubtitle}>{pageSubtitle}</p>}
           <div className={classes.headerLine} />

@@ -67,7 +67,6 @@ const Estate = () => {
 
         <header className={classes.header}>
           <div className={classes.headerLeft}>
-            <p className={classes.eyebrow}>Erti Eri Estate</p>
             <h1 className={classes.pageTitle}>
               Premium <span className={classes.pageTitleItalic}>Real Estate</span>
               <br />in Georgia
@@ -134,9 +133,7 @@ const Estate = () => {
                 <div className={classes.body}>
                   <div>
                     <h2 className={classes.cardTitle}>{property.name}</h2>
-                    {property.developer && (
-                        <p className={classes.developer}>by {property.developer}</p>
-                    )}
+
                   </div>
 
                   <div className={classes.specs}>
@@ -244,13 +241,10 @@ const Estate = () => {
 
                     {/* Контент — правая колонка */}
                     <div className={classes.modalContent}>
-                      <p className={classes.modalEyebrow}>Erti Eri Estate</p>
 
                       <div className={classes.modalHeader}>
                         <h2 className={classes.modalTitle}>{selectedProperty.name}</h2>
-                        {selectedProperty.developer && (
-                            <p className={classes.modalDeveloper}>by {selectedProperty.developer}</p>
-                        )}
+
                       </div>
 
                       <div>

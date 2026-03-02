@@ -148,7 +148,6 @@ const Contact = () => {
 
           {/* ── Header ── */}
           <header className={classes.header}>
-            <p className={classes.eyebrow}>Erti Eri</p>
             <h1 className={classes.title}>
               {pageTitle?.split(" ").slice(0, -1).join(" ")}{" "}
               <span className={classes.titleItalic}>

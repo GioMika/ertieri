@@ -1,32 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
 
 :root {
-    --bg:     #f0ede8;
-    --white:  #faf9f7;
-    --stone:  #e8e4de;
+    --bg: #f0ede8;
+    --white: #faf9f7;
+    --stone: #e8e4de;
     --stone2: #ddd8d0;
     --border: #dbd6cf;
-    --border2:#c8c2b8;
+    --border2: #c8c2b8;
 
-    --ink:    #1c1a17;
-    --ink2:   #38352f;
-    --ink3:   #6a655c;
-    --ink4:   #9e9890;
+    --ink: #1c1a17;
+    --ink2: #38352f;
+    --ink3: #6a655c;
+    --ink4: #9e9890;
 
-    --gold:       #8c6620;
-    --gold-bg:    rgba(220,168,72,0.10);
-    --gold-border:rgba(200,158,60,0.28);
+    --gold: #8c6620;
+    --gold-bg: rgba(220, 168, 72, 0.10);
+    --gold-border: rgba(200, 158, 60, 0.28);
 
-    --shadow-xs: 0 2px 8px  rgba(28,26,23,0.06);
-    --shadow-sm: 0 4px 24px rgba(28,26,23,0.09);
-    --shadow-md: 0 14px 52px rgba(28,26,23,0.12);
+    --shadow-xs: 0 2px 8px rgba(28, 26, 23, 0.06);
+    --shadow-sm: 0 4px 24px rgba(28, 26, 23, 0.09);
+    --shadow-md: 0 14px 52px rgba(28, 26, 23, 0.12);
 
-    --r:    20px;
+    --r: 20px;
     --r-lg: 28px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* =====================
    PAGE
@@ -51,7 +55,9 @@
 }
 
 /* dummy — структура требует .bg */
-.bg { display: none; }
+.bg {
+    display: none;
+}
 
 .container {
     position: relative;
@@ -102,7 +108,10 @@
     margin-bottom: 20px;
 }
 
-.titleItalic { font-style: italic; color: var(--gold); }
+.titleItalic {
+    font-style: italic;
+    color: var(--gold);
+}
 
 .subtitle {
     font-family: 'DM Sans', sans-serif;
@@ -126,7 +135,11 @@
 /* =====================
    LEFT COLUMN
    ===================== */
-.left { display: flex; flex-direction: column; gap: 16px; }
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 /* =====================
    CONTACT CARDS GROUP
@@ -153,9 +166,13 @@
     transition: background .25s var(--ease);
 }
 
-.card:last-child { border-bottom: none; }
+.card:last-child {
+    border-bottom: none;
+}
 
-.card:hover { background: var(--stone); }
+.card:hover {
+    background: var(--stone);
+}
 
 .icon {
     width: 40px;
@@ -181,7 +198,9 @@
     padding-left: 16px;
 }
 
-.cardTop { margin-bottom: 4px; }
+.cardTop {
+    margin-bottom: 4px;
+}
 
 .cardLabel {
     font-family: 'DM Sans', sans-serif;
@@ -234,7 +253,11 @@
     transform: rotate(12deg);
 }
 
-.cardActionMuted { width: 30px; height: 30px; min-width: 30px; }
+.cardActionMuted {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+}
 
 /* =====================
    MAP CARD
@@ -374,7 +397,11 @@
     gap: 12px;
 }
 
-.field { display: flex; flex-direction: column; gap: 8px; }
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 .label {
     font-family: 'DM Sans', sans-serif;
@@ -411,7 +438,7 @@
 .textarea:focus {
     background: var(--white);
     border-color: var(--border2);
-    box-shadow: 0 0 0 3px rgba(28,26,23,0.06);
+    box-shadow: 0 0 0 3px rgba(28, 26, 23, 0.06);
 }
 
 .input:disabled,
@@ -427,7 +454,9 @@
 }
 
 /* Separator before submit */
-.form::before { display: none; }
+.form::before {
+    display: none;
+}
 
 .submit {
     display: inline-flex;
@@ -453,10 +482,12 @@
 .submit:hover:not(:disabled) {
     background: var(--ink2);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(28,26,23,0.22);
+    box-shadow: 0 8px 28px rgba(28, 26, 23, 0.22);
 }
 
-.submit:active:not(:disabled) { transform: translateY(0); }
+.submit:active:not(:disabled) {
+    transform: translateY(0);
+}
 
 .submit:disabled {
     opacity: 0.55;
@@ -479,32 +510,90 @@
    RESPONSIVE
    ===================== */
 @media (max-width: 1024px) {
-    .contact { padding: 100px 0 80px; }
-    .grid { grid-template-columns: 1fr; }
-    .right { position: static; }
+    .contact {
+        padding: 100px 0 80px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right {
+        position: static;
+    }
+    .container {
+        padding: 0 6px;
+    }
 }
 
 @media (max-width: 768px) {
-    .contact { padding: 84px 0 60px; }
-    .container { padding: 0 16px; }
-    .header { margin-bottom: 48px; }
-    .title  { font-size: 38px; }
-    .card   { padding: 18px 18px; grid-template-columns: 44px 1fr; }
-    .mapWrap { height: 200px; }
-    .formHeader { padding: 22px 22px 0; }
-    .form   { padding: 16px 22px 22px; }
-    .row    { grid-template-columns: 1fr; }
+    .contact {
+        padding: 84px 0 60px;
+    }
+
+    .container {
+        padding: 0 6px;
+    }
+
+    .header {
+        margin-bottom: 48px;
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .card {
+        padding: 18px 18px;
+        grid-template-columns: 44px 1fr;
+    }
+
+    .mapWrap {
+        height: 200px;
+    }
+
+    .formHeader {
+        padding: 22px 22px 0;
+    }
+
+    .form {
+        padding: 16px 22px 22px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
-    .contact { padding: 76px 0 48px; }
-    .container { padding: 0 10px; }
-    .title  { font-size: 32px; }
-    .formHeader { padding: 18px 18px 0; }
-    .form   { padding: 14px 18px 18px; }
-    .input, .textarea { font-size: 16px; }
+    .contact {
+        padding: 76px 0 48px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .formHeader {
+        padding: 18px 18px 0;
+    }
+
+    .form {
+        padding: 14px 18px 18px;
+    }
+
+    .input, .textarea {
+        font-size: 16px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

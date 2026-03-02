@@ -1,34 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
 
 :root {
-    --bg:    #f0ede8;
+    --bg: #f0ede8;
     --white: #faf9f7;
     --stone: #e8e4de;
     --border: #dbd6cf;
-    --border2:#c8c2b8;
+    --border2: #c8c2b8;
 
-    --ink:   #1c1a17;
-    --ink2:  #38352f;
-    --ink3:  #6a655c;
-    --ink4:  #9e9890;
+    --ink: #1c1a17;
+    --ink2: #38352f;
+    --ink3: #6a655c;
+    --ink4: #9e9890;
 
-    --gold:      #9a7a40;
-    --gold2:     #b8924e;
-    --gold-bg:   rgba(154,122,64,0.08);
-    --gold-border: rgba(154,122,64,0.24);
+    --gold: #9a7a40;
+    --gold2: #b8924e;
+    --gold-bg: rgba(154, 122, 64, 0.08);
+    --gold-border: rgba(154, 122, 64, 0.24);
 
-    --shadow-xs: 0 2px 8px rgba(28,26,23,0.06);
-    --shadow-sm: 0 4px 24px rgba(28,26,23,0.09);
-    --shadow-md: 0 14px 52px rgba(28,26,23,0.13);
-    --shadow-lg: 0 30px 90px rgba(28,26,23,0.17);
-    --shadow-xl: 0 48px 130px rgba(28,26,23,0.22);
+    --shadow-xs: 0 2px 8px rgba(28, 26, 23, 0.06);
+    --shadow-sm: 0 4px 24px rgba(28, 26, 23, 0.09);
+    --shadow-md: 0 14px 52px rgba(28, 26, 23, 0.13);
+    --shadow-lg: 0 30px 90px rgba(28, 26, 23, 0.17);
+    --shadow-xl: 0 48px 130px rgba(28, 26, 23, 0.22);
 
-    --r:    20px;
+    --r: 20px;
     --r-lg: 28px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* =====================
    PAGE — светлая, зерно НЕ fixed
@@ -58,7 +62,7 @@
 .header {
     position: relative;
     z-index: 1;
-    padding: 0 40px;
+    padding: 0 20px;
     margin-bottom: 72px;
     display: flex;
     align-items: flex-end;
@@ -66,7 +70,9 @@
     gap: 40px;
 }
 
-.headerLeft { max-width: 580px; }
+.headerLeft {
+    max-width: 580px;
+}
 
 .eyebrow {
     font-family: 'DM Sans', sans-serif;
@@ -105,7 +111,10 @@
     color: var(--gold2);
 }
 
-.headerRight { max-width: 300px; flex-shrink: 0; }
+.headerRight {
+    max-width: 300px;
+    flex-shrink: 0;
+}
 
 .pageSubtitle {
     font-family: 'DM Sans', sans-serif;
@@ -146,10 +155,9 @@
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    transition:
-            transform .55s var(--ease),
-            box-shadow .55s var(--ease),
-            border-color .45s var(--ease);
+    transition: transform .55s var(--ease),
+    box-shadow .55s var(--ease),
+    border-color .45s var(--ease);
 }
 
 .card:hover {
@@ -190,8 +198,8 @@
     background: linear-gradient(
             to bottom,
             transparent 30%,
-            rgba(28,26,23,0.10) 60%,
-            rgba(28,26,23,0.55) 100%
+            rgba(28, 26, 23, 0.10) 60%,
+            rgba(28, 26, 23, 0.55) 100%
     );
     pointer-events: none;
 }
@@ -215,8 +223,8 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--gold2);
-    border: 1px solid rgba(184,146,78,0.45);
-    background: rgba(250,249,247,0.88);
+    border: 1px solid rgba(184, 146, 78, 0.45);
+    background: rgba(250, 249, 247, 0.88);
     padding: 5px 13px;
     border-radius: 999px;
     backdrop-filter: blur(8px);
@@ -228,9 +236,9 @@
     font-weight: 600;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.88);
-    background: rgba(28,26,23,0.48);
-    border: 1px solid rgba(255,255,255,0.20);
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(28, 26, 23, 0.48);
+    border: 1px solid rgba(255, 255, 255, 0.20);
     padding: 5px 13px;
     border-radius: 999px;
     backdrop-filter: blur(8px);
@@ -250,7 +258,7 @@
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.60);
+    color: rgba(255, 255, 255, 0.60);
     display: block;
     margin-bottom: 3px;
 }
@@ -262,7 +270,7 @@
     color: #fff;
     letter-spacing: 0.02em;
     line-height: 1;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.30);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.30);
 }
 
 /* =====================
@@ -286,7 +294,9 @@
     transition: color .3s var(--ease);
 }
 
-.card:hover .cardTitle { color: var(--gold2); }
+.card:hover .cardTitle {
+    color: var(--gold2);
+}
 
 .developer {
     font-family: 'DM Sans', sans-serif;
@@ -305,7 +315,11 @@
     gap: 10px 14px;
 }
 
-.spec { display: flex; flex-direction: column; gap: 3px; }
+.spec {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
 
 .specLabel {
     font-family: 'DM Sans', sans-serif;
@@ -363,7 +377,9 @@
     transition: color .3s var(--ease);
 }
 
-.card:hover .cardCta { color: var(--ink); }
+.card:hover .cardCta {
+    color: var(--ink);
+}
 
 .arrowCircle {
     width: 34px;
@@ -374,11 +390,10 @@
     place-items: center;
     font-size: 14px;
     color: var(--ink3);
-    transition:
-            background .35s var(--ease),
-            border-color .35s var(--ease),
-            color .35s var(--ease),
-            transform .35s var(--ease);
+    transition: background .35s var(--ease),
+    border-color .35s var(--ease),
+    color .35s var(--ease),
+    transform .35s var(--ease);
 }
 
 .card:hover .arrowCircle {
@@ -394,7 +409,7 @@
 .modalBackdrop {
     position: fixed;
     inset: 0;
-    background: rgba(28,26,23,0.78);
+    background: rgba(28, 26, 23, 0.78);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 9998;
@@ -406,7 +421,7 @@
     z-index: 9999;
     display: grid;
     place-items: center;
-    padding: 20px;
+    padding: 6px;
     overscroll-behavior: contain;
 }
 
@@ -432,8 +447,8 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(28,26,23,0.55);
-    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(28, 26, 23, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     color: #fff;
     font-size: 14px;
     cursor: pointer;
@@ -444,7 +459,7 @@
 }
 
 .closeButton:hover {
-    background: rgba(28,26,23,0.88);
+    background: rgba(28, 26, 23, 0.88);
     transform: rotate(90deg);
 }
 
@@ -471,8 +486,8 @@
     transform: translateY(-50%);
     width: 42px;
     height: 42px;
-    background: rgba(28,26,23,0.50);
-    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(28, 26, 23, 0.50);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 50%;
     color: #fff;
     font-size: 22px;
@@ -484,10 +499,17 @@
     transition: background .2s var(--ease);
 }
 
-.sliderBtn:hover { background: rgba(28,26,23,0.78); }
+.sliderBtn:hover {
+    background: rgba(28, 26, 23, 0.78);
+}
 
-.sliderBtnPrev { left: 14px; }
-.sliderBtnNext { right: 14px; }
+.sliderBtnPrev {
+    left: 14px;
+}
+
+.sliderBtnNext {
+    right: 14px;
+}
 
 .sliderDots {
     position: absolute;
@@ -504,7 +526,7 @@
     height: 6px;
     border-radius: 50%;
     border: none;
-    background: rgba(255,255,255,0.40);
+    background: rgba(255, 255, 255, 0.40);
     cursor: pointer;
     transition: background .2s, transform .2s;
     padding: 0;
@@ -602,7 +624,11 @@
     border: 1px solid var(--border);
 }
 
-.modalInfoItem { display: flex; flex-direction: column; gap: 4px; }
+.modalInfoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
 .modalInfoLabel {
     font-family: 'DM Sans', sans-serif;
@@ -630,9 +656,17 @@
     margin-bottom: 8px;
 }
 
-.modalTags { display: flex; gap: 6px; flex-wrap: wrap; }
+.modalTags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
 
-.modalCtaLink { text-decoration: none; margin-top: auto; display: block; }
+.modalCtaLink {
+    text-decoration: none;
+    margin-top: auto;
+    display: block;
+}
 
 .modalCtaButton {
     width: 100%;
@@ -653,37 +687,93 @@
 .modalCtaButton:hover {
     background: var(--ink2);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(28,26,23,0.22);
+    box-shadow: 0 8px 28px rgba(28, 26, 23, 0.22);
 }
 
 /* =====================
    RESPONSIVE
    ===================== */
 @media (max-width: 1024px) {
-    .header { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
-    .grid   { padding: 0 24px; }
+    .header {
+        padding: 0 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .grid {
+        padding: 0 6px;
+    }
 }
 
 @media (max-width: 768px) {
-    .estate  { padding: 80px 0 80px; }
-    .header  { padding: 0 16px; margin-bottom: 48px; }
-    .grid    { padding: 0 6px; grid-template-columns: 1fr; gap: 10px; }
-    .card    { border-radius: 18px; }
-    .modal   { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-    .modalSlider { min-height: 260px; height: 260px; }
-    .modalContent { padding: 24px 20px 28px; }
-    .pageTitle { font-size: 36px; }
+    .estate {
+        padding: 80px 0 80px;
+    }
+
+    .header {
+        padding: 0 16px;
+        margin-bottom: 0;
+    }
+
+    .grid {
+        padding: 0 6px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card {
+        border-radius: 18px;
+    }
+
+    .modal {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .modalSlider {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .modalContent {
+        padding: 24px 20px 28px;
+    }
+
+    .pageTitle {
+        font-size: 36px;
+    }
 }
 
 @media (max-width: 480px) {
-    .estate  { padding: 72px 0 60px; }
-    .pageTitle { font-size: 30px; }
-    .card    { border-radius: 14px; }
-    .modal   { border-radius: 18px; }
-    .modalInfoGrid { grid-template-columns: 1fr; }
+    .estate {
+        padding: 72px 0 60px;
+    }
+
+    .pageTitle {
+        font-size: 30px;
+    }
+
+    .card {
+        border-radius: 14px;
+    }
+
+    .modal {
+        border-radius: 18px;
+    }
+
+    .modalInfoGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    .card:hover { transform: none; }
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .card:hover {
+        transform: none;
+    }
 }

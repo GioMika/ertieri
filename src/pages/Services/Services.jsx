@@ -64,9 +64,7 @@ const Services = () => {
       <section className={classes.services}>
 
         <header className={classes.header}>
-          <p className={classes.eyebrow}>Erti Eri</p>
           <h1 className={classes.h1}>{h1}</h1>
-          {lead && <p className={classes.lead}>{lead}</p>}
           <div className={classes.headerLine} />
         </header>
 
