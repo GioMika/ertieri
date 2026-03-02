@@ -1,36 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
 
+/* =====================
+   TOKENS
+   ===================== */
 :root {
-    --bg: #f0ede8;
-    --white: #faf9f7;
-    --stone: #e8e4de;
+    --bg:     #f0ede8;
+    --white:  #faf9f7;
+    --stone:  #e8e4de;
     --stone2: #ddd8d0;
     --border: #dbd6cf;
-    --border2: #c8c2b8;
+    --border2:#c8c2b8;
 
-    --ink: #1c1a17;
-    --ink2: #38352f;
-    --ink3: #6a655c;
-    --ink4: #9e9890;
+    --ink:    #1c1a17;
+    --ink2:   #38352f;
+    --ink3:   #6a655c;
+    --ink4:   #9e9890;
 
-    --dark-bg: #1c1a17;
+    --dark-bg:    #1c1a17;
+    --dark-border:#2e2b26;
     --dark-hover: #252219;
 
-    --shadow-xs: 0 2px 8px rgba(28, 26, 23, 0.06);
-    --shadow-sm: 0 6px 28px rgba(28, 26, 23, 0.09);
-    --shadow-md: 0 16px 56px rgba(28, 26, 23, 0.12);
-    --shadow-lg: 0 30px 90px rgba(28, 26, 23, 0.15);
+    --shadow-xs: 0 1px 4px  rgba(28,26,23,0.05);
+    --shadow-sm: 0 4px 20px rgba(28,26,23,0.07);
+    --shadow-md: 0 14px 50px rgba(28,26,23,0.10);
+    --shadow-lg: 0 28px 90px rgba(28,26,23,0.14);
 
-    --r-lg: 28px;
-    --r: 20px;
+    --r:    22px;
+    --r-lg: 30px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* =====================
    PAGE
@@ -38,18 +38,18 @@
 .services {
     min-height: 100vh;
     background: var(--bg);
-    padding: 100px 0 120px;
-    position: relative;
+    padding: 100px 0 100px;
     overflow-x: hidden;
+    position: relative;
 }
 
 .services::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.20;
+    opacity: 0.22;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
 }
 
@@ -59,33 +59,23 @@
 .header {
     position: relative;
     z-index: 1;
-    max-width: 1320px;
-    margin: 0 auto 64px;
-    padding: 0 40px;
+    margin: 0 auto 56px;
+    padding: 0 20px;
 }
 
-.eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    color: var(--ink4);
-    margin-bottom: 18px;
-}
+.headerInner { max-width: 660px; }
 
-.h1 {
+.pageTitle {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(42px, 5.2vw, 70px);
     font-weight: 400;
     letter-spacing: -0.028em;
     line-height: 1.03;
     color: var(--ink);
-    margin-bottom: 20px;
-    max-width: 18ch;
+    margin-bottom: 18px;
 }
 
-.lead {
+.pageSubtitle {
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -102,109 +92,124 @@
 }
 
 /* =====================
-   GRID — 2 колонки
+   GRID — 12 колонок (как About)
    ===================== */
 .grid {
     position: relative;
     z-index: 1;
-    max-width: 1320px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 14px;
 }
 
 /* =====================
-   CARD LINK
-   ===================== */
-.cardLink {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
-
-/* =====================
-   CARD
+   CARD BASE
    ===================== */
 .card {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    padding: 34px 34px 30px;
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: transform .45s var(--ease),
-    box-shadow .45s var(--ease),
-    border-color .3s var(--ease);
+    position: relative;
+    box-shadow: var(--shadow-xs);
+    transition:
+            transform .45s var(--ease),
+            box-shadow .45s var(--ease),
+            border-color .3s var(--ease);
+    height: auto;
+    cursor: pointer;
 }
 
-.cardLink:hover .card {
+.card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
     border-color: var(--border2);
 }
 
-/* чередование тёплых оттенков */
-.card2, .card4 {
+/* =====================
+   CARD INNER
+   ===================== */
+.cardInner {
+    padding: 26px 28px 26px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+}
+
+/* =====================
+   GRID POSITIONS — идентично About
+   ===================== */
+.card1 {
+    grid-column: 1 / 8;
+    min-height: 360px;
+    background: var(--white);
+}
+
+.card2 {
+    grid-column: 8 / 13;
+    min-height: 360px;
     background: var(--stone);
     border-color: var(--stone2);
 }
 
-/* Тёмный финальный блок если нечётное кол-во */
-.cardDark {
-    background: var(--dark-bg);
-    border-color: #2a2720;
-    box-shadow: var(--shadow-md);
-    grid-column: 1 / -1;
+.card3 {
+    grid-column: 1 / 5;
+    min-height: 300px;
+    background: var(--stone);
+    border-color: var(--stone2);
 }
 
-.cardLink:hover .cardDark {
-    background: var(--dark-hover);
-    border-color: #363028;
-    box-shadow: var(--shadow-lg);
+.card4 {
+    grid-column: 5 / 13;
+    min-height: 300px;
+    background: var(--white);
 }
 
-.cardDark .num {
-    color: rgba(255, 255, 255, 0.28);
+/* если больше 4 карточек — повторяем паттерн */
+.card5 { grid-column: 1 / 8;  min-height: 300px; background: var(--white); }
+.card6 { grid-column: 8 / 13; min-height: 300px; background: var(--stone); border-color: var(--stone2); }
+.card7 { grid-column: 1 / 5;  min-height: 300px; background: var(--stone); border-color: var(--stone2); }
+.card8 { grid-column: 5 / 13; min-height: 300px; background: var(--white); }
+
+/* =====================
+   CTA (тёмная последняя на всю ширину)
+   ===================== */
+.ctaCard {
+    grid-column: 1 / 13 !important;
+    min-height: 240px !important;
+    background: var(--dark-bg) !important;
+    border-color: var(--dark-border) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
-.cardDark .pill {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.13);
-    color: rgba(255, 255, 255, 0.55);
+.ctaCard:hover {
+    background: var(--dark-hover) !important;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+    border-color: #363028 !important;
 }
 
-.cardDark .title {
-    color: rgba(255, 255, 255, 0.92);
+.ctaCard .num   { color: rgba(255,255,255,0.28); }
+.ctaCard .tag   { color: rgba(255,255,255,0.48); }
+.ctaCard .title { color: rgba(255,255,255,0.92); }
+.ctaCard .text  { color: rgba(255,255,255,0.60); }
+
+.ctaCard .arrow {
+    border-color: rgba(255,255,255,0.16);
+    color: rgba(255,255,255,0.65);
+}
+.ctaCard:hover .arrow {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.92);
 }
 
-.cardDark .subtitle {
-    color: rgba(255, 255, 255, 0.38);
-}
-
-.cardDark .text {
-    color: rgba(255, 255, 255, 0.60);
-}
-
-.cardDark .arrowCircle {
-    border-color: rgba(255, 255, 255, 0.18);
-    color: rgba(255, 255, 255, 0.60);
-}
-
-.cardLink:hover .cardDark .arrowCircle {
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.32);
-    color: #fff;
-    transform: rotate(12deg);
-}
-
-/* широкий тёмный — горизонтальный layout */
-.cardDark .cardInner {
+.ctaCard .cardInner {
+    padding: 28px 32px 26px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -212,22 +217,8 @@
     gap: 24px;
 }
 
-.cardDark .cardInner .cardBody {
-    flex: 1;
-}
-
-.cardDark .cardInner .cardArrow {
-    flex-shrink: 0;
-}
-
-/* =====================
-   CARD INNER
-   ===================== */
-.cardInner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+.ctaCard .title    { margin-bottom: 8px; }
+.ctaCard .text     { margin-top: 0; }
 
 /* =====================
    CARD CONTENT
@@ -235,8 +226,8 @@
 .cardTop {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
+    gap: 10px;
+    margin-bottom: 0;
 }
 
 .num {
@@ -245,36 +236,71 @@
     font-weight: 600;
     letter-spacing: 0.16em;
     color: var(--ink4);
+    flex-shrink: 0;
+    min-width: 22px;
 }
 
+.tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    flex: 1;
+}
+
+/* pill — альтернатива тегу */
 .pill {
     font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    padding: 6px 13px;
+    padding: 5px 12px;
     border-radius: 999px;
     background: var(--stone);
     border: 1px solid var(--border);
     color: var(--ink3);
+    flex: 1;
+    text-align: left;
     white-space: nowrap;
-    transition: background .3s var(--ease), border-color .3s var(--ease);
 }
 
-.cardLink:hover .pill {
-    background: var(--stone2);
-    border-color: var(--border2);
+.arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border2);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    color: var(--ink2);
+    flex-shrink: 0;
+    margin-left: auto;
+    transition:
+            transform .35s var(--ease),
+            background .3s var(--ease),
+            border-color .3s var(--ease),
+            color .3s var(--ease);
+}
+
+.card:hover .arrow {
+    transform: rotate(12deg) translateY(-1px);
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
 }
 
 .title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(24px, 2.4vw, 34px);
+    font-size: clamp(26px, 2.4vw, 36px);
     font-weight: 400;
     letter-spacing: -0.022em;
     line-height: 1.14;
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-top: auto;
+    margin-bottom: 14px;
 }
 
 .subtitle {
@@ -284,7 +310,8 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink4);
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+    margin-top: -8px;
 }
 
 .text {
@@ -292,137 +319,144 @@
     font-size: 15px;
     font-weight: 400;
     color: var(--ink3);
-    line-height: 1.82;
-    flex: 1;
+    line-height: 1.85;
+    max-width: 60ch;
+    margin-top: 0;
 }
 
 /* =====================
-   ARROW
+   CARD FOOTER (подробнее + стрелка)
    ===================== */
-.cardArrow {
-    margin-top: 28px;
+.cardFooter {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 18px;
+    margin-top: 20px;
     border-top: 1px solid var(--border);
-}
-
-.cardDark .cardArrow {
-    border-top-color: rgba(255, 255, 255, 0.08);
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
 }
 
 .more {
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink3);
-    transition: color .3s var(--ease);
+    color: var(--ink4);
+    transition: color .25s var(--ease);
 }
 
-.cardLink:hover .more {
-    color: var(--ink);
-}
+.card:hover .more { color: var(--ink); }
 
-.cardLink:hover .cardDark .more {
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.arrowCircle {
-    width: 36px;
-    height: 36px;
+.arrowFooter {
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     border: 1px solid var(--border2);
     display: grid;
     place-items: center;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink3);
     flex-shrink: 0;
-    transition: background .35s var(--ease),
-    border-color .35s var(--ease),
-    color .35s var(--ease),
-    transform .35s var(--ease);
+    transition:
+            transform .35s var(--ease),
+            background .3s var(--ease),
+            border-color .3s var(--ease),
+            color .3s var(--ease);
 }
 
-.cardLink:hover .arrowCircle {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--white);
+.card:hover .arrowFooter {
     transform: rotate(12deg);
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+}
+
+/* =====================
+   CTA ROW
+   ===================== */
+.ctaRow {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.linkWrapper { text-decoration: none; }
+
+.ctaButton {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 30px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.90);
+    transition:
+            background .2s var(--ease),
+            border-color .2s var(--ease),
+            transform .2s var(--ease);
+}
+
+.ctaButton:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.38);
+    transform: translateY(-1px);
+}
+
+.ctaHint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.40);
+}
+
+/* =====================
+   CLICKABLE
+   ===================== */
+.clickable { cursor: pointer; }
+
+.clickable:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: var(--r-lg);
 }
 
 /* =====================
    RESPONSIVE
    ===================== */
-@media (max-width: 1024px) {
-    .header {
-        padding: 0 16px;
-        margin-bottom: 0;
+@media (max-width: 1100px) {
+    .card1, .card2, .card3, .card4,
+    .card5, .card6, .card7, .card8 { grid-column: 1 / -1; }
+    .ctaCard .cardInner {
+        flex-direction: column;
+        align-items: flex-start;
     }
-
-    .grid {
-        padding: 0 6px;
-        gap: 14px;
-    }
+    .grid { padding: 0 6px; gap: 10px; }
 }
 
 @media (max-width: 768px) {
-    .services {
-        padding: 80px 0 80px;
-    }
-
-    .header {
-        padding: 0 16px;
-        margin-bottom: 0;
-    }
-
-    .grid {
-        padding: 0 6px;
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .card {
-        padding: 26px 24px 22px;
-        min-height: auto;
-    }
-
-    .cardDark .cardInner {
-        flex-direction: column;
-    }
-
-    .h1 {
-        font-size: 36px;
-    }
-
-    .title {
-        font-size: 24px;
-    }
+    .services   { padding: 80px 0 60px; }
+    .header     { padding: 0 16px; margin-bottom: 40px; }
+    .grid       { padding: 0 6px; gap: 10px; }
+    .cardInner  { padding: 26px 24px 22px; }
+    .ctaCard .cardInner { padding: 28px 24px 24px; }
+    .pageTitle  { font-size: 36px; }
+    .title      { font-size: 26px; }
 }
 
 @media (max-width: 480px) {
-    .services {
-        padding: 72px 0 60px;
-    }
-
-    .h1 {
-        font-size: 30px;
-    }
-
-    .card {
-        border-radius: var(--r);
-        padding: 22px 18px 18px;
-    }
+    .services  { padding: 72px 0 48px; }
+    .pageTitle { font-size: 30px; }
+    .header    { margin-bottom: 28px; }
+    .cardInner { padding: 22px 18px 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
