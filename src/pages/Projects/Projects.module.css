@@ -35,7 +35,7 @@
 }
 
 /* =====================
-   PAGE — светлая, зерно НЕ fixed
+   PAGE
    ===================== */
 .estate {
     min-height: 100vh;
@@ -45,7 +45,6 @@
     position: relative;
 }
 
-/* Grain — position: absolute, только внутри страницы */
 .estate::before {
     content: "";
     position: absolute;
@@ -131,7 +130,7 @@
 }
 
 /* =====================
-   GRID — 2 колонки, 20px отступ
+   GRID
    ===================== */
 .grid {
     position: relative;
@@ -143,7 +142,7 @@
 }
 
 /* =====================
-   CARD
+   CARD — без изменений
    ===================== */
 .card {
     position: relative;
@@ -167,7 +166,7 @@
 }
 
 /* =====================
-   PHOTO
+   PHOTO — без изменений
    ===================== */
 .imgWrap {
     width: 100%;
@@ -179,16 +178,15 @@
 
 .img {
     width: 100%;
-    height: 100%;
+    height: 120%;
     object-fit: cover;
     display: block;
-    transform: scale(1.03);
-    transition: transform .9s var(--ease), filter .7s var(--ease);
+    will-change: transform;
     filter: saturate(0.88) brightness(0.95);
+    transition: filter .7s var(--ease);
 }
 
 .card:hover .img {
-    transform: scale(1.09);
     filter: saturate(0.96) brightness(1.00);
 }
 
@@ -204,7 +202,6 @@
     pointer-events: none;
 }
 
-/* Бейджи поверх фото */
 .imgBadges {
     position: absolute;
     top: 16px;
@@ -244,7 +241,6 @@
     backdrop-filter: blur(8px);
 }
 
-/* Цена внизу фото */
 .imgPrice {
     position: absolute;
     bottom: 18px;
@@ -274,7 +270,7 @@
 }
 
 /* =====================
-   CARD BODY — светлый
+   CARD BODY — без изменений
    ===================== */
 .body {
     padding: 24px 26px 26px;
@@ -308,7 +304,6 @@
     margin-top: -10px;
 }
 
-/* Характеристики */
 .specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -337,7 +332,6 @@
     color: var(--ink2);
 }
 
-/* Теги */
 .tags {
     display: flex;
     gap: 6px;
@@ -357,7 +351,6 @@
     background: var(--gold-bg);
 }
 
-/* Футер карточки */
 .cardFooter {
     display: flex;
     align-items: center;
@@ -404,7 +397,8 @@
 }
 
 /* =====================
-   MODAL
+   MODAL — ТОЛЬКО ЭТО ИЗМЕНЕНО
+   Жёсткий фиксированный размер, не зависит от контента
    ===================== */
 .modalBackdrop {
     position: fixed;
@@ -421,22 +415,21 @@
     z-index: 9999;
     display: grid;
     place-items: center;
-    padding: 6px;
+    padding: 24px;
     overscroll-behavior: contain;
 }
 
-/* Горизонтальный модал */
 .modal {
     width: 100%;
-    max-width: 1200px;
-    max-height: 88dvh;
+    max-width: 1180px;
+    height: 520px;          /* ← ЖЁСТКО ЗАФИКСИРОВАНО */
     background: var(--white);
     border-radius: var(--r-lg);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-xl);
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
     position: relative;
 }
 
@@ -463,16 +456,18 @@
     transform: rotate(90deg);
 }
 
-/* Слайдер — левая колонка */
+/* Слайдер — заполняет всю левую колонку */
 .modalSlider {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 440px;
     overflow: hidden;
 }
 
+/* Фото — абсолютное позиционирование, заполняет всё без зазоров */
 .modalSliderImg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -503,13 +498,8 @@
     background: rgba(28, 26, 23, 0.78);
 }
 
-.sliderBtnPrev {
-    left: 14px;
-}
-
-.sliderBtnNext {
-    right: 14px;
-}
+.sliderBtnPrev { left: 14px; }
+.sliderBtnNext { right: 14px; }
 
 .sliderDots {
     position: absolute;
@@ -537,14 +527,27 @@
     transform: scale(1.4);
 }
 
-/* Контент — правая колонка */
+.slideCounter {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.08em;
+    z-index: 10;
+}
+
+/* Контент — скролл если текст не влезает, кнопка прибита к низу */
 .modalContent {
-    padding: 36px 10px 32px;
+    height: 100%;
+    padding: 28px 28px 24px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     background: var(--white);
 }
 
@@ -573,14 +576,14 @@
 .modalHeader {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding-bottom: 18px;
+    gap: 4px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--border);
 }
 
 .modalTitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 2.4vw, 32px);
+    font-size: clamp(20px, 1.9vw, 28px);
     font-weight: 400;
     letter-spacing: -0.010em;
     line-height: 1.18;
@@ -603,12 +606,12 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink4);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .modalPrice {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(24px, 2.6vw, 34px);
+    font-size: clamp(22px, 2vw, 30px);
     font-weight: 300;
     color: var(--gold2);
     letter-spacing: 0.02em;
@@ -617,17 +620,17 @@
 .modalInfoGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px 18px;
-    padding: 18px;
+    gap: 9px 14px;
+    padding: 14px;
     background: var(--stone);
-    border-radius: 14px;
+    border-radius: 12px;
     border: 1px solid var(--border);
 }
 
 .modalInfoItem {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .modalInfoLabel {
@@ -641,7 +644,7 @@
 
 .modalInfoValue {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--ink2);
 }
@@ -653,7 +656,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink4);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .modalTags {
@@ -675,12 +678,13 @@
     font-weight: 600;
     letter-spacing: 0.20em;
     text-transform: uppercase;
-    padding: 15px 32px;
+    padding: 14px 32px;
     border-radius: 999px;
     cursor: pointer;
     border: 1px solid var(--ink);
     background: var(--ink);
     color: var(--white);
+    margin-top: auto;
     transition: background .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 
@@ -703,6 +707,14 @@
 
     .grid {
         padding: 0 6px;
+    }
+
+    .modal {
+        height: 480px;
+    }
+
+    .modalWrapper {
+        padding: 6px;
     }
 }
 
@@ -728,21 +740,19 @@
 
     .modal {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-    }
-
-    .modalSlider {
-        min-height: 260px;
-        height: 260px;
+        grid-template-rows: 240px 1fr;
+        height: auto;
+        max-height: 88dvh;
     }
 
     .modalContent {
-        padding: 24px 10px 28px;
+        padding: 20px 18px 20px;
     }
 
     .pageTitle {
         font-size: 36px;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -760,6 +770,7 @@
 
     .modal {
         border-radius: 18px;
+        grid-template-rows: 200px 1fr;
     }
 
     .modalInfoGrid {

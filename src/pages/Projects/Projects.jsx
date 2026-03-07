@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useCallback, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import classes from "./Projects.module.css";
 import { propertiesData } from "./propertiesData";
@@ -10,6 +10,140 @@ const formatSeaDistance = (meters) => {
   if (meters === 0) return "0 м";
   if (meters >= 1000) return `${meters / 1000} км`;
   return `${meters} м`;
+};
+
+const PropertyCard = ({ property, index, onOpen, ui }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // FIX: картинка изначально центрирована через marginTop: "-10%"
+  // Параллакс ±10% — никогда не выходит за край
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  const isEven = index % 2 === 0;
+
+  return (
+      <motion.article
+          ref={ref}
+          className={classes.card}
+          onClick={() => onOpen(property)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onOpen(property);
+            }
+          }}
+          aria-label={property.name}
+          initial={{
+            opacity: 0,
+            x: isEven ? -60 : 60,
+            y: 40,
+            scale: 0.94,
+          }}
+          animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+          transition={{
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1],
+            delay: (index % 2) * 0.12,
+          }}
+          whileHover={{
+            y: -6,
+            transition: { duration: 0.3, ease: "easeOut" },
+          }}
+      >
+        <div className={classes.imgWrap}>
+          <motion.img
+              src={property.images[0]}
+              alt={property.name}
+              className={classes.img}
+              style={{
+                y: imgY,
+                marginTop: "-10%", // ← центрирует картинку, убирает белый зазор
+              }}
+          />
+          <div className={classes.imgOverlay} />
+
+          <div className={classes.imgBadges}>
+            {property.typeLabel && (
+                <span className={classes.badgeType}>{property.typeLabel}</span>
+            )}
+            {property.city && (
+                <span className={classes.badgeCity}>{property.city}</span>
+            )}
+          </div>
+
+          <div className={classes.imgPrice}>
+            <span className={classes.priceFrom}>{ui.priceFrom}</span>
+            <span className={classes.priceValue}>
+            {property.priceFrom?.toLocaleString()} {ui.currency}
+          </span>
+          </div>
+        </div>
+
+        <motion.div
+            className={classes.body}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1],
+              delay: (index % 2) * 0.12 + 0.2,
+            }}
+        >
+          <h2 className={classes.cardTitle}>{property.name}</h2>
+
+          <div className={classes.specs}>
+            <div className={classes.spec}>
+              <span className={classes.specLabel}>{ui.completion}</span>
+              <span className={classes.specValue}>{property.completion}</span>
+            </div>
+            {property.seaDistance !== null && property.seaDistance !== undefined && (
+                <div className={classes.spec}>
+                  <span className={classes.specLabel}>{ui.seaDistance}</span>
+                  <span className={classes.specValue}>{formatSeaDistance(property.seaDistance)}</span>
+                </div>
+            )}
+            <div className={classes.spec}>
+              <span className={classes.specLabel}>{ui.area}</span>
+              <span className={classes.specValue}>
+              {property.areaMin === property.areaMax
+                  ? `${property.areaMin} м²`
+                  : `${property.areaMin}–${property.areaMax} м²`}
+            </span>
+            </div>
+            <div className={classes.spec}>
+              <span className={classes.specLabel}>{ui.layouts}</span>
+              <span className={classes.specValue}>{property.layouts?.join(", ")}</span>
+            </div>
+          </div>
+
+          {property.finishing?.length > 0 && (
+              <div className={classes.tags}>
+                {property.finishing.map((f) => (
+                    <span key={f} className={classes.tag}>{f}</span>
+                ))}
+              </div>
+          )}
+
+          <div className={classes.cardFooter}>
+            <span className={classes.cardCta}>{ui.viewDetails || "View details"}</span>
+            <motion.span
+                className={classes.arrowCircle}
+                aria-hidden="true"
+                whileHover={{ x: 4, y: -4 }}
+                transition={{ duration: 0.2 }}
+            >↗</motion.span>
+          </div>
+        </motion.div>
+      </motion.article>
+  );
 };
 
 const Projects = () => {
@@ -29,14 +163,13 @@ const Projects = () => {
     setSlideIndex(0);
   }, []);
 
-  // Закрываем property modal → ждём анимацию → открываем ContactModal
   const handleGetConsultation = useCallback((e) => {
     e.stopPropagation();
     setSelectedProperty(null);
     setSlideIndex(0);
     setTimeout(() => {
       setIsContactModalOpen(true);
-    }, 350); // чуть больше чем exit анимация (0.26s)
+    }, 350);
   }, []);
 
   const closeContactModal = useCallback(() => {
@@ -80,95 +213,16 @@ const Projects = () => {
 
         <div className={classes.grid}>
           {visibleProperties.map((property, index) => (
-              <motion.article
+              <PropertyCard
                   key={property.id}
-                  className={classes.card}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.70,
-                    ease: [0.22, 1, 0.36, 1],
-                    delay: index % 2 === 1 ? 0.1 : 0,
-                  }}
-                  onClick={() => openModal(property)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      openModal(property);
-                    }
-                  }}
-                  aria-label={property.name}
-              >
-                <div className={classes.imgWrap}>
-                  <img
-                      src={property.images[0]}
-                      alt={property.name}
-                      className={classes.img}
-                      loading="lazy"
-                  />
-                  <div className={classes.imgOverlay} />
-                  <div className={classes.imgBadges}>
-                    {property.typeLabel && (
-                        <span className={classes.badgeType}>{property.typeLabel}</span>
-                    )}
-                    {property.city && (
-                        <span className={classes.badgeCity}>{property.city}</span>
-                    )}
-                  </div>
-                  <div className={classes.imgPrice}>
-                    <span className={classes.priceFrom}>{ui.priceFrom}</span>
-                    <span className={classes.priceValue}>
-                  {property.priceFrom?.toLocaleString()} {ui.currency}
-                </span>
-                  </div>
-                </div>
-
-                <div className={classes.body}>
-                  <h2 className={classes.cardTitle}>{property.name}</h2>
-                  <div className={classes.specs}>
-                    <div className={classes.spec}>
-                      <span className={classes.specLabel}>{ui.completion}</span>
-                      <span className={classes.specValue}>{property.completion}</span>
-                    </div>
-                    {property.seaDistance !== null && property.seaDistance !== undefined && (
-                        <div className={classes.spec}>
-                          <span className={classes.specLabel}>{ui.seaDistance}</span>
-                          <span className={classes.specValue}>{formatSeaDistance(property.seaDistance)}</span>
-                        </div>
-                    )}
-                    <div className={classes.spec}>
-                      <span className={classes.specLabel}>{ui.area}</span>
-                      <span className={classes.specValue}>
-                    {property.areaMin === property.areaMax
-                        ? `${property.areaMin} м²`
-                        : `${property.areaMin}–${property.areaMax} м²`}
-                  </span>
-                    </div>
-                    <div className={classes.spec}>
-                      <span className={classes.specLabel}>{ui.layouts}</span>
-                      <span className={classes.specValue}>{property.layouts?.join(", ")}</span>
-                    </div>
-                  </div>
-                  {property.finishing?.length > 0 && (
-                      <div className={classes.tags}>
-                        {property.finishing.map((f) => (
-                            <span key={f} className={classes.tag}>{f}</span>
-                        ))}
-                      </div>
-                  )}
-                  <div className={classes.cardFooter}>
-                    <span className={classes.cardCta}>{ui.viewDetails || "View details"}</span>
-                    <span className={classes.arrowCircle} aria-hidden="true">↗</span>
-                  </div>
-                </div>
-              </motion.article>
+                  property={property}
+                  index={index}
+                  onOpen={openModal}
+                  ui={ui}
+              />
           ))}
         </div>
 
-        {/* Property Modal */}
         <AnimatePresence>
           {selectedProperty && (() => {
             const images = selectedProperty.images;
@@ -180,15 +234,16 @@ const Projects = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
                       onClick={closeModal}
                   />
 
                   <motion.div
                       className={classes.modalWrapper}
-                      initial={{ opacity: 0, y: 30, scale: 0.97 }}
+                      initial={{ opacity: 0, y: 40, scale: 0.96 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 20, scale: 0.97 }}
-                      transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                      exit={{ opacity: 0, y: 24, scale: 0.96 }}
+                      transition={{ type: "spring", damping: 28, stiffness: 280 }}
                       role="dialog"
                       aria-modal="true"
                       aria-label={selectedProperty.name}
@@ -208,10 +263,10 @@ const Projects = () => {
                               src={images[slideIndex]}
                               alt={`${selectedProperty.name} ${slideIndex + 1}`}
                               className={classes.modalSliderImg}
-                              initial={{ opacity: 0, x: 30 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -30 }}
-                              transition={{ duration: 0.26, ease: "easeInOut" }}
+                              initial={{ opacity: 0, scale: 1.04, x: 20 }}
+                              animate={{ opacity: 1, scale: 1, x: 0 }}
+                              exit={{ opacity: 0, scale: 0.97, x: -20 }}
+                              transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
                           />
                         </AnimatePresence>
 
@@ -313,7 +368,6 @@ const Projects = () => {
                             </div>
                         )}
 
-                        {/* Кнопка: закрывает property modal → открывает ContactModal */}
                         <button
                             className={classes.modalCtaButton}
                             type="button"
@@ -329,12 +383,10 @@ const Projects = () => {
           })()}
         </AnimatePresence>
 
-        {/* Contact Modal */}
         <ContactModal
             isOpen={isContactModalOpen}
             onClose={closeContactModal}
         />
-
       </main>
   );
 };
