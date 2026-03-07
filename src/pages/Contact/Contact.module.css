@@ -506,6 +506,24 @@
     border: 1px solid var(--border);
 }
 
+
+.fieldErr {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #a03030;
+    padding-left: 2px;
+    margin-top: 2px;
+}
+
+.inputErr {
+    border-color: rgba(160, 48, 48, 0.40) !important;
+    background: rgba(160, 48, 48, 0.04) !important;
+}
+.inputErr:focus {
+    box-shadow: 0 0 0 3px rgba(160, 48, 48, 0.08) !important;
+}
+
 /* =====================
    RESPONSIVE
    ===================== */

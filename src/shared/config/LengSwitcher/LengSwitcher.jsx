@@ -39,9 +39,7 @@ const LengSwitcher = ({
 
     try {
       await i18n.changeLanguage(next);
-      // setLang сработает через languageChanged
     } catch (e) {
-      // no-op
     }
   };
 

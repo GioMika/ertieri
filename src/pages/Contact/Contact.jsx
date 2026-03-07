@@ -75,6 +75,25 @@ const AddressCard = memo(function AddressCard({ value, mapsUrl, ariaLabel, ui })
   );
 });
 
+/* ── Validation ── */
+const VALIDATION_MSGS = {
+  ru: { name: "Введите имя", email: "Введите email", emailInvalid: "Неверный формат email", message: "Напишите сообщение" },
+  en: { name: "Enter your name", email: "Enter your email", emailInvalid: "Invalid email format", message: "Write a message" },
+  ge: { name: "შეიყვანეთ სახელი", email: "შეიყვანეთ ელ-ფოსტა", emailInvalid: "არასწორი ელ-ფოსტა", message: "დაწერეთ შეტყობინება" },
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const validateForm = (formData, lang) => {
+  const m = VALIDATION_MSGS[lang] || VALIDATION_MSGS.ru;
+  const errors = {};
+  if (!formData.name.trim())    errors.name    = m.name;
+  if (!formData.email.trim())   errors.email   = m.email;
+  else if (!EMAIL_RE.test(formData.email.trim())) errors.email = m.emailInvalid;
+  if (!formData.message.trim()) errors.message = m.message;
+  return errors;
+};
+
 /* ════════════════════════════
    MAIN COMPONENT
    ════════════════════════════ */
@@ -99,17 +118,33 @@ const Contact = () => {
   const embedMapSrc = data.embedMapSrc || "";
 
   /* ── Form state ── */
-  const [formData, setFormData]     = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData]       = useState({ name: "", email: "", message: "" });
+  const [fieldErrors, setFieldErrors] = useState({});
   const [isSubmitting, setSubmitting] = useState(false);
-  const [status, setStatus]         = useState({ sent: false, ok: false, error: "" });
+  const [status, setStatus]           = useState({ sent: false, ok: false, error: "" });
 
   const onChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((p) => ({ ...p, [name]: value }));
-  }, []);
+    /* clear error on typing */
+    if (fieldErrors[name]) setFieldErrors((p) => { const n = { ...p }; delete n[name]; return n; });
+  }, [fieldErrors]);
+
+  const onBlur = useCallback((e) => {
+    const { name, value } = e.target;
+    const m = VALIDATION_MSGS[lang] || VALIDATION_MSGS.ru;
+    if (!value.trim()) {
+      const msg = { name: m.name, email: m.email, message: m.message }[name];
+      if (msg) setFieldErrors((p) => ({ ...p, [name]: msg }));
+    } else if (name === "email" && !EMAIL_RE.test(value.trim())) {
+      setFieldErrors((p) => ({ ...p, email: m.emailInvalid }));
+    }
+  }, [lang]);
 
   const onSubmit = useCallback(async (e) => {
     e.preventDefault();
+    const errs = validateForm(formData, lang);
+    if (Object.keys(errs).length) { setFieldErrors(errs); return; }
     if (isSubmitting) return;
 
     setSubmitting(true);
@@ -133,6 +168,7 @@ const Contact = () => {
 
       setStatus({ sent: true, ok: true, error: "" });
       setFormData({ name: "", email: "", message: "" });
+      setFieldErrors({});
     } catch (err) {
       setStatus({ sent: true, ok: false, error: err?.message || ui.error || "Error" });
     } finally {
@@ -250,45 +286,49 @@ const Contact = () => {
                     <label className={classes.field}>
                       <span className={classes.label}>{ui.name}</span>
                       <input
-                          className={classes.input}
+                          className={`${classes.input} ${fieldErrors.name ? classes.inputErr : ""}`}
                           type="text"
                           name="name"
                           placeholder={ui.namePh}
                           value={formData.name}
                           onChange={onChange}
-                          required
+                          onBlur={onBlur}
                           autoComplete="name"
                           disabled={isSubmitting}
                       />
+                      {fieldErrors.name && <span className={classes.fieldErr}>{fieldErrors.name}</span>}
                     </label>
+
                     <label className={classes.field}>
                       <span className={classes.label}>{ui.email}</span>
                       <input
-                          className={classes.input}
+                          className={`${classes.input} ${fieldErrors.email ? classes.inputErr : ""}`}
                           type="email"
                           name="email"
                           placeholder={ui.emailPh}
                           value={formData.email}
                           onChange={onChange}
-                          required
+                          onBlur={onBlur}
                           autoComplete="email"
                           disabled={isSubmitting}
                       />
+                      {fieldErrors.email && <span className={classes.fieldErr}>{fieldErrors.email}</span>}
                     </label>
                   </div>
 
                   <label className={classes.field}>
                     <span className={classes.label}>{ui.message}</span>
                     <textarea
-                        className={classes.textarea}
+                        className={`${classes.textarea} ${fieldErrors.message ? classes.inputErr : ""}`}
                         name="message"
                         placeholder={ui.messagePh}
                         value={formData.message}
                         onChange={onChange}
-                        required
+                        onBlur={onBlur}
                         rows={6}
                         disabled={isSubmitting}
                     />
+                    {fieldErrors.message && <span className={classes.fieldErr}>{fieldErrors.message}</span>}
                   </label>
 
                   <button

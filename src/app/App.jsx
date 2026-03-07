@@ -16,7 +16,8 @@ import BeachRelax from "../pages/BeachRelax/BeachRelax.jsx";
 import MountainRelax from "../pages/MountainRelax/MountainRelax.jsx";
 import CasinoTour from "../pages/CasinoTour/CasinoTour.jsx";
 import WeddingTour from "../pages/WeddingTour/WeddingTour.jsx";
-import Estate from "../pages/Estate/Estate.jsx";
+import Projects from "../pages/Projects/Projects.jsx";
+import RealEstates from "../pages/RealEstates/RealEstates.jsx";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
               <Route path="/mountain-relax" element={<MountainRelax />} />
               <Route path="/casino-tour" element={<CasinoTour />} />
               <Route path="/wedding-tour" element={<WeddingTour/>} />
-              <Route path="/estate" element={<Estate/>} />
+              <Route path="/estate" element={<RealEstates/>} />
+              <Route path="/projects" element={<Projects/>} />
             </Routes>
           </main>
         </div>
