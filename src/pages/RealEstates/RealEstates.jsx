@@ -5,7 +5,7 @@ import { ArrowRight, Building2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import styles from "./RealEstates.module.css";
 import ContactModal from "../../widgets/ContactModal/ContactModal.jsx";
-import video from "./video/video.MP4";
+import video from "./video/video.mp4";
 
 /* ── Inline translations — no external JSON files needed ── */
 const TRANSLATIONS = {
